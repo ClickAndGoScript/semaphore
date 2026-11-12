@@ -58,7 +58,7 @@
         @click="upgradeToPro('runners')"
         data-testid="runner-tagsUpgrade"
       >
-        Upgrade to PRO
+        {{ $t('upgrade_to_pro_full') }}
       </v-chip>
     </div>
 
@@ -71,8 +71,8 @@
       <v-col :cols="isNew ? 12 : 6" sm="6">
         <v-checkbox v-model="item.is_default" data-testid="runner-isDefault">
           <template v-slot:label>
-            Is default
-            <v-chip class="ml-2" color="error" size="small" variant="flat">New</v-chip>
+            {{ $t('is_default') }}
+            <v-chip class="ml-2" color="error" size="small" variant="flat">{{ $t('new') }}</v-chip>
           </template>
         </v-checkbox>
       </v-col>
@@ -84,7 +84,7 @@
         >
           <template v-slot:label>
             {{ $t('register') }}
-            <v-chip class="ml-2" color="error" size="small" variant="flat">New</v-chip>
+            <v-chip class="ml-2" color="error" size="small" variant="flat">{{ $t('new') }}</v-chip>
           </template>
         </v-checkbox>
       </v-col>

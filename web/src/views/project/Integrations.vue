@@ -71,7 +71,7 @@
         class="mb-3 pl-1"
         v-if="(aliases || []).length === 0"
         data-testid="integrations-aliasesEmpty"
-      >There are no aliases.</div>
+      >{{ $t('no_aliases') }}</div>
 
       <div
         v-else

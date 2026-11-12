@@ -123,7 +123,7 @@
         <CopyClipboardButton
           v-if="item.token_id"
           :text="item.token_id"
-          success-message="The token has been copied to the clipboard."
+          :success-message="$t('token_copied')"
           test-id="tokens-rowCopy"
         />
       </template>

@@ -44,7 +44,7 @@
                 v-if="editedVar.type === 'enum'"
                 :data-testid="`${testId}Dialog-addValue`"
                 @click="addEditedVarValue()"
-              >Add Value</v-btn>
+              >{{ $t('add_value') }}</v-btn>
             </div>
           </v-form>
         </v-card-text>

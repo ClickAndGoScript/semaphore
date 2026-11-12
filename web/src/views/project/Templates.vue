@@ -117,7 +117,7 @@
             <template v-slot:prepend>
               <v-icon>mdi-cogs</v-icon>
             </template>
-            <v-list-item-title>Applications</v-list-item-title>
+            <v-list-item-title>{{ $t('applications') }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>

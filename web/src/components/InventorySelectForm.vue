@@ -19,7 +19,7 @@
       :rules="[v => !!v || $t('inventory_required')]"
       :items="items"
       v-model="itemId"
-      label="Workspace"
+      :label="$t('workspace')"
       item-value="id"
       item-title="name"
       :menu-props="underlinedMenu"

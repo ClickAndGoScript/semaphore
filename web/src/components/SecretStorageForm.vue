@@ -56,14 +56,14 @@
         :label="$t('Namespace')"
         :hint="item.type === 'openbao'
           ? 'OpenBao namespaces (v2.3+)'
-          : 'For Vault Enterprise and HCP Dedicated only'"
+          : $t('vault_namespace_hint')"
         :disabled="formSaving"
         data-testid="secretStorage-vaultNamespace"
         variant="outlined"
         density="compact"
       ></v-text-field>
 
-      <SecretSourceToggle v-model="secretStorage" label="Token" :disabled="formSaving" />
+      <SecretSourceToggle v-model="secretStorage" :label="$t('token')" :disabled="formSaving" />
 
       <v-text-field
         v-if="secretStorage === 'database'"
@@ -82,7 +82,7 @@
       <v-text-field
         v-else
         v-model="item.secret"
-        :label="secretStorage === 'env' ? $t('Env var name') : $t('Path to the file')"
+        :label="secretStorage === 'env' ? $t('environment_variable_name') : $t('path_to_file')"
         :disabled="formSaving"
         :rules="[(v) => !!v || itemId !== 'new' || $t('envvar_required')]"
         required
@@ -97,7 +97,7 @@
         class="pt-0 mb-2"
         style="margin-top: -5px"
         v-model="item.params.insecure_tls"
-        label="Skip TLS certificate verification (insecure)"
+        :label="$t('skip_tls_verification_insecure')"
         :disabled="formSaving"
         data-testid="secretStorage-dvlsInsecureTls"
       />
@@ -124,7 +124,11 @@
         density="compact"
       ></v-text-field>
 
-      <SecretSourceToggle v-model="secretStorage" label="App secret" :disabled="formSaving" />
+      <SecretSourceToggle
+        v-model="secretStorage"
+        :label="$t('app_secret')"
+        :disabled="formSaving"
+      />
 
       <v-text-field
         v-if="secretStorage === 'database'"
@@ -144,7 +148,7 @@
         v-else
         class="TextInput TextInput--no-legend"
         v-model="item.secret"
-        :label="secretStorage === 'env' ? $t('Env var name') : $t('Path to the file')"
+        :label="secretStorage === 'env' ? $t('environment_variable_name') : $t('path_to_file')"
         :disabled="formSaving"
         :rules="[(v) => !!v || itemId !== 'new' || $t('envvar_required')]"
         required
@@ -157,9 +161,9 @@
     <div v-else-if="item.type === 'aws_sm'" data-testid="secretStorage-awsFields">
       <v-text-field
         v-model="item.params.region"
-        label="Region"
+        :label="$t('region')"
         :disabled="formSaving"
-        :rules="[(v) => !!v || 'Region is required']"
+        :rules="[(v) => !!v || $t('region_required')]"
         required
         placeholder="us-east-1"
         data-testid="secretStorage-awsRegion"
@@ -169,9 +173,9 @@
 
       <v-text-field
         v-model="item.params.endpoint_url"
-        label="Endpoint URL (optional)"
+        :label="$t('endpoint_url_optional')"
         :disabled="formSaving"
-        hint="Leave empty to use the default AWS endpoint"
+        :hint="$t('aws_endpoint_hint')"
         data-testid="secretStorage-awsEndpointURL"
         variant="outlined"
         density="compact"
@@ -181,7 +185,7 @@
         class="pt-0 mb-2"
         style="margin-top: -5px"
         v-model="item.params.use_iam_role"
-        label="Use IAM Role / Instance Profile"
+        :label="$t('use_iam_role')"
         :disabled="formSaving"
         data-testid="secretStorage-awsUseIamRole"
       />
@@ -192,9 +196,9 @@
       >
         <v-text-field
           v-model="item.params.access_key_id"
-          label="Access Key ID"
+          :label="$t('access_key_id')"
           :disabled="formSaving || useIamRole"
-          :rules="[(v) => !!v || useIamRole || 'Access Key ID is required']"
+          :rules="[(v) => !!v || useIamRole || $t('access_key_id_required')]"
           required
           data-testid="secretStorage-awsAccessKeyId"
           variant="outlined"
@@ -203,7 +207,7 @@
 
         <SecretSourceToggle
           v-model="secretStorage"
-          label="Secret Key"
+          :label="$t('secret_key')"
           :disabled="formSaving || useIamRole"
         />
 
@@ -211,9 +215,9 @@
           v-if="secretStorage === 'database'"
           class="TextInput TextInput--no-legend masked-secret-input"
           v-model="item.secret"
-          label="Secret Access Key"
+          :label="$t('secret_access_key')"
           :disabled="formSaving || useIamRole"
-          :rules="[(v) => !!v || !awsSecretRequired || 'Secret Access Key is required']"
+          :rules="[(v) => !!v || !awsSecretRequired || $t('secret_access_key_required')]"
           required
           data-testid="secretStorage-awsSecretKey"
           variant="outlined"
@@ -225,7 +229,7 @@
           v-else
           class="TextInput TextInput--no-legend"
           v-model="item.secret"
-          :label="secretStorage === 'env' ? $t('Env var name') : $t('Path to the file')"
+          :label="secretStorage === 'env' ? $t('environment_variable_name') : $t('path_to_file')"
           :disabled="formSaving || useIamRole"
           :rules="[(v) => !!v || !awsSecretRequired || $t('envvar_required')]"
           required
@@ -239,9 +243,9 @@
     <div v-else-if="item.type === 'azure_kv'" data-testid="secretStorage-azureFields">
       <v-text-field
         v-model="item.params.vault_url"
-        label="Vault URL"
+        :label="$t('vault_url')"
         :disabled="formSaving"
-        :rules="[(v) => !!v || 'Vault URL is required']"
+        :rules="[(v) => !!v || $t('vault_url_required')]"
         required
         placeholder="https://my-vault.vault.azure.net"
         data-testid="secretStorage-azureVaultURL"
@@ -251,9 +255,9 @@
 
       <v-text-field
         v-model="item.params.tenant_id"
-        label="Tenant ID"
+        :label="$t('tenant_id')"
         :disabled="formSaving"
-        :rules="[(v) => !!v || 'Tenant ID is required']"
+        :rules="[(v) => !!v || $t('tenant_id_required')]"
         required
         data-testid="secretStorage-azureTenantId"
         variant="outlined"
@@ -262,24 +266,28 @@
 
       <v-text-field
         v-model="item.params.client_id"
-        label="Client ID"
+        :label="$t('client_id')"
         :disabled="formSaving"
-        :rules="[(v) => !!v || 'Client ID is required']"
+        :rules="[(v) => !!v || $t('client_id_required')]"
         required
         data-testid="secretStorage-azureClientId"
         variant="outlined"
         density="compact"
       ></v-text-field>
 
-      <SecretSourceToggle v-model="secretStorage" label="Client Secret" :disabled="formSaving" />
+      <SecretSourceToggle
+        v-model="secretStorage"
+        :label="$t('client_secret')"
+        :disabled="formSaving"
+      />
 
       <v-text-field
         v-if="secretStorage === 'database'"
         class="TextInput TextInput--no-legend masked-secret-input"
         v-model="item.secret"
-        label="Client Secret"
+        :label="$t('client_secret')"
         :disabled="formSaving"
-        :rules="[(v) => !!v || itemId !== 'new' || 'Client Secret is required']"
+        :rules="[(v) => !!v || itemId !== 'new' || $t('client_secret_required')]"
         required
         data-testid="secretStorage-azureClientSecret"
         variant="outlined"
@@ -291,7 +299,7 @@
         v-else
         class="TextInput TextInput--no-legend"
         v-model="item.secret"
-        :label="secretStorage === 'env' ? $t('Env var name') : $t('Path to the file')"
+        :label="secretStorage === 'env' ? $t('environment_variable_name') : $t('path_to_file')"
         :disabled="formSaving"
         :rules="[(v) => !!v || itemId !== 'new' || $t('envvar_required')]"
         required
@@ -329,7 +337,7 @@
         data-testid="secretStorage-syncPaths"
       >
         <v-icon start>mdi-cog-sync</v-icon>
-        Sync paths
+        {{ $t('sync_paths') }}
         <v-chip
           class="ml-2 SecretStorageSyncPathsCount"
           variant="outlined"
@@ -345,17 +353,19 @@
 
     <v-dialog v-model="syncSettingsDialog" max-width="500" persistent>
       <v-card data-testid="secretStorageSyncDialog">
-        <v-card-title data-testid="secretStorageSyncDialog-title">Sync paths</v-card-title>
+        <v-card-title data-testid="secretStorageSyncDialog-title">
+          {{ $t('sync_paths') }}
+        </v-card-title>
         <v-card-text class="pt-4 pb-0">
           <v-text-field
             style="width: 140px"
             v-if="item.sync_enabled"
             v-model.number="item.sync_interval"
             min="0"
-            :label="$t('Auto-sync interval')"
+            :label="$t('auto_sync_interval')"
             persistent-hint
             :disabled="formSaving"
-            suffix="minutes"
+            :suffix="$t('minutes')"
             class="SecretStorageSyncInterval"
             data-testid="secretStorageSync-syncInterval"
             variant="outlined"

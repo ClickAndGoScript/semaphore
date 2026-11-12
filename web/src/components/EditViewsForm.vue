@@ -111,7 +111,7 @@
               item-value="slug"
               item-title="title"
               v-model="view.type"
-              label="Type"
+              :label="$t('type')"
               variant="outlined"
               density="compact"
               @update:model-value="saveView(view.id)"
@@ -128,7 +128,7 @@
                 item-value="name"
                 item-title="title"
                 v-model="view.sort_column"
-                label="Sort by"
+                :label="$t('sort_by')"
                 variant="outlined"
                 density="compact"
                 hide-details
@@ -138,7 +138,7 @@
 
               <v-checkbox
                 hide-details
-                label="Reverse"
+                :label="$t('reverse')"
                 v-model="view.sort_reverse"
                 class="mt-0 pt-0"
                 @update:model-value="saveView(view.id)"
@@ -149,7 +149,7 @@
 
             <v-checkbox
               hide-details
-              label="Hidden"
+              :label="$t('hidden')"
               v-model="view.hidden"
               @update:model-value="saveView(view.id)"
               data-testid="viewsForm-hidden"

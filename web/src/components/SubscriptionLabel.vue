@@ -16,7 +16,7 @@
         style="transform: scale(1.1) translateY(-1px)"
         >
         mdi-professional-hexagon
-        </v-icon> Subscription
+        </v-icon> {{ $t('subscription') }}
     </span>
 </template>
 <script>

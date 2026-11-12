@@ -66,7 +66,7 @@
       :icon="getAppIcon(template.app)"
       :icon-color="getAppColor(template.app)"
       :max-width="450"
-      title="Choose workspace to attach"
+      :title="$t('choose_workspace_to_attach')"
       test-id="tfWorkspaceAttachDialog"
       @save="attachInventory($event.itemId)"
     >
@@ -113,7 +113,7 @@
           </v-btn>
         </v-btn-toggle>
 
-        <span v-else data-testid="templateState-empty">No workspaces.</span>
+        <span v-else data-testid="templateState-empty">{{ $t('no_workspaces') }}</span>
 
         <v-menu location="bottom">
           <template v-slot:activator="{ props }">
@@ -137,7 +137,7 @@
               <template v-slot:prepend>
                 <v-icon>mdi-pencil</v-icon>
               </template>
-              <v-list-item-title>New workspace</v-list-item-title>
+              <v-list-item-title>{{ $t('new_workspace') }}</v-list-item-title>
             </v-list-item>
             <v-list-item
               @click="attachInventoryDialog = true"
@@ -146,7 +146,7 @@
               <template v-slot:prepend>
                 <v-icon>mdi-connection</v-icon>
               </template>
-              <v-list-item-title>Attach existing workspace</v-list-item-title>
+              <v-list-item-title>{{ $t('attach_existing_workspace') }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -164,7 +164,7 @@
           style="font-weight: normal;"
         >
 
-          <span data-testid="templateState-workspaceTitle">Workspace: <strong
+          <span data-testid="templateState-workspaceTitle">{{ $t('workspace') }}: <strong
             data-testid="templateState-workspaceName"
           >{{ inventory.inventory }}</strong></span>
 
@@ -177,7 +177,7 @@
               @click="setDefaultInventory()"
               data-testid="templateState-makeDefault"
             >
-              Make default
+              {{ $t('make_default') }}
             </v-btn>
 
             <v-btn
@@ -187,7 +187,7 @@
               @click="detachInventory()"
               data-testid="templateState-detach"
             >
-              Detach
+              {{ $t('detach') }}
             </v-btn>
 
             <v-btn
@@ -225,24 +225,24 @@
           data-testid="templateState-proAlert"
         >
             <span class="mr-2">
-              Terraform/OpenTofu HTTP backend available only in <b>PRO</b> version.
+              {{ $t('terraform_backend_only_pro') }}
             </span>
           <v-btn
             color="hsl(348deg, 86%, 61%)"
             href="https://semaphoreui.com/pro#runners"
             data-testid="templateState-learnMore"
           >
-            Learn more
+            {{ $t('learn_more') }}
             <v-icon>mdi-chevron-right</v-icon>
           </v-btn>
         </v-alert>
         <v-card-text>
 
-          <h3 data-testid="templateState-aliasesTitle">Aliases</h3>
+          <h3 data-testid="templateState-aliasesTitle">{{ $t('aliases') }}</h3>
           <div
             class="mb-6"
             data-testid="templateState-aliasesHint"
-          >Unique endpoints (aliases) to access your Terraform HTTP backend.</div>
+          >{{ $t('terraform_aliases_hint') }}</div>
 
           <div
             v-for="alias of (aliases || [])"
@@ -286,11 +286,11 @@
 
           <v-divider class="mb-4" />
 
-          <h3 data-testid="templateState-historyTitle">State history</h3>
+          <h3 data-testid="templateState-historyTitle">{{ $t('state_history') }}</h3>
           <div
             class="mb-6"
             data-testid="templateState-historyHint"
-          >Chronological history of the workspace state changes.</div>
+          >{{ $t('state_history_hint') }}</div>
 
           <v-data-table
             style="
@@ -350,7 +350,7 @@
           </v-data-table>
 
           <v-container v-else data-testid="templateState-noBackend">
-            <div style="text-align: center; color: grey;">No state available.</div>
+            <div style="text-align: center; color: grey;">{{ $t('no_state_available') }}</div>
           </v-container>
 
         </v-card-text>

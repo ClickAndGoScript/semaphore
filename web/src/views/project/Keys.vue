@@ -30,7 +30,7 @@
       v-model="createdPublicKeyDialog"
       test-id="keystorePublicKeyDialog"
       :save-button-text="null"
-      title="Generated SSH Public Key"
+      :title="$t('generated_ssh_public_key')"
       hide-buttons
     >
       <template v-slot:form="{}">

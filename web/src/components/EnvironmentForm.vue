@@ -50,8 +50,8 @@
     </v-row>
 
     <v-tabs grow v-model="tab" data-testid="varGroup-tabs">
-      <v-tab value="variables" data-testid="varGroup-tab-variables">Variables</v-tab>
-      <v-tab value="secrets" data-testid="varGroup-tab-secrets">Secrets</v-tab>
+      <v-tab value="variables" data-testid="varGroup-tab-variables">{{ $t('variables') }}</v-tab>
+      <v-tab value="secrets" data-testid="varGroup-tab-secrets">{{ $t('secrets') }}</v-tab>
     </v-tabs>
 
     <v-divider style="margin-top: -1px" class="mb-7" />
@@ -93,7 +93,7 @@
               class="mr-0"
               style="border-radius: 4px"
               data-testid="varGroup-extraVarsMode-table"
-            > Table </v-btn>
+            > {{ $t('table') }} </v-btn>
             <v-btn
               value="json"
               size="small"
@@ -319,13 +319,13 @@
           </div>
           <pre
             data-testid="varGroup-secretStoragePattern"
-          >Source path pattern: <b>{{ item.secret_storage_key_prefix }}*</b></pre>
+          >{{ $t('source_path_pattern') }}: <b>{{ item.secret_storage_key_prefix }}*</b></pre>
 
           <div class="d-flex items-center justify-space-between mt-2">
             <v-checkbox
               class="mt-0 mb-2 EnvSyncEnabled"
               v-model="item.sync_enabled"
-              :label="$t('Sync keys enabled')"
+              :label="$t('sync_keys_enabled')"
               :disabled="formSaving"
               hide-details
               data-testid="varGroup-syncEnabled"
@@ -343,7 +343,7 @@
                 data-testid="varGroup-syncPaths"
               >
                 <v-icon start>mdi-cog-sync</v-icon>
-                Sync paths
+                {{ $t('sync_paths') }}
                 <v-chip
                   class="ml-2 EnvSyncPathsCount"
                   variant="outlined"
@@ -361,16 +361,18 @@
 
         <v-dialog v-model="syncSettingsDialog" max-width="500" persistent>
           <v-card data-testid="varGroupSyncDialog">
-            <v-card-title data-testid="varGroupSyncDialog-title">Sync paths</v-card-title>
+            <v-card-title data-testid="varGroupSyncDialog-title">
+              {{ $t('sync_paths') }}
+            </v-card-title>
             <v-card-text class="pt-4 pb-0">
               <v-text-field
                 style="width: 140px"
                 v-model.number="item.sync_interval"
                 min="0"
-                :label="$t('Auto-sync interval')"
+                :label="$t('auto_sync_interval')"
                 persistent-hint
                 :disabled="formSaving"
-                suffix="minutes"
+                :suffix="$t('minutes')"
                 variant="outlined"
                 density="compact"
                 class="EnvSyncInterval"
@@ -433,7 +435,7 @@
             v-if="secrets.filter((s) => !s.remove && s.type === 'var').length > 0"
             data-testid="varGroup-secretVarsWarning"
           >
-            Secrets passed this way may appear in plain text in Ansible logs.
+            {{ $t('secret_vars_log_warning') }}
           </v-alert>
 
           <v-data-table
@@ -944,10 +946,10 @@ export default {
       secretTableHeaders: [{ key: 'name' }, { key: 'value' }, { key: 'actions', sortable: false }],
 
       extraVarTypes: [
-        { text: 'String', value: 'string' },
-        { text: 'Number', value: 'number' },
-        { text: 'List', value: 'list' },
-        { text: 'Dict', value: 'dict' },
+        { text: this.$t('string_type'), value: 'string' },
+        { text: this.$t('number_type'), value: 'number' },
+        { text: this.$t('list_type'), value: 'list' },
+        { text: this.$t('dict_type'), value: 'dict' },
       ],
 
       secretStorages: null,

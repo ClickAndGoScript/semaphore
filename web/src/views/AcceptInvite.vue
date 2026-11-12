@@ -15,7 +15,7 @@
       "
     >
       <v-card-title data-testid="acceptInvite-title">
-        Accept Invitation
+        {{ $t('accept_invitation') }}
         <v-spacer />
       </v-card-title>
       <v-card-text class="pb-0">
@@ -25,7 +25,7 @@
           data-testid="acceptInvite-loading"
         >
           <v-progress-circular indeterminate color="primary" />
-          <div class="mt-6">Accepting invitation...</div>
+          <div class="mt-6">{{ $t('accepting_invitation') }}</div>
         </div>
 
         <v-alert
@@ -34,7 +34,7 @@
           variant="tonal"
           data-testid="acceptInvite-success"
         >
-          Invitation accepted. You now have access to the project.
+          {{ $t('invitation_accepted') }}
         </v-alert>
 
         <v-alert v-else type="error" variant="tonal" data-testid="acceptInvite-error">
@@ -54,7 +54,7 @@
           @click="goToProject"
           data-testid="acceptInvite-goToProject"
         >
-          Go to project
+          {{ $t('go_to_project') }}
         </v-btn>
 
         <!-- Not slim: Vuetify 2 narrowed (0 8px) only the direct buttons of v-card-actions,
@@ -68,7 +68,7 @@
             :slim="false"
             data-testid="acceptInvite-goToDashboard"
           >
-            Go to dashboard
+            {{ $t('go_to_dashboard') }}
           </v-btn>
           <v-btn
             variant="text"
@@ -78,7 +78,7 @@
             :slim="false"
             data-testid="acceptInvite-retry"
           >
-            Try again
+            {{ $t('try_again') }}
           </v-btn>
         </div>
       </v-card-actions>

@@ -160,7 +160,7 @@
                     color="primary"
                     @click="addEditedVarValue()"
                     data-testid="surveyVarDialog-addValue"
-                  >Add Value</v-btn>
+                  >{{ $t('add_value') }}</v-btn>
                 </div>
 
                 <v-select

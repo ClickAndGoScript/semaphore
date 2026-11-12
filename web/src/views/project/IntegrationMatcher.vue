@@ -7,8 +7,8 @@
     <EditDialog
       v-model="editDialog"
       test-id="integrationMatcherDialog"
-      :save-button-text="itemId === 'new' ? 'Create' : 'Save'"
-      :title="`${itemId === 'new' ? 'New' : 'Edit'} Matcher`"
+      :save-button-text="itemId === 'new' ? $t('create') : $t('save')"
+      :title="itemId === 'new' ? $t('new_matcher') : $t('edit_matcher')"
       :max-width="450"
       :transition="false"
       @save="loadItems"
@@ -36,8 +36,8 @@
 
     <YesNoDialog
       test-id="integrationMatcherDeleteDialog"
-      title="Delete Integration Matcher"
-      text="Are you sure you want to delete this Integration Matcher?"
+      :title="$t('delete_matcher')"
+      :text="$t('delete_matcher_confirm')"
       v-model="deleteItemDialog"
       @yes="deleteItem(itemId)"
     />
@@ -50,7 +50,7 @@
       <v-toolbar-title
         class="flex-0-1"
         data-testid="integrationMatcher-title"
-      >Matcher</v-toolbar-title>
+      >{{ $t('matcher') }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
         v-if="can(USER_PERMISSIONS.manageProjectResources)"
@@ -58,7 +58,7 @@
         variant="elevated"
         @click="editItem('new')"
         data-testid="integrationMatcher-new"
-        >New Matcher</v-btn
+        >{{ $t('new_matcher') }}</v-btn
       >
     </v-toolbar>
 

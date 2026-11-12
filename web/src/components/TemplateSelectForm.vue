@@ -19,7 +19,7 @@
       :rules="[v => !!v || $t('template_required')]"
       :items="items"
       v-model="itemId"
-      label="Template"
+      :label="$t('template')"
       item-value="id"
       item-title="name"
       :menu-props="underlinedMenu"

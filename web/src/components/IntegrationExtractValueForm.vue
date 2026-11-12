@@ -16,8 +16,8 @@
     <v-text-field
       v-model="item.name"
       data-testid="integrationValueForm-name"
-      label="Name"
-      :rules="[(v) => !!v || 'Name is required']"
+      :label="$t('name')"
+      :rules="[(v) => !!v || $t('name_required')]"
       required
       :disabled="formSaving"
     ></v-text-field>
@@ -29,11 +29,11 @@
           <v-select
             v-model="item.value_source"
             data-testid="integrationValueForm-valueSource"
-            label="Source of the Value"
+            :label="$t('value_source')"
             :items="valueSources"
             item-value="id"
             item-title="text"
-            :rules="[(v) => !!v || 'Value Source is required']"
+            :rules="[(v) => !!v || $t('value_source_required')]"
             variant="outlined"
             density="compact"
             required
@@ -43,12 +43,12 @@
           <v-select
             v-model="item.body_data_type"
             data-testid="integrationValueForm-bodyDataType"
-            label="Data Type of Body"
+            :label="$t('body_data_type')"
             v-if="item.value_source == 'body'"
             :items="bodyDataTypes"
             item-value="id"
             item-title="text"
-            :rules="[(v) => !!v || 'Body Data Type is required']"
+            :rules="[(v) => !!v || $t('body_data_type_required')]"
             variant="outlined"
             density="compact"
             required
@@ -58,8 +58,8 @@
           <v-text-field
             v-model="item.key"
             data-testid="integrationValueForm-key"
-            label="Key *"
-            :rules="[(v) => !!v || 'Key is required']"
+            :label="$t('key_required_label')"
+            :rules="[(v) => !!v || $t('key_required')]"
             variant="outlined"
             density="compact"
             required
@@ -69,11 +69,11 @@
           <v-select
             v-model="item.variable_type"
             data-testid="integrationValueForm-variableType"
-            label="Variable Usage *"
+            :label="$t('variable_usage_required_label')"
             :items="variableTypes"
             item-value="id"
             item-title="text"
-            :rules="[(v) => !!v || 'Variable Type is required']"
+            :rules="[(v) => !!v || $t('variable_type_required')]"
             variant="outlined"
             density="compact"
             required
@@ -83,8 +83,8 @@
           <v-text-field
             v-model="item.variable"
             data-testid="integrationValueForm-variable"
-            label="Variable *"
-            :rules="[(v) => !!v || 'Variable is required']"
+            :label="$t('variable_required_label')"
+            :rules="[(v) => !!v || $t('variable_required')]"
             variant="outlined"
             density="compact"
             required
@@ -112,11 +112,11 @@ export default {
       valueSources: [
         {
           id: 'body',
-          text: 'Body',
+          text: this.$t('body'),
         },
         {
           id: 'header',
-          text: 'Header',
+          text: this.$t('header'),
         },
       ],
       bodyDataTypes: [
@@ -126,17 +126,17 @@ export default {
         },
         {
           id: 'string',
-          text: 'String',
+          text: this.$t('string_type'),
         },
       ],
       variableTypes: [
         {
           id: 'environment',
-          text: 'Variables',
+          text: this.$t('variables'),
         },
         {
           id: 'task',
-          text: 'Task Params',
+          text: this.$t('task_params'),
         },
       ],
     };

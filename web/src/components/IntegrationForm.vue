@@ -15,8 +15,8 @@
 
     <v-text-field
       v-model="item.name"
-      label="Name"
-      :rules="[(v) => !!v || 'Name is required']"
+      :label="$t('name')"
+      :rules="[(v) => !!v || $t('name_required')]"
       required
       :disabled="formSaving"
       variant="outlined"
@@ -102,14 +102,14 @@
         @click="upgradeToPro('workflow_integrations_management')"
         data-testid="integrationForm-upgrade"
       >
-        Upgrade to PRO
+        {{ $t('upgrade_to_pro_full') }}
       </v-chip>
     </div>
 
     <v-autocomplete
       v-else
       v-model="item.template_id"
-      label="Task Template to run"
+      :label="$t('task_template_to_run')"
       clearable
       :items="templates"
       item-value="id"
@@ -152,7 +152,7 @@
 
     <v-select
       v-model="item.auth_method"
-      label="Auth method"
+      :label="$t('auth_method')"
       :items="authMethods"
       item-value="id"
       item-title="title"
@@ -166,7 +166,7 @@
       <v-text-field
           v-if="['token', 'hmac', 'hmac-sha512'].includes(item.auth_method)"
           v-model="item.auth_header"
-          label="Auth header"
+          :label="$t('auth_header')"
           :disabled="formSaving"
           variant="outlined"
           density="compact"

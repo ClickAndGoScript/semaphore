@@ -69,7 +69,7 @@
       data-testid="secretStorageSync-addPath"
     >
       <v-icon start>mdi-plus</v-icon>
-      Add path
+      {{ $t('add_path') }}
     </v-btn>
   </div>
 </template>

@@ -81,7 +81,7 @@
           <v-checkbox
               v-model="advancedOptions"
               data-testid="runnerToken-advancedOptions"
-              label="Advanced options"
+              :label="$t('advanced_options')"
             />
 
           <HighlightedCard
@@ -110,8 +110,12 @@
             class="RunnerTokenTabs"
             data-testid="runnerToken-registerTabs"
           >
-            <v-tab value="env" data-testid="runnerToken-tab-env">Env Vars</v-tab>
-            <v-tab value="config" data-testid="runnerToken-tab-config">Config file</v-tab>
+            <v-tab value="env" data-testid="runnerToken-tab-env">
+              {{ $t('environment_variables') }}
+            </v-tab>
+            <v-tab value="config" data-testid="runnerToken-tab-config">
+              {{ $t('config_file') }}
+            </v-tab>
             <v-tab value="docker" data-testid="runnerToken-tab-docker">Docker</v-tab>
           </v-tabs>
 
@@ -119,7 +123,7 @@
 
           <v-window v-model="registerTab">
             <v-window-item value="env">
-              <div class="mt-3">Register and start the runner:</div>
+              <div class="mt-3">{{ $t('register_and_start_runner') }}</div>
               <div style="position: relative">
                 <pre
                   class="pa-2"
@@ -143,7 +147,7 @@
             </v-window-item>
 
             <v-window-item value="config">
-              <div class="mt-3">Config file content:</div>
+              <div class="mt-3">{{ $t('config_file_content') }}</div>
               <div style="position: relative">
                 <pre
                   class="pa-2"
@@ -165,7 +169,7 @@
                 />
               </div>
 
-              <div class="mt-3">Register and start the runner:</div>
+              <div class="mt-3">{{ $t('register_and_start_runner') }}</div>
               <div style="position: relative">
                 <pre
                   class="pa-2"
@@ -189,7 +193,7 @@
             </v-window-item>
 
             <v-window-item value="docker">
-              <div class="mt-3">Register and start the runner:</div>
+              <div class="mt-3">{{ $t('register_and_start_runner') }}</div>
               <div style="position: relative">
                 <pre
                   class="pa-2"
@@ -236,7 +240,7 @@
           <v-checkbox
               v-model="advancedOptions"
               data-testid="runnerToken-advancedOptions"
-              label="Advanced options"
+              :label="$t('advanced_options')"
             />
 
           <HighlightedCard
@@ -259,7 +263,9 @@
             />
           </HighlightedCard>
 
-          <h2 class="mt-11 mb-4" data-testid="runnerToken-variantsOfUsage">Variants of usage</h2>
+          <h2 class="mt-11 mb-4" data-testid="runnerToken-variantsOfUsage">
+            {{ $t('usage_variants') }}
+          </h2>
 
           <v-tabs
             v-model="usageTab"
@@ -267,9 +273,13 @@
             class="RunnerTokenTabs"
             data-testid="runnerToken-usageTabs"
           >
-            <v-tab value="config" data-testid="runnerToken-tab-config">Config file</v-tab>
-            <v-tab value="setup" data-testid="runnerToken-tab-setup">Setup</v-tab>
-            <v-tab value="env" data-testid="runnerToken-tab-env">Env Vars</v-tab>
+            <v-tab value="config" data-testid="runnerToken-tab-config">
+              {{ $t('config_file') }}
+            </v-tab>
+            <v-tab value="setup" data-testid="runnerToken-tab-setup">{{ $t('setup') }}</v-tab>
+            <v-tab value="env" data-testid="runnerToken-tab-env">
+              {{ $t('environment_variables') }}
+            </v-tab>
             <v-tab value="docker" data-testid="runnerToken-tab-docker">Docker</v-tab>
           </v-tabs>
 
@@ -277,7 +287,7 @@
 
           <v-window v-model="usageTab">
             <v-window-item value="config">
-              <div class="mt-3">Config file content:</div>
+              <div class="mt-3">{{ $t('config_file_content') }}</div>
               <div style="position: relative">
                 <pre
                   style="
@@ -299,7 +309,7 @@
                 />
               </div>
 
-              <div class="mt-3">Launching the runner:</div>
+              <div class="mt-3">{{ $t('launching_runner') }}</div>
               <div>
                 <pre
                   style="
@@ -317,7 +327,7 @@ semaphore runner start --config /path/to/config/file</pre
               </div>
             </v-window-item>
             <v-window-item value="setup">
-              <div class="mt-3">Config file creation:</div>
+              <div class="mt-3">{{ $t('config_file_creation') }}</div>
               <div style="position: relative">
                 <pre
                   style="
@@ -340,7 +350,7 @@ semaphore runner start --config /path/to/config/file</pre
               </div>
 
               <div class="mt-3">
-                <div>Launching the runner:</div>
+                <div>{{ $t('launching_runner') }}</div>
                 <pre
                   style="
                     overflow: auto;
@@ -357,7 +367,7 @@ semaphore runner start --config ./config.runner.json</pre
               </div>
             </v-window-item>
             <v-window-item value="env">
-              <div class="mt-3">Launching the runner:</div>
+              <div class="mt-3">{{ $t('launching_runner') }}</div>
               <div style="position: relative">
                 <pre
                   style="
@@ -381,7 +391,7 @@ semaphore runner start --config ./config.runner.json</pre
             </v-window-item>
 
             <v-window-item value="docker">
-              <div class="mt-3">Launching the runner:</div>
+              <div class="mt-3">{{ $t('launching_runner') }}</div>
               <div style="position: relative">
                 <pre
                   style="
@@ -489,13 +499,15 @@ semaphore runner start --config ./config.runner.json</pre
       v-if="!systemInfo.use_remote_runner && projectId == null"
       data-testid="runners-remoteRunnersDisabled"
     >
-      Global runners
-      <a
-        target="_blank"
-        data-testid="runners-remoteRunnersDocs"
-        href="https://docs.semaphoreui.com/administration-guide/runners/#set-up-a-server"
-      >disabled</a
-      >.
+      <i18n-t keypath="global_runners_disabled" tag="span">
+        <template #disabled>
+          <a
+            target="_blank"
+            data-testid="runners-remoteRunnersDocs"
+            href="https://docs.semaphoreui.com/administration-guide/runners/#set-up-a-server"
+          >{{ $t('disabled') }}</a>
+        </template>
+      </i18n-t>
     </v-alert>
 
     <div
@@ -749,9 +761,15 @@ semaphore runner start --config ./config.runner.json</pre
               data-testid="runners-rowCleaningInfo"
             >
               <span v-if="item.touched < item.cleaning_requested">
-                Already requested {{ $filters.formatDate(item.cleaning_requested) }}.
+                {{ $t('already_requested_at', {
+                  date: $filters.formatDate(item.cleaning_requested),
+                }) }}
               </span>
-              <span v-else> Last cleaned {{ $filters.formatDate(item.cleaning_requested) }}. </span>
+              <span v-else>
+                {{ $t('last_cleaned_at', {
+                  date: $filters.formatDate(item.cleaning_requested),
+                }) }}
+              </span>
             </div>
           </v-tooltip>
         </div>

@@ -28,7 +28,7 @@
         class="IntegrationExtractorInfo"
         data-testid="integration-matchersInfo"
       >
-        Matchers allow the integration to be found by a project alias.
+        {{ $t('integration_matchers_hint') }}
       </v-alert>
     </div>
 
@@ -42,7 +42,7 @@
         class="mb-3 pl-1"
         v-if="(aliases || []).length === 0"
         data-testid="integration-aliasesEmpty"
-      >There is no aliases.</div>
+      >{{ $t('no_aliases') }}</div>
 
       <div
         v-else
@@ -54,7 +54,7 @@
 
         <CopyClipboardButton
           :text="alias.url"
-          success-message="The alias URL  has been copied to the clipboard."
+          :success-message="$t('alias_url_copied')"
           test-id="integration-aliasCopy"
         />
 

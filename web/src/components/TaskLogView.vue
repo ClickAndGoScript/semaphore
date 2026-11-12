@@ -32,9 +32,12 @@
 
       <span class="ml-3 hidden-xs task-log-view__status_part" data-testid="taskLog-started">
 
-        Started <span v-if="user" data-testid="taskLog-author">by <b>{{ user.name }}</b></span>
+        {{ $t('started') }}
+        <span v-if="user" data-testid="taskLog-author">
+          {{ $t('by_label') }} <b>{{ user.name }}</b>
+        </span>
 
-        at <b>{{ $filters.formatDate(item.start) }}</b>
+        {{ $t('at') }} <b>{{ $filters.formatDate(item.start) }}</b>
       </span>
 
       <span
@@ -48,15 +51,15 @@
     </div>
 
     <v-tabs class="task-log-view__tabs" align-tabs="end" v-model="tab" data-testid="taskLog-tabs">
-      <v-tab :value="0" data-testid="taskLog-tab-log">Log</v-tab>
-      <v-tab :value="1" data-testid="taskLog-tab-details">Details</v-tab>
+      <v-tab :value="0" data-testid="taskLog-tab-log">{{ $t('log') }}</v-tab>
+      <v-tab :value="1" data-testid="taskLog-tab-details">{{ $t('details') }}</v-tab>
       <v-tab
         v-if="isPro"
         :value="2"
         :disabled="!isTaskStopped"
         data-testid="taskLog-tab-summary"
       >
-        Summary
+        {{ $t('summary') }}
       </v-tab>
     </v-tabs>
 

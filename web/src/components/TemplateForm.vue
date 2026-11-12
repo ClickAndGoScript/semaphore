@@ -480,7 +480,7 @@
                   size="small"
                   color="error"
                   data-testid="templateForm-jwtNew"
-                >New</v-chip>
+                >{{ $t('new') }}</v-chip>
               </template>
             </v-checkbox>
 
@@ -581,7 +581,7 @@
             <ArgsPicker
               :vars="args"
               @change="setArgs"
-              title="CLI args"
+              :title="$t('cli_args')"
               test-id="templateForm-args"
             />
 

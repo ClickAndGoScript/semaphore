@@ -40,7 +40,7 @@
           :disabled="formSaving || !canEditSecrets || isSynced"
           style="padding: 0"
           data-testid="key-tab-local"
-          >Local</v-tab
+          >{{ $t('local') }}</v-tab
         >
         <v-tab
           v-if="isPro"
@@ -48,19 +48,19 @@
           style="padding: 0"
           data-testid="key-tab-storage"
           >
-            Storage
+            {{ $t('storage') }}
           </v-tab
         >
         <v-tab
           :disabled="formSaving || !canEditSecrets || isSynced"
           style="padding: 0"
           data-testid="key-tab-env"
-        >Env</v-tab>
+        >{{ $t('environment_short') }}</v-tab>
         <v-tab
           :disabled="formSaving || !canEditSecrets || isSynced"
           style="padding: 0"
           data-testid="key-tab-file"
-        >File</v-tab>
+        >{{ $t('file') }}</v-tab>
       </v-tabs>
 
       <div
@@ -145,7 +145,7 @@
       type="info"
       variant="tonal"
       data-testid="key-readOnlyAlert"
-    >Read-only secret storage chosen.</v-alert>
+    >{{ $t('read_only_secret_storage') }}</v-alert>
 
     <v-text-field
       v-model="item.login_password.login"
@@ -202,7 +202,7 @@
     <v-text-field
       v-model="item.ssh.passphrase"
       :append-inner-icon="showSSHPassphrase ? 'mdi-eye' : 'mdi-eye-off'"
-      label="Passphrase (Optional)"
+      :label="$t('passphrase_optional')"
       :class="{ 'masked-secret-input': !showSSHPassphrase }"
       v-if="!isReadOnly && item.type === 'ssh'"
       :disabled="formSaving || !canEditSecrets"
@@ -214,7 +214,7 @@
 
     <v-checkbox
       v-model="item.generate_ssh_key"
-      label="Generate SSH Key"
+      :label="$t('generate_ssh_key')"
       v-if="!isReadOnly && item.type === 'ssh'"
       :disabled="formSaving || !canEditSecrets"
       class="mt-0 mb-3"
@@ -241,7 +241,7 @@
       class="mb-4"
       data-testid="key-publicKey"
     >
-      <div class="pb-1">Public key:</div>
+      <div class="pb-1">{{ $t('public_key') }}:</div>
       <div style="position: relative">
         <pre
           style="
@@ -265,7 +265,7 @@
           @click="showPublicKey = !showPublicKey"
           data-testid="key-publicKeyToggle"
         >
-          {{ showPublicKey ? 'Hide' : 'Show' }}
+          {{ showPublicKey ? $t('hide') : $t('show') }}
         </v-btn>
 
         <CopyClipboardButton

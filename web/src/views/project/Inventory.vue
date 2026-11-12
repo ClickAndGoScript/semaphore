@@ -12,7 +12,7 @@
       :icon="getAppIcon(itemApp)"
       :icon-color="getAppColor(itemApp)"
       :max-width="450"
-      title="Choose workspace to attach"
+      :title="$t('choose_workspace_to_attach')"
       @save="attachInventory($event.itemId)"
     >
       <template v-slot:form="{ onSave, needSave, needReset }">

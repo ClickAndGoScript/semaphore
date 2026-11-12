@@ -7,7 +7,7 @@
     <EditDialog
         v-model="editDialog"
         test-id="appsEditDialog"
-        save-button-text="Save"
+        :save-button-text="$t('save')"
         :title="$t('Edit App')"
         @save="loadItems()"
     >

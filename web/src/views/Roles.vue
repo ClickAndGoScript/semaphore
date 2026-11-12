@@ -7,7 +7,7 @@
     <EditDialog
       test-id="roleDialog"
       v-model="editDialog"
-      save-button-text="Save"
+      :save-button-text="$t('save')"
       :title="itemId === 'new' ? $t('newRole') : $t('editRole')"
       @save="loadItems()"
     >

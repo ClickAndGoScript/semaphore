@@ -6,7 +6,7 @@
     <EditDialog
       v-model="passwordDialog"
       test-id="changePasswordDialog"
-      save-button-text="Save"
+      :save-button-text="$t('save')"
       :title="$t('changePassword')"
       v-if="item"
       event-name="i-user"
@@ -24,7 +24,11 @@
     </EditDialog>
 
     <v-tabs v-model="tab" data-testid="user-tabs">
-      <v-tab key="settings" value="settings" data-testid="user-tab-settings">Settings</v-tab>
+      <v-tab
+        key="settings"
+        value="settings"
+        data-testid="user-tab-settings"
+      >{{ $t('settings') }}</v-tab>
       <v-tab
         key="2fa"
         value="security"
@@ -166,24 +170,26 @@
         data-testid="user-panel-security"
       >
         <div v-if="canChangePassword">
-          <div class="text-headline-small mb-3" data-testid="user-passwordTitle">Password</div>
+          <div class="text-headline-small mb-3" data-testid="user-passwordTitle">
+            {{ $t('password') }}
+          </div>
           <v-btn
             color="primary"
             @click="passwordDialog = true"
             data-testid="user-changePassword"
-          >Change password</v-btn>
+          >{{ $t('changePassword') }}</v-btn>
         </div>
 
         <div :class="{ 'pt-10': canChangePassword }" v-if="authMethods.totp">
           <div
             class="text-headline-small mb-2"
             data-testid="user-totpTitle"
-          >Two-factor authentication</div>
+          >{{ $t('two_factor_authentication') }}</div>
 
           <v-switch
             class="mt-0"
             v-model="totpEnabled"
-            label="Time-based one-time password"
+            :label="$t('time_based_one_time_password')"
             data-testid="user-totp"
           ></v-switch>
 
@@ -230,7 +236,7 @@
                 <div
                   class="mb-2 UserForm__subtitle"
                   data-testid="user-recoveryTitle"
-                >Recovery code</div>
+                >{{ $t('recovery_code') }}</div>
                 <div style="position: relative">
                   <code
                     style="font-size: 18px; background-color: #e03755"
@@ -264,7 +270,7 @@
             <div
               class="text-headline-small mb-2"
               data-testid="user-identitiesTitle"
-            >Linked accounts</div>
+            >{{ $t('linked_accounts') }}</div>
 
             <div style="margin-bottom: -8px;">
               <!-- A closable chip hides itself on close; here the identities list decides. -->
@@ -293,7 +299,9 @@
             :class="{ 'pt-10': identities.length > 0 }"
             data-testid="user-link"
           >
-            <div class="text-headline-small mb-2" data-testid="user-linkTitle">Link account</div>
+            <div class="text-headline-small mb-2" data-testid="user-linkTitle">
+              {{ $t('link_account') }}
+            </div>
 
             <v-card
               class="mt-4"
@@ -332,7 +340,7 @@
 
                   <v-text-field
                     v-model="ldapUsername"
-                    label="LDAP username"
+                    :label="$t('ldap_username')"
                     data-testid="user-ldapUsername"
                     variant="outlined"
                     density="compact"
@@ -340,7 +348,7 @@
 
                   <v-text-field
                     v-model="ldapPassword"
-                    label="LDAP password"
+                    :label="$t('ldap_password')"
                     data-testid="user-ldapPassword"
                     type="password"
                     autocomplete="new-password"

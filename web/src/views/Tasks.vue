@@ -57,14 +57,14 @@
         <div
           v-if="item.location === 'queue'"
           data-testid="activeTasks-rowLocation-queue"
-        >Queue</div>
+        >{{ $t('queue') }}</div>
         <div
           v-else-if="item.runner_id"
           data-testid="activeTasks-rowLocation-runner"
         >
           Runner #{{ item.runner_id }}
         </div>
-        <div v-else data-testid="activeTasks-rowLocation-local">Local Running</div>
+        <div v-else data-testid="activeTasks-rowLocation-local">{{ $t('local_running') }}</div>
       </template>
 
       <template v-slot:item.actions="{ item }">

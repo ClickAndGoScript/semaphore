@@ -103,7 +103,7 @@
               class="text-center pt-4 pb-6"
               data-testid="auth-title-verification"
             >
-              Two-step verification
+              {{ $t('two_step_verification') }}
             </h2>
 
             <h2
@@ -111,14 +111,14 @@
               class="text-center pt-4 pb-6"
               data-testid="auth-title-recovery"
             >
-              Account recovery
+              {{ $t('account_recovery') }}
             </h2>
 
             <h2
               v-else
               class="text-center pt-4 pb-6"
               data-testid="auth-title-login"
-            >Enter to your account</h2>
+            >{{ $t('sign_in_to_your_account') }}</h2>
 
             <v-alert
               :model-value="signInError != null"
@@ -134,8 +134,7 @@
                 class="text-center mb-4"
                 data-testid="auth-verificationHint-totp"
               >
-                Open the two-step verification app on your mobile device to get your verification
-                code.
+                {{ $t('verification_app_hint') }}
               </div>
 
               <div
@@ -143,7 +142,7 @@
                 class="text-center mb-4"
                 data-testid="auth-verificationHint-email"
               >
-                Check your email for the verification code we just sent you.
+                {{ $t('verification_email_hint') }}
               </div>
 
               <v-otp-input
@@ -192,7 +191,7 @@
 
             <div v-else-if="screen === 'recovery'" data-testid="auth-recovery">
               <div class="text-center mb-2">
-                Use your recovery code to regain access to your account.
+                {{ $t('recovery_code_hint') }}
               </div>
 
               <v-text-field
@@ -212,7 +211,7 @@
                   color="primary"
                   @click="recovery()"
                   data-testid="auth-recoverySend"
-                > Send </v-btn>
+                > {{ $t('send') }} </v-btn>
               </div>
 
               <div class="text-center pt-6">
@@ -326,7 +325,7 @@
                   oidcProviders.length > 0
                 "
               >
-                or
+                {{ $t('or') }}
               </div>
 
               <v-btn
@@ -526,7 +525,7 @@ export default {
         });
         EventBus.$emit('i-snackbar', {
           color: 'success',
-          text: 'Verification email sent successfully.',
+          text: this.$t('verification_email_sent'),
         });
       } catch (e) {
         EventBus.$emit('i-snackbar', {

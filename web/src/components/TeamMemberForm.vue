@@ -29,7 +29,7 @@
           style="border-radius: 4px;"
           data-testid="teamMember-inviteType-email"
         >
-          Email
+          {{ $t('email') }}
         </v-btn>
         <v-btn
           value="username"
@@ -38,7 +38,7 @@
           style="border-radius: 4px;"
           data-testid="teamMember-inviteType-username"
         >
-          Username
+          {{ $t('username') }}
         </v-btn>
       </v-btn-toggle>
     </div>

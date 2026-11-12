@@ -12,7 +12,7 @@
 
     <v-text-field
       v-model="item.name"
-      label="Name"
+      :label="$t('name')"
       :rules="[v => !!v || 'Name is required']"
       required
       :disabled="formSaving"

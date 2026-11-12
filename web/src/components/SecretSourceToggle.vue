@@ -40,9 +40,9 @@ export default {
   data() {
     return {
       sources: [
-        { value: 'database', text: 'Store in DB' },
-        { value: 'env', text: 'From ENV' },
-        { value: 'file', text: 'From File' },
+        { value: 'database', text: this.$t('store_in_database') },
+        { value: 'env', text: this.$t('from_environment') },
+        { value: 'file', text: this.$t('from_file') },
       ],
     };
   },

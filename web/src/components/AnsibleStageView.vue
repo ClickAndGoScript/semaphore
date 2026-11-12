@@ -13,7 +13,10 @@
       data-testid="taskSummary-demoAlert"
     >
       <span class="mr-2">
-        This is <b>DEMO</b> data. Task summary available only in <b>PRO</b> version.
+        <i18n-t keypath="task_summary_demo_only" tag="span">
+          <template #demo><b>DEMO</b></template>
+          <template #pro><b>PRO</b></template>
+        </i18n-t>
       </span>
 
       <v-btn
@@ -32,7 +35,7 @@
           class="AnsibleServerStatus__count"
           data-testid="taskSummary-okServers"
         >{{ okServers }}</div>
-        <div class="AnsibleServerStatus__title">OK SERVERS</div>
+        <div class="AnsibleServerStatus__title">{{ $t('ok_servers') }}</div>
       </div>
 
       <div class="AnsibleServerStatus AnsibleServerStatus--bad">
@@ -40,7 +43,7 @@
           class="AnsibleServerStatus__count"
           data-testid="taskSummary-notOkServers"
         >{{ notOkServers }}</div>
-        <div class="AnsibleServerStatus__title">NOT OK SERVERS</div>
+        <div class="AnsibleServerStatus__title">{{ $t('not_ok_servers') }}</div>
       </div>
     </div>
 
@@ -54,8 +57,11 @@
       <v-btn
         value="notOkServers"
         data-testid="taskSummary-filter-notOkServers"
-      > Not ok servers </v-btn>
-      <v-btn value="allServers" data-testid="taskSummary-filter-allServers"> All servers </v-btn>
+      >{{ $t('not_ok_servers') }}</v-btn>
+      <v-btn
+        value="allServers"
+        data-testid="taskSummary-filter-allServers"
+      >{{ $t('all_servers') }}</v-btn>
     </v-btn-toggle>
 
     <v-data-table
@@ -111,14 +117,14 @@
       <template v-slot:default>
         <thead>
           <tr>
-            <th>Host</th>
-            <th>Changed</th>
-            <th>Failed</th>
-            <th>Ignored</th>
-            <th>Ok</th>
-            <th>Rescued</th>
-            <th>Skipped</th>
-            <th>Unreachable</th>
+            <th>{{ $t('host') }}</th>
+            <th>{{ $t('changed') }}</th>
+            <th>{{ $t('failed') }}</th>
+            <th>{{ $t('ignored') }}</th>
+            <th>{{ $t('ok') }}</th>
+            <th>{{ $t('rescued') }}</th>
+            <th>{{ $t('skipped') }}</th>
+            <th>{{ $t('unreachable') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -319,17 +325,17 @@ export default {
           width: 1,
         },
         {
-          title: 'Server',
+          title: this.$t('server'),
           key: 'host',
           sortable: false,
         },
         {
-          title: 'Task',
+          title: this.$t('task_label'),
           key: 'task',
           sortable: false,
         },
         {
-          title: 'Error',
+          title: this.$t('error'),
           key: 'error',
           sortable: false,
         },
