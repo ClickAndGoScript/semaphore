@@ -139,6 +139,7 @@
     <v-navigation-drawer
       theme="dark"
       :color="darkMode ? '#003236' : '#005057'"
+      :location="isRtl ? 'right' : 'left'"
       width="260"
       v-model="drawer"
       :mobile-breakpoint="960"
@@ -392,8 +393,7 @@
             <v-btn
               icon
               variant="text"
-              style="margin-left: -15px"
-              class="mr-1"
+              style="margin-inline: -15px 4px"
               :color="navEditMode ? 'primary' : undefined"
               :title="navEditMode ? $t('finishEditingMenu') : $t('editMenu')"
               @click="navEditMode = !navEditMode"
@@ -775,13 +775,13 @@ html.WorkflowEditor-html body {
   transition-property: transform, visibility;
   // The border of Vuetify 2 lies over the content (`.v-navigation-drawer__border`), which keeps
   // the full width of the drawer; Vuetify 4 draws it beside the content, 1 px narrower.
-  border-right-width: 0;
+  border-inline-end-width: 0;
 
   &::after {
     content: '';
     position: absolute;
     top: 0;
-    right: 0;
+    inset-inline-end: 0;
     width: 1px;
     height: 100%;
     background-color: rgba(var(--v-border-color), var(--v-border-opacity));
@@ -837,7 +837,7 @@ html.WorkflowEditor-html body {
       }
 
       .DarkModeSwitchWrap {
-        margin-left: 10px;
+        margin-inline-start: 10px;
       }
     }
   }
@@ -876,7 +876,7 @@ html.WorkflowEditor-html body {
   .nav-pin-wrap {
     //opacity: 0;
     //transition: opacity 0.15s;
-    margin-left: auto;
+    margin-inline-start: auto;
     display: flex;
     align-items: center;
   }
@@ -1138,7 +1138,7 @@ html.WorkflowEditor-html body {
 }
 
 .v-toolbar-title:not(:first-child) {
-  margin-left: 10px !important;
+  margin-inline-start: 10px !important;
 }
 
 .v-slide-group__prev--disabled {
@@ -1153,8 +1153,8 @@ html.WorkflowEditor-html body {
   // With the nav icon hidden the title starts the toolbar, at the content padding
   // (assets/scss/vuetify2.scss).
   .v-toolbar-title:not(:first-child) {
-    padding-left: 0 !important;
-    margin-left: 0 !important;
+    padding-inline-start: 0 !important;
+    margin-inline-start: 0 !important;
   }
 }
 
@@ -1224,6 +1224,10 @@ html.WorkflowEditor-html body {
   .CenterToScreen {
     transform: translateX(-130px);
   }
+
+  html[dir='rtl'] .CenterToScreen {
+    transform: translateX(130px);
+  }
 }
 </style>
 
@@ -1247,6 +1251,7 @@ import YesNoDialog from '@/components/YesNoDialog.vue';
 import TaskLogDialog from '@/components/TaskLogDialog.vue';
 import SystemInfoDialog from '@/components/SystemInfoDialog.vue';
 import delay from '@/lib/delay';
+import { applyDocumentLocale } from '@/plugins/i18';
 
 const PROJECT_COLORS = ['red', 'blue', 'orange', 'green'];
 
@@ -1289,6 +1294,9 @@ const LANGUAGES = {
   },
   cs: {
     title: 'Czech',
+  },
+  he: {
+    title: 'עברית',
   },
 };
 
@@ -1451,6 +1459,10 @@ export default {
 
     lang() {
       return getLangInfo(this.$i18n.locale);
+    },
+
+    isRtl() {
+      return this.lang.flag === 'he';
     },
 
     // Menus of the drawer take the theme of the application, as detached menus did in
@@ -1835,12 +1847,14 @@ export default {
       if (typeof lang !== 'string' || lang === '') {
         localStorage.removeItem('lang');
         this.$i18n.locale = getSystemLang().flag;
+        applyDocumentLocale(this.$i18n.locale);
         return;
       }
 
       const locale = getLangInfo(lang).flag;
       localStorage.setItem('lang', locale);
       this.$i18n.locale = locale;
+      applyDocumentLocale(locale);
     },
 
     async selectLanguage(lang) {

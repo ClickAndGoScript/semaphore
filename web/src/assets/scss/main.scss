@@ -92,3 +92,13 @@
 .masked-secret-input input {
   -webkit-text-security: disc;
 }
+
+// Keep code, logs and editor content left-to-right in RTL languages.
+code,
+pre,
+.cm-editor,
+.task-log-records {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: plaintext;
+}
