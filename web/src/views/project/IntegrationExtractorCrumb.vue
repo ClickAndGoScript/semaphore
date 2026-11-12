@@ -14,7 +14,7 @@
         >
           Integrations
         </router-link>
-        <v-icon>mdi-chevron-right</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}</v-icon>
         <span
           class="breadcrumbs__item"
           data-testid="integration-title"

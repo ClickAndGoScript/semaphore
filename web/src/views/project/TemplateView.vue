@@ -101,7 +101,9 @@
         >
           {{ $t('taskTemplates2') }}
         </router-link>
-        <v-icon class="TemplateView__crumbIcon">mdi-chevron-right</v-icon>
+        <v-icon class="TemplateView__crumbIcon">
+          {{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}
+        </v-icon>
         <span class="breadcrumbs__item" data-testid="template-name">{{ item.name }}</span>
       </v-toolbar-title>
 
@@ -112,7 +114,7 @@
           <v-btn
             v-bind="props"
             variant="elevated"
-            class="mr-3 pr-2 TemplateView__stopAll"
+            class="me-3 pe-2 TemplateView__stopAll"
             :disabled="stopAllTasksProgress"
             data-testid="template-stopAllMenu"
           >
@@ -146,7 +148,7 @@
         v-if="canRun"
         color="primary"
         variant="flat"
-        class="mr-3"
+        class="me-3"
         @click="newTaskDialog = true"
         data-testid="template-run"
       >

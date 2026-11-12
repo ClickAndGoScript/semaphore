@@ -30,7 +30,7 @@
       v-model="createdPublicKeyDialog"
       test-id="keystorePublicKeyDialog"
       :save-button-text="null"
-      title="Generated SSH Public Key"
+      :title="$t('generated_ssh_public_key')"
       hide-buttons
     >
       <template v-slot:form="{}">
@@ -51,7 +51,7 @@
             >
 
             <CopyClipboardButton
-              style="position: absolute; right: 0; top: 0"
+              style="position: absolute; inset-inline-end: 0; top: 0"
               :text="createdPublicKey"
               test-id="keystorePublicKey-copy"
             />
@@ -113,13 +113,13 @@
           v-if="item.empty && item.type !== 'none'"
           size="small"
           style="font-weight: bold;"
-          class="ml-2"
+          class="ms-2"
           data-testid="keystore-rowEmpty"
         >{{ $t('empty') }}</v-chip>
         <v-chip
           v-if="item.synchronized"
           size="x-small"
-          class="ml-2"
+          class="ms-2"
           data-testid="keystore-rowSynchronized"
         >{{ $t('synchronized') }}</v-chip>
       </template>

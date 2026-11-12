@@ -19,8 +19,10 @@
       class="mb-6"
       data-testid="scheduleForm-timezoneInfo"
     >
-      Use environment variable <code>SEMAPHORE_SCHEDULE_TIMEZONE</code> or config param
-      <code>schedule.timezone</code> to set timezone for Schedule.
+      <i18n-t keypath="schedule_timezone_hint" tag="span">
+        <template #environmentVariable><code dir="ltr">SEMAPHORE_SCHEDULE_TIMEZONE</code></template>
+        <template #configParameter><code dir="ltr">schedule.timezone</code></template>
+      </i18n-t>
     </v-alert>
 
     <v-alert
@@ -90,10 +92,10 @@
 
         v-model="runAtInput"
         type="datetime-local"
-        label="Run at"
+        :label="$t('run_at')"
         :rules="runAtRules"
         :disabled="formSaving"
-        :suffix="timezone + ' time'"
+        :suffix="$t('timezone_time', { timezone })"
         variant="outlined"
         density="compact"
         data-testid="scheduleForm-runAt"
@@ -117,7 +119,7 @@
     <div v-else>
       <v-switch
         v-model="rawCron"
-        label="Show cron format"
+        :label="$t('show_cron_format')"
         :disabled="disableRawCron"
         data-testid="scheduleForm-rawCron"
       />
@@ -144,7 +146,7 @@
           :label="$t('Timing')"
           :items="TIMINGS"
           item-value="id"
-          item-title="title"
+          :item-title="(item) => $t(item.title)"
           :rules="[v => !!v || $t('template_required')]"
           required
           :disabled="formSaving"
@@ -156,14 +158,14 @@
         />
 
         <div v-if="['yearly'].includes(timing)" data-testid="scheduleForm-months">
-          <div class="mt-4">Months</div>
+          <div class="mt-4">{{ $t('months') }}</div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="m in MONTHS"
               :key="m.id"
               :value="m.id"
-              :label="m.title"
+              :label="$t(m.title)"
               v-model="months"
               :data-testid="`scheduleForm-month-${m.id}`"
               color="white"
@@ -174,13 +176,13 @@
         </div>
 
         <div v-if="['weekly'].includes(timing)" data-testid="scheduleForm-weekdays">
-          <div class="mt-4">Weekdays</div>
+          <div class="mt-4">{{ $t('weekdays') }}</div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="d in WEEKDAYS" :key="d.id"
               :value="d.id"
-              :label="d.title"
+              :label="$t(d.title)"
               v-model="weekdays"
               :data-testid="`scheduleForm-weekday-${d.id}`"
               color="white"
@@ -191,10 +193,10 @@
         </div>
 
         <div v-if="['yearly', 'monthly'].includes(timing)" data-testid="scheduleForm-days">
-          <div class="mt-4">Days</div>
+          <div class="mt-4">{{ $t('days') }}</div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="d in 31"
               :key="d"
               :value="d"
@@ -213,15 +215,15 @@
           data-testid="scheduleForm-hours"
         >
           <div class="mt-4 d-flex justify-space-between">
-            <span>Hours</span>
+            <span>{{ $t('hours') }}</span>
             <b
               style="color: red;"
               data-testid="scheduleForm-hoursTimezone"
-            >{{ timezone + ' time' }}</b>
+            >{{ $t('timezone_time', { timezone }) }}</b>
           </div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="h in 24"
               :key="h - 1"
               :value="h - 1"
@@ -236,10 +238,10 @@
         </div>
 
         <div data-testid="scheduleForm-minutes">
-          <div class="mt-4">Minutes</div>
+          <div class="mt-4">{{ $t('minutes') }}</div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="m in MINUTES"
               :key="m.id"
               :value="m.id"
@@ -261,7 +263,7 @@
       style="color: limegreen; font-weight: bold;"
       data-testid="scheduleForm-nextRunTitle"
     >
-      Next run time
+      {{ $t('next_run_time') }}
     </div>
 
     <v-table
@@ -271,9 +273,9 @@
       <template v-slot:default>
         <thead>
         <tr>
-          <th>Time Zone</th>
-          <th>Date</th>
-          <th>Time</th>
+          <th>{{ $t('time_zone') }}</th>
+          <th>{{ $t('date') }}</th>
+          <th>{{ $t('time') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -294,7 +296,7 @@
     <!-- bottom left of the card, level with the dialog buttons, as in Vuetify 2: 15 px above
          the card bottom = 45 px below the form (8 px margin of the table, 52 px button row) -->
     <v-checkbox
-      style="position: absolute; bottom: -45px; left: -2px;"
+      style="position: absolute; bottom: -45px; inset-inline-start: -2px;"
       v-model="item.active"
       hide-details
       data-testid="scheduleForm-active"
@@ -415,80 +417,80 @@ dayjs.extend(customParseFormat);
 
 const MONTHS = [{
   id: 1,
-  title: 'Jan',
+  title: 'month_jan_short',
 }, {
   id: 2,
-  title: 'Feb',
+  title: 'month_feb_short',
 }, {
   id: 3,
-  title: 'March',
+  title: 'month_march',
 }, {
   id: 4,
-  title: 'April',
+  title: 'month_april',
 }, {
   id: 5,
-  title: 'May',
+  title: 'month_may',
 }, {
   id: 6,
-  title: 'June',
+  title: 'month_june',
 }, {
   id: 7,
-  title: 'July',
+  title: 'month_july',
 }, {
   id: 8,
-  title: 'August',
+  title: 'month_august',
 }, {
   id: 9,
-  title: 'September',
+  title: 'month_september',
 }, {
   id: 10,
-  title: 'October',
+  title: 'month_october',
 }, {
   id: 11,
-  title: 'November',
+  title: 'month_november',
 }, {
   id: 12,
-  title: 'December',
+  title: 'month_december',
 }];
 
 const TIMINGS = [{
   id: 'yearly',
-  title: 'Yearly',
+  title: 'yearly',
 }, {
   id: 'monthly',
-  title: 'Monthly',
+  title: 'monthly',
 }, {
   id: 'weekly',
-  title: 'Weekly',
+  title: 'weekly',
 }, {
   id: 'daily',
-  title: 'Daily',
+  title: 'daily',
 }, {
   id: 'hourly',
-  title: 'Hourly',
+  title: 'hourly',
 }];
 
 const WEEKDAYS = [{
   id: 0,
-  title: 'Sunday',
+  title: 'sunday',
 }, {
   id: 1,
-  title: 'Monday',
+  title: 'monday',
 }, {
   id: 2,
-  title: 'Tuesday',
+  title: 'tuesday',
 }, {
   id: 3,
-  title: 'Wednesday',
+  title: 'wednesday',
 }, {
   id: 4,
-  title: 'Thursday',
+  title: 'thursday',
 }, {
   id: 5,
-  title: 'Friday',
+  title: 'friday',
 }, {
   id: 6,
-  title: 'Saturday',
+  title: 'saturday',
 }];
 
 const MINUTES = [
@@ -610,7 +612,7 @@ export default {
 
   computed: {
     localTimezone() {
-      return 'Local';
+      return this.$t('local');
     },
 
     runAtRules() {
@@ -619,7 +621,7 @@ export default {
       }
 
       return [
-        (v) => !!v || 'Run time is required',
+        (v) => !!v || this.$t('run_time_required'),
       ];
     },
 
@@ -824,7 +826,7 @@ export default {
           : null;
 
         if (!parsed || !parsed.isValid()) {
-          this.formError = 'Please provide a valid run time for the run_at schedule.';
+          this.formError = this.$t('valid_run_time_required');
           throw new Error(this.formError);
         }
 

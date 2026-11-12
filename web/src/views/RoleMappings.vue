@@ -7,7 +7,7 @@
     <EditDialog
       v-model="editDialog"
       test-id="roleMappingDialog"
-      save-button-text="Save"
+      :save-button-text="$t('save')"
       :title="$t('newRoleMapping')"
       @save="loadItems()"
     >
@@ -35,11 +35,11 @@
       <v-btn
         icon
         variant="text"
-        class="mr-4"
+        class="me-4"
         @click="returnToProjects()"
         data-testid="roleMappings-back"
       >
-        <v-icon>mdi-arrow-left</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}</v-icon>
       </v-btn>
       <v-toolbar-title
         class="flex-0-1"
@@ -66,7 +66,7 @@
       data-testid="roleMappings-licenseAlert"
     >
       <span
-        class="mr-1"
+        class="me-1"
         v-html="$t('roles_only_enterprise')"
         data-testid="roleMappings-licenseAlertText"
       ></span>
@@ -100,7 +100,7 @@
           label
           variant="flat"
           color="amber-darken-3"
-          class="ml-1"
+          class="ms-1"
           data-testid="roleMappings-rowProviderNotConfigured"
         >{{ $t('providerNotConfigured') }}</v-chip>
       </template>

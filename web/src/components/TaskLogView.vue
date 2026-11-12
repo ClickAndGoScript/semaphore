@@ -30,15 +30,18 @@
     >
       <TaskStatus :status="item.status" data-testid="task-status" />
 
-      <span class="ml-3 hidden-xs task-log-view__status_part" data-testid="taskLog-started">
+      <span class="ms-3 hidden-xs task-log-view__status_part" data-testid="taskLog-started">
 
-        Started <span v-if="user" data-testid="taskLog-author">by <b>{{ user.name }}</b></span>
+        {{ $t('started') }}
+        <span v-if="user" data-testid="taskLog-author">
+          {{ $t('by_label') }} <b>{{ user.name }}</b>
+        </span>
 
-        at <b>{{ $filters.formatDate(item.start) }}</b>
+        {{ $t('at') }} <b>{{ $filters.formatDate(item.start) }}</b>
       </span>
 
       <span
-        class="ml-3 hidden-sm-and-down task-log-view__status_part"
+        class="ms-3 hidden-sm-and-down task-log-view__status_part"
         data-testid="taskLog-duration"
       >
         <v-icon
@@ -48,15 +51,15 @@
     </div>
 
     <v-tabs class="task-log-view__tabs" align-tabs="end" v-model="tab" data-testid="taskLog-tabs">
-      <v-tab :value="0" data-testid="taskLog-tab-log">Log</v-tab>
-      <v-tab :value="1" data-testid="taskLog-tab-details">Details</v-tab>
+      <v-tab :value="0" data-testid="taskLog-tab-log">{{ $t('log') }}</v-tab>
+      <v-tab :value="1" data-testid="taskLog-tab-details">{{ $t('details') }}</v-tab>
       <v-tab
         v-if="isPro"
         :value="2"
         :disabled="!isTaskStopped"
         data-testid="taskLog-tab-summary"
       >
-        Summary
+        {{ $t('summary') }}
       </v-tab>
     </v-tabs>
 
@@ -92,7 +95,7 @@
       <v-btn
         color="success"
         class="task-log-action-button"
-        style="right: 260px; width: 70px;"
+        style="inset-inline-end: 260px; width: 70px;"
         v-if="item.status === 'waiting_confirmation'"
         @click="confirmTask()"
         data-testid="taskLog-confirm"
@@ -103,7 +106,7 @@
       <v-btn
         color="warning"
         class="task-log-action-button"
-        style="right: 180px; width: 70px;"
+        style="inset-inline-end: 180px; width: 70px;"
         v-if="item.status === 'waiting_confirmation'"
         @click="rejectTask()"
         data-testid="taskLog-reject"
@@ -114,7 +117,7 @@
       <v-btn
         color="error"
         class="task-log-action-button"
-        style="right: 20px; width: 150px;"
+        style="inset-inline-end: 20px; width: 150px;"
         v-if="canStop"
         @click="stopTask(item.status === 'stopping')"
         :data-testid="item.status === 'stopping' ? 'taskLog-forceStop' : 'taskLog-stop'"
@@ -131,7 +134,7 @@
         :href="rawLogURL"
         class="task-log-action-button"
         :style="$vuetify.theme.current.dark ? undefined : { color: 'rgba(0, 0, 0, .87)' }"
-        style="right: 20px; width: 150px;"
+        style="inset-inline-end: 20px; width: 150px;"
         target="_blank"
         data-testid="task-rawLog"
       >{{ $t('raw_log') }}
@@ -191,10 +194,10 @@ $task-log-status-tab-height:
   text-overflow: ellipsis;
 }
 
-// `mr-3` and the space Vue 2 kept after the message text (the whitespace before `</span>`; the
+// `me-3` and the space Vue 2 kept after the message text (the whitespace before `</span>`; the
 // Vue 3 compiler drops it), so the commit message starts where it did.
 .task-log-view__messageText {
-  margin-right: calc(12px + .25em + .1px);
+  margin-inline-end: calc(12px + .25em + .1px);
 }
 
 // Icons without a colour in the icon colour of Vuetify 2 (`.theme--light.v-icon`: .54, white in

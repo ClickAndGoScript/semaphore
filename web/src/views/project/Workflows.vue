@@ -39,7 +39,7 @@
       <v-btn
         variant="elevated"
         color="primary"
-        class="mr-1"
+        class="me-1"
         @click="openEditor('new')"
         v-if="can(USER_PERMISSIONS.editWorkflows)"
         data-testid="workflows-new"
@@ -198,7 +198,7 @@
 // The expand column, first (Vuetify 3 adds it last unless the headers place it).
 .workflows-table thead th:first-child,
 .workflows-table .v-data-table__td--expanded-row {
-  padding-right: 0 !important;
+  padding-inline-end: 0 !important;
 }
 
 // The expand toggle: the 24 px chevron icon of Vuetify 2 (`.v-data-table__expand-icon`), not a

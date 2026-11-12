@@ -34,7 +34,7 @@
         color="error"
         variant="elevated"
         @click="leftProject()"
-        class="mr-2"
+        class="me-2"
         data-testid="team-leave"
         >{{ $t('LeaveProject') }}
       </v-btn>
@@ -69,7 +69,7 @@
               <v-chip
                 size="small"
                 variant="outlined"
-                class="mr-1"
+                class="me-1"
                 v-bind="props"
                 :data-testid="`team-rowMappedRole-${mapped.role}`"
               >
@@ -107,7 +107,7 @@
           </v-autocomplete>
           <div v-else data-testid="team-rowRoleChips">
             <v-chip v-for="role in roleItems(item).filter((r) => item.roles.includes(r.slug))"
-                    :key="role.slug" size="small" class="mr-1"
+                    :key="role.slug" size="small" class="me-1"
                     :data-testid="`team-rowRole-${role.slug}`">{{ role.name }}</v-chip>
           </div>
         </div>
@@ -151,7 +151,7 @@
     column-gap: 0;
 
     > .v-data-table__td-title {
-      padding-right: 16px;
+      padding-inline-end: 16px;
     }
 
     // The role field fills the rest of the row: the hidden input of a Vuetify 2 autocomplete

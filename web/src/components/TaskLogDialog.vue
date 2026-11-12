@@ -23,7 +23,7 @@
           data-testid="taskLog-titleLoading"
           type="button"
           width="64"
-          style="display: inline-block; margin-right: 10px; vertical-align: middle;"
+          style="display: inline-block; margin-inline-end: 10px; vertical-align: middle;"
         ></v-skeleton-loader>
         <router-link
           v-else-if="template != null"
@@ -31,7 +31,9 @@
           :to="`/project/${projectId}/templates/${template ? template.id : null}`"
           data-testid="taskLog-templateLink"
         >{{ template ? template.name : null }}</router-link>
-        <v-icon class="task-log-dialog__chevron">mdi-chevron-right</v-icon>
+        <v-icon class="task-log-dialog__chevron">
+          {{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}
+        </v-icon>
         <span
           class="breadcrumbs__item"
           data-testid="taskLog-taskTitle"
@@ -69,8 +71,8 @@
 </template>
 <style lang="scss">
 .task-log-view__placeholder {
-  margin-left: 24px;
-  margin-right: 24px;
+  margin-inline-start: 24px;
+  margin-inline-end: 24px;
   height: calc(100dvh - 208px);
 }
 

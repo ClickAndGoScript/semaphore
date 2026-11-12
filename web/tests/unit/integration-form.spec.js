@@ -146,7 +146,7 @@ describe('IntegrationForm.vue', () => {
     expect(wrapper.find('.IntegrationForm__workflow').classes()).to.include('v-input--disabled');
     const chip = wrapper.find('.IntegrationForm__upgrade');
     expect(chip.exists()).to.equal(true);
-    expect(chip.text()).to.equal('Upgrade to PRO');
+    expect(chip.text()).to.equal('upgrade_to_pro_full');
 
     const events = [];
     const listener = (e) => events.push(e);

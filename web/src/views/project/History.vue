@@ -46,11 +46,11 @@
 
       <template v-slot:item.tpl_alias="{ item }">
         <div class="d-flex align-center">
-          <v-icon class="HistoryTable__icon mr-3" size="small" data-testid="history-rowApp">
+          <v-icon class="HistoryTable__icon me-3" size="small" data-testid="history-rowApp">
             {{ getAppIcon(item.tpl_app) }}
           </v-icon>
 
-          <!--          <v-icon class="mr-3" small>-->
+          <!--          <v-icon class="me-3" small>-->
           <!--            {{ TEMPLATE_TYPE_ICONS[item.tpl_type] }}-->
           <!--          </v-icon>-->
 
@@ -60,7 +60,9 @@
             data-testid="history-rowTask"
           />
 
-          <v-icon size="small" class="HistoryTable__icon ml-1 mr-1">mdi-arrow-left</v-icon>
+          <v-icon size="small" class="HistoryTable__icon ms-1 me-1">
+            {{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}
+          </v-icon>
 
           <router-link
             :to="'/project/' + item.project_id + '/templates/' + item.template_id"
@@ -69,7 +71,7 @@
           </router-link>
         </div>
 
-        <div class="ml-7" style="font-size: 14px">
+        <div class="ms-7" style="font-size: 14px">
           <span v-if="item.message" data-testid="history-rowMessage">
             <v-icon size="x-small" class="HistoryTable__icon">mdi-message-outline</v-icon>
             {{ item.message }}
@@ -84,7 +86,7 @@
       <template v-slot:item.version="{ item }">
         <TaskLink
           :disabled="item.tpl_type === 'build'"
-          class="ml-2"
+          class="ms-2"
           v-if="item.tpl_type !== ''"
           :status="item.status"
           :label="item.tpl_type === 'build' ? item.version : (item.build_task || {}).version"
@@ -92,7 +94,7 @@
           :tooltip="item.tpl_type === 'build' ? item.message : (item.build_task || {}).message"
           data-testid="history-rowVersion"
         />
-        <div class="ml-2" v-else data-testid="history-rowVersionEmpty">&mdash;</div>
+        <div class="ms-2" v-else data-testid="history-rowVersionEmpty">&mdash;</div>
       </template>
 
       <template v-slot:item.status="{ item }">
@@ -109,11 +111,11 @@
     </v-data-table>
 
     <div
-      class="d-flex align-center justify-end mt-2 mr-2 mb-4 HistoryPagination"
+      class="d-flex align-center justify-end mt-2 me-2 mb-4 HistoryPagination"
       data-testid="history-pagination"
     >
       <span
-        class="text-medium-emphasis mr-2"
+        class="text-medium-emphasis me-2"
         data-testid="history-perPageLabel"
       >{{ $t('rowsPerPage') }}</span>
 
@@ -121,7 +123,7 @@
         v-model="perPage"
         :disabled="loading"
         :items="perPageOptions"
-        class="HistoryPerPage mr-4"
+        class="HistoryPerPage me-4"
         density="compact"
         variant="underlined"
         hide-details
@@ -136,7 +138,7 @@
         @click="goPrev()"
         data-testid="history-prevPage"
       >
-        <v-icon>mdi-chevron-left</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-chevron-right' : 'mdi-chevron-left' }}</v-icon>
       </v-btn>
 
       <span
@@ -151,7 +153,7 @@
         @click="goNext()"
         data-testid="history-nextPage"
       >
-        <v-icon>mdi-chevron-right</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}</v-icon>
       </v-btn>
     </div>
   </div>

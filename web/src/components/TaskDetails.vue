@@ -12,7 +12,7 @@
           :style="cardStyle"
           data-testid="taskDetails-templateCard"
         >
-          <v-card-title>Template info</v-card-title>
+          <v-card-title>{{ $t('template_info') }}</v-card-title>
           <v-card-text>
             <v-table
               class="TaskDetails__table"
@@ -21,11 +21,11 @@
               <template v-slot:default>
                 <tbody>
                 <tr>
-                  <td><b>App</b></td>
+                  <td><b>{{ $t('application_label') }}</b></td>
                   <td data-testid="taskDetails-app">{{ getAppTitle(template.app) }}</td>
                 </tr>
                 <tr>
-                  <td><b>Template</b></td>
+                  <td><b>{{ $t('template') }}</b></td>
                   <td>
                     <RouterLink
                       :to="`/project/${projectId}/templates/${template.id}`"
@@ -49,7 +49,7 @@
           :style="cardStyle"
           data-testid="taskDetails-commitCard"
         >
-          <v-card-title>Commit info</v-card-title>
+          <v-card-title>{{ $t('commit_info') }}</v-card-title>
 
           <v-card-text>
             <v-table
@@ -59,11 +59,11 @@
               <template v-slot:default>
                 <tbody>
                 <tr>
-                  <td><b>Message</b></td>
+                  <td><b>{{ $t('message_label') }}</b></td>
                   <td data-testid="taskDetails-commitMessage">{{ item.commit_message }}</td>
                 </tr>
                 <tr>
-                  <td><b>Hash</b></td>
+                  <td><b>{{ $t('hash') }}</b></td>
                   <td data-testid="taskDetails-commitHash">{{ item.commit_hash }}</td>
                 </tr>
                 </tbody>
@@ -82,7 +82,7 @@
           class="mb-5"
           data-testid="taskDetails-runningCard"
         >
-          <v-card-title>Running info</v-card-title>
+          <v-card-title>{{ $t('running_info') }}</v-card-title>
           <v-card-text>
             <v-table
               class="pa-0 TaskDetails__table"
@@ -91,7 +91,7 @@
               <template v-slot:default>
                 <tbody>
                 <tr>
-                  <td><b>Message</b></td>
+                  <td><b>{{ $t('message_label') }}</b></td>
                   <td data-testid="taskDetails-message">{{ item.message || '—' }}</td>
                 </tr>
                 <tr v-if="item.user_id != null">
@@ -146,7 +146,7 @@
                   >{{ $filters.formatMilliseconds([item.start, item.end]) }}</td>
                 </tr>
                 <tr v-if="item.used_runner_name">
-                  <td><b>Runner</b></td>
+                  <td><b>{{ $t('runner_label') }}</b></td>
                   <td data-testid="taskDetails-runner">{{ item.used_runner_name }}</td>
                 </tr>
                 </tbody>
@@ -163,7 +163,7 @@
           class="mb-5"
           data-testid="taskDetails-paramsCard"
         >
-          <v-card-title>Task parameters</v-card-title>
+          <v-card-title>{{ $t('task_parameters') }}</v-card-title>
           <v-card-text>
             <v-table
               class="pa-0 TaskDetails__table"
@@ -172,39 +172,43 @@
               <template v-slot:default>
                 <tbody>
                 <tr>
-                  <td><b>Branch</b></td>
+                  <td><b>{{ $t('branch') }}</b></td>
                   <td data-testid="taskDetails-branch">
                     {{ item.get_branch || '—' }}
                   </td>
                 </tr>
                 <tr>
-                  <td><b>Limit</b></td>
+                  <td><b>{{ $t('limit') }}</b></td>
                   <td data-testid="taskDetails-limit">
                     <span v-if="Array.isArray(item.params.limit) && item.params.limit.length > 0">
                       {{ item.params.limit.join(', ') }}</span>
-                    <span v-else>'No'</span>
+                    <span v-else>{{ $t('no') }}</span>
                   </td>
                 </tr>
                 <tr>
-                  <td><b>Debug</b></td>
+                  <td><b>{{ $t('debug') }}</b></td>
                   <td data-testid="taskDetails-debug">
-                    {{ item.params.debug ? 'Yes' : 'No' }}
+                    {{ item.params.debug ? $t('yes') : $t('no') }}
                   </td>
                 </tr>
                 <tr>
-                  <td><b>Debug level</b></td>
+                  <td><b>{{ $t('debug_level') }}</b></td>
                   <td data-testid="taskDetails-debugLevel">{{ item.params.debug_level || '—' }}</td>
                 </tr>
                 <tr>
-                  <td><b>Diff</b> <code>--diff</code></td>
-                  <td data-testid="taskDetails-diff">{{ item.params.diff ? 'Yes' : 'No' }}</td>
+                  <td><b>{{ $t('diff') }}</b> <code dir="ltr">--diff</code></td>
+                  <td data-testid="taskDetails-diff">
+                    {{ item.params.diff ? $t('yes') : $t('no') }}
+                  </td>
                 </tr>
                 <tr>
-                  <td><b>Dry run</b> <code>--check</code></td>
-                  <td data-testid="taskDetails-dryRun">{{ item.params.dry_run ? 'Yes' : 'No' }}</td>
+                  <td><b>{{ $t('dry_run') }}</b> <code dir="ltr">--check</code></td>
+                  <td data-testid="taskDetails-dryRun">
+                    {{ item.params.dry_run ? $t('yes') : $t('no') }}
+                  </td>
                 </tr>
                 <tr>
-                  <td><b>Environment</b></td>
+                  <td><b>{{ $t('environment_label') }}</b></td>
                   <td data-testid="taskDetails-environment">
                     {{ !item.environment || item.environment === '{}' ? '—' : item.environment }}
                   </td>
@@ -231,7 +235,7 @@
               <template v-slot:activator="{ props }">
                 <v-icon
                   size="small"
-                  class="TaskDetails__hint ml-2"
+                  class="TaskDetails__hint ms-2"
                   v-bind="props"
                   data-testid="taskDetails-outputsHint"
                 >
@@ -277,7 +281,7 @@
                 size="x-small"
                 label
                 variant="outlined"
-                class="mr-1 mb-1"
+                class="me-1 mb-1"
                 :title="row.reason"
                 data-testid="taskDetails-outputSkipped"
               >

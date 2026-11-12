@@ -33,7 +33,7 @@
         (v) => v == null || v === '' || Math.floor(v) === v || $t('mustBeInteger'),
         (v) => v == null || v === '' || v >= 0 || $t('mustBe0OrGreater'),
       ]"
-      hint="Should be 0 or greater, 0 - unlimited."
+      :hint="$t('max_parallel_tasks_hint')"
       type="number"
       :step="1"
       data-testid="newProject-maxParallelTasks"
@@ -61,8 +61,8 @@
       data-testid="newProject-demo"
       v-if="itemId === 'new' && !hideDemoSwitch"
       v-model="item.demo"
-      label="Demo"
-      style="position: absolute; left: 24px; bottom: 15px"
+      :label="$t('demo')"
+      style="position: absolute; inset-inline-start: 24px; bottom: 15px"
       hide-details
     />
   </v-form>

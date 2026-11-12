@@ -1,6 +1,6 @@
 <template>
   <div data-testid="keystore-menu">
-    <v-tabs class="pl-4">
+    <v-tabs class="ps-4">
       <v-tab
         key="keys"
         :to="`/project/${projectId}/keys`"

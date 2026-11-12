@@ -73,7 +73,7 @@
       v-if="template.allow_override_args_in_task"
       test-id="taskParams-args"
       :vars="args"
-      title="CLI args"
+      :title="$t('cli_args')"
       @change="setArgs"
     />
   </div>

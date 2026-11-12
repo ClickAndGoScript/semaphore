@@ -28,7 +28,7 @@
           >mdi-menu</v-icon>
 
           <v-text-field
-            class="ml-2 mr-1 edit-views-form__title"
+            class="ms-2 me-1 edit-views-form__title"
             hide-details
             density="compact"
             variant="solo"
@@ -65,7 +65,7 @@
           </v-btn>
 
           <v-btn
-            class="ml-4"
+            class="ms-4"
             icon
             variant="text"
             @click="activeViewId = (activeViewId === view.id ? null : view.id)"
@@ -75,7 +75,7 @@
           </v-btn>
 
           <v-btn
-            class="ml-1"
+            class="ms-1"
             icon
             variant="text"
             @click="removeView(view.id)"
@@ -100,7 +100,7 @@
             width: 28px;
             height: 28px;
             transform: rotate(45deg);
-            right: 45px;
+            inset-inline-end: 45px;
             top: -14px;
             border-radius: 0;
           "></div>
@@ -111,7 +111,7 @@
               item-value="slug"
               item-title="title"
               v-model="view.type"
-              label="Type"
+              :label="$t('type')"
               variant="outlined"
               density="compact"
               @update:model-value="saveView(view.id)"
@@ -128,7 +128,7 @@
                 item-value="name"
                 item-title="title"
                 v-model="view.sort_column"
-                label="Sort by"
+                :label="$t('sort_by')"
                 variant="outlined"
                 density="compact"
                 hide-details
@@ -138,7 +138,7 @@
 
               <v-checkbox
                 hide-details
-                label="Reverse"
+                :label="$t('reverse')"
                 v-model="view.sort_reverse"
                 class="mt-0 pt-0"
                 @update:model-value="saveView(view.id)"
@@ -149,7 +149,7 @@
 
             <v-checkbox
               hide-details
-              label="Hidden"
+              :label="$t('hidden')"
               v-model="view.hidden"
               @update:model-value="saveView(view.id)"
               data-testid="viewsForm-hidden"

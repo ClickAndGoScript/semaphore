@@ -96,7 +96,7 @@
                   width: 28px;
                   height: 28px;
                   transform: rotate(45deg);
-                  left: 60px;
+                  inset-inline-start: 60px;
                   top: -14px;
                   border-radius: 0;
                 "
@@ -155,12 +155,12 @@
                   </template>
                 </v-data-table>
 
-                <div class="text-right mt-2 mb-2">
+                <div class="text-end mt-2 mb-2">
                   <v-btn
                     color="primary"
                     @click="addEditedVarValue()"
                     data-testid="surveyVarDialog-addValue"
-                  >Add Value</v-btn>
+                  >{{ $t('add_value') }}</v-btn>
                 </div>
 
                 <v-select
@@ -231,7 +231,7 @@
             :label="$t('required')"
             v-model="editedVar.required"
             v-if="editedVar != null"
-            class="ml-1 SurveyVars__required"
+            class="ms-1 SurveyVars__required"
             data-testid="surveyVarDialog-required"
           />
           <v-spacer></v-spacer>
@@ -293,7 +293,7 @@
           </v-chip>
         </draggable>
         <v-chip @click="editVar(null)" class="SurveyVars__add" data-testid="surveyVars-add">
-          + <span class="ml-1" v-if="modifiedVars.length === 0">{{ $t('addVariable') }}</span>
+          + <span class="ms-1" v-if="modifiedVars.length === 0">{{ $t('addVariable') }}</span>
         </v-chip>
       </v-chip-group>
     </fieldset>

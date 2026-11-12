@@ -11,10 +11,10 @@
       :key="s.slug"
     >
       <div class="object-refs-view__section-title">
-        <v-icon size="small" class="mr-2">mdi-{{ s.icon }}</v-icon>{{ s.title }}:
+        <v-icon size="small" class="me-2">mdi-{{ s.icon }}</v-icon>{{ s.title }}:
       </div>
 
-      <div class="ml-6">
+      <div class="ms-6">
         <span v-for="t in integrationRefs[s.slug]" class="object-refs-view__link-wrap" :key="t.id">
           <router-link
             :to="`/project/${projectId}/integrations/${t.id}`"

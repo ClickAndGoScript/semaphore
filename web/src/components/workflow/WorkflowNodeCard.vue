@@ -74,7 +74,7 @@
           size="x-small"
           variant="outlined"
           color="error"
-          class="ml-1"
+          class="ms-1"
           data-testid="workflowCanvas-nodeReject"
           @mousedown.stop
           @click.stop="resolve('rejected')"

@@ -121,7 +121,7 @@
   column-gap: 0;
 
   > .v-data-table__td-title {
-    padding-right: 16px;
+    padding-inline-end: 16px;
   }
 }
 </style>

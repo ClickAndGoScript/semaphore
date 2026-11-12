@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Israel">
+  <rect width="512" height="512" fill="#fff"/>
+  <rect y="72" width="512" height="64" fill="#0038b8"/>
+  <rect y="376" width="512" height="64" fill="#0038b8"/>
+  <g fill="none" stroke="#0038b8" stroke-width="18">
+    <path d="M256 154 338 296H174Z"/>
+    <path d="M256 358 174 216H338Z"/>
+  </g>
+</svg>

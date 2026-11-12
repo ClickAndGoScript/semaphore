@@ -213,7 +213,7 @@
     <ArgsPicker
       v-if="template.allow_override_args_in_task"
       :vars="args"
-      title="CLI args"
+      :title="$t('cli_args')"
       test-id="newTask-args"
       @change="setArgs"
     />

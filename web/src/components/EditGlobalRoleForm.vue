@@ -39,7 +39,7 @@
     ></v-text-field>
 
     <v-list-subheader
-      class="pl-0"
+      class="ps-0"
       data-testid="globalRole-permissionsTitle"
     >{{ $t('globalPermissions') }}</v-list-subheader>
     <div

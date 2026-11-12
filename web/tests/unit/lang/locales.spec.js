@@ -10,6 +10,15 @@ describe('lang/', () => {
     expect(enKeys.size).to.be.greaterThan(0);
   });
 
+  it('exposes a complete Hebrew catalogue', () => {
+    expect(languages).to.include('he');
+
+    const hebrewKeys = Object.keys(messages.he);
+    expect(hebrewKeys).to.have.lengthOf(enKeys.size);
+    expect(hebrewKeys.filter((key) => !enKeys.has(key))).to.deep.equal([]);
+    expect([...enKeys].filter((key) => !Object.hasOwn(messages.he, key))).to.deep.equal([]);
+  });
+
   Object.keys(messages).forEach((lang) => {
     describe(lang, () => {
       it('has no keys missing from en (dead translations)', () => {

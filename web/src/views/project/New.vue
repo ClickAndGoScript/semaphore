@@ -27,11 +27,11 @@
           />
         </div>
 
-        <div class="text-right">
+        <div class="text-end">
           <v-btn
             data-testid="newProject-currentDemoProject"
             color="success"
-            class="mr-3"
+            class="me-3"
             @click="createDemoProject()"
           >
             {{ $t('CreateDemoProject') }}

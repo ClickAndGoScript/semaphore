@@ -78,7 +78,7 @@
             v-bind="props"
             color="primary"
             variant="elevated"
-            class="mr-1 pr-2"
+            class="me-1 pe-2"
             v-if="canCreate"
             :disabled="!isAdmin && appsMixin.activeAppIds.length === 0"
             data-testid="templates-new"
@@ -117,7 +117,7 @@
             <template v-slot:prepend>
               <v-icon>mdi-cogs</v-icon>
             </template>
-            <v-list-item-title>Applications</v-list-item-title>
+            <v-list-item-title>{{ $t('applications') }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -137,7 +137,7 @@
          disabled while the view loads, so the tab of the new view stayed unselected. -->
     <v-tabs
       show-arrows
-      class="pl-4"
+      class="ps-4"
       :model-value="viewId"
       data-testid="templates-viewTabs"
     >
@@ -158,7 +158,7 @@
       <v-btn
         icon
         variant="text"
-        class="mt-2 ml-4"
+        class="mt-2 ms-4"
         @click="editViewsDialog = true"
         v-if="can(USER_PERMISSIONS.manageProjectResources)"
         data-testid="templates-editViews"
@@ -186,14 +186,14 @@
     >
       <template v-slot:item.name="{ item }">
         <v-icon
-          class="mr-3 templates-table__app-icon"
+          class="me-3 templates-table__app-icon"
           size="small"
           data-testid="templates-rowApp"
         >
           {{ getAppIcon(item.app) }}
         </v-icon>
 
-        <!--        <v-icon class="mr-3" small>-->
+        <!--        <v-icon class="me-3" small>-->
         <!--          {{ TEMPLATE_TYPE_ICONS[item.type] }}-->
         <!--        </v-icon>-->
 
@@ -316,7 +316,7 @@
 // The expand column, first (Vuetify 3 adds it last unless the headers place it).
 .templates-table thead th:first-child,
 .templates-table .v-data-table__td--expanded-row {
-  padding-right: 0 !important;
+  padding-inline-end: 0 !important;
 }
 
 // The expand toggle: the 24 px chevron icon of Vuetify 2 (`.v-data-table__expand-icon`), not a

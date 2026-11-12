@@ -50,7 +50,7 @@
              a 12 px thumb without a shadow -->
         <v-slider
           :disabled="!params.debug"
-          class="ml-7 mb-2"
+          class="ms-7 mb-2"
           style="max-width: 100px;"
           v-model="params.debug_level"
           @update:model-value="updateValue('debug_level', $event)"

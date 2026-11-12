@@ -66,7 +66,7 @@
       :icon="getAppIcon(template.app)"
       :icon-color="getAppColor(template.app)"
       :max-width="450"
-      title="Choose workspace to attach"
+      :title="$t('choose_workspace_to_attach')"
       test-id="tfWorkspaceAttachDialog"
       @save="attachInventory($event.itemId)"
     >
@@ -105,7 +105,7 @@
             {{ inv.inventory }}
             <v-icon
               v-if="inv.id === template.inventory_id"
-              class="ml-1"
+              class="ms-1"
               color="success"
               data-testid="templateState-workspaceDefault"
             >mdi-check
@@ -113,7 +113,7 @@
           </v-btn>
         </v-btn-toggle>
 
-        <span v-else data-testid="templateState-empty">No workspaces.</span>
+        <span v-else data-testid="templateState-empty">{{ $t('no_workspaces') }}</span>
 
         <v-menu location="bottom">
           <template v-slot:activator="{ props }">
@@ -122,7 +122,7 @@
               color="primary"
               icon
               size="40"
-              class="TerraformState__fab ml-3"
+              class="TerraformState__fab ms-3"
               v-bind="props"
               data-testid="templateState-new"
             >
@@ -137,7 +137,7 @@
               <template v-slot:prepend>
                 <v-icon>mdi-pencil</v-icon>
               </template>
-              <v-list-item-title>New workspace</v-list-item-title>
+              <v-list-item-title>{{ $t('new_workspace') }}</v-list-item-title>
             </v-list-item>
             <v-list-item
               @click="attachInventoryDialog = true"
@@ -146,7 +146,7 @@
               <template v-slot:prepend>
                 <v-icon>mdi-connection</v-icon>
               </template>
-              <v-list-item-title>Attach existing workspace</v-list-item-title>
+              <v-list-item-title>{{ $t('attach_existing_workspace') }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -164,36 +164,36 @@
           style="font-weight: normal;"
         >
 
-          <span data-testid="templateState-workspaceTitle">Workspace: <strong
+          <span data-testid="templateState-workspaceTitle">{{ $t('workspace') }}: <strong
             data-testid="templateState-workspaceName"
           >{{ inventory.inventory }}</strong></span>
 
           <div>
 
             <v-btn
-              class="mr-4"
+              class="me-4"
               :disabled="inventoryId === template.inventory_id"
               color="success"
               @click="setDefaultInventory()"
               data-testid="templateState-makeDefault"
             >
-              Make default
+              {{ $t('make_default') }}
             </v-btn>
 
             <v-btn
-              class="mr-4"
+              class="me-4"
               color="primary"
               :disabled="inventoryId === template.inventory_id"
               @click="detachInventory()"
               data-testid="templateState-detach"
             >
-              Detach
+              {{ $t('detach') }}
             </v-btn>
 
             <v-btn
               icon
               variant="text"
-              class="mr-2"
+              class="me-2"
               color="error"
               :disabled="inventoryId === template.inventory_id"
               @click="deleteInventoryDialog = true;"
@@ -224,32 +224,32 @@
           v-if="!features.terraform_backend"
           data-testid="templateState-proAlert"
         >
-            <span class="mr-2">
-              Terraform/OpenTofu HTTP backend available only in <b>PRO</b> version.
+            <span class="me-2">
+              {{ $t('terraform_backend_only_pro') }}
             </span>
           <v-btn
             color="hsl(348deg, 86%, 61%)"
             href="https://semaphoreui.com/pro#runners"
             data-testid="templateState-learnMore"
           >
-            Learn more
-            <v-icon>mdi-chevron-right</v-icon>
+            {{ $t('learn_more') }}
+            <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}</v-icon>
           </v-btn>
         </v-alert>
         <v-card-text>
 
-          <h3 data-testid="templateState-aliasesTitle">Aliases</h3>
+          <h3 data-testid="templateState-aliasesTitle">{{ $t('aliases') }}</h3>
           <div
             class="mb-6"
             data-testid="templateState-aliasesHint"
-          >Unique endpoints (aliases) to access your Terraform HTTP backend.</div>
+          >{{ $t('terraform_aliases_hint') }}</div>
 
           <div
             v-for="alias of (aliases || [])"
             :key="alias.id"
             data-testid="templateState-alias"
           >
-            <code class="mr-2" data-testid="templateState-aliasUrl">{{ alias.url }}</code>
+            <code class="me-2" data-testid="templateState-aliasUrl">{{ alias.url }}</code>
             <CopyClipboardButton
               :text="alias.url"
               :success-message="$t('aliasUrlCopied')"
@@ -286,11 +286,11 @@
 
           <v-divider class="mb-4" />
 
-          <h3 data-testid="templateState-historyTitle">State history</h3>
+          <h3 data-testid="templateState-historyTitle">{{ $t('state_history') }}</h3>
           <div
             class="mb-6"
             data-testid="templateState-historyHint"
-          >Chronological history of the workspace state changes.</div>
+          >{{ $t('state_history_hint') }}</div>
 
           <v-data-table
             style="
@@ -350,7 +350,7 @@
           </v-data-table>
 
           <v-container v-else data-testid="templateState-noBackend">
-            <div style="text-align: center; color: grey;">No state available.</div>
+            <div style="text-align: center; color: grey;">{{ $t('no_state_available') }}</div>
           </v-container>
 
         </v-card-text>
@@ -364,13 +364,13 @@
 .TerraformStateTable {
 
   .v-table__wrapper {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
   }
 
   .v-data-table-footer {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-inline-start: 0 !important;
+    margin-inline-end: 0 !important;
   }
 
   // The line over the footer as wide as the footer: here the whole card (the shared footer —
@@ -383,7 +383,7 @@
   // cell padded 2 px (App.vue) and 16 px, not a small icon button of 28 px in a 48 px cell.
   > .v-table__wrapper > table > thead > tr > th:first-child,
   .v-data-table__td--expanded-row {
-    padding-right: 16px;
+    padding-inline-end: 16px;
   }
 
   .v-data-table__td--expanded-row > .v-btn {

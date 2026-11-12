@@ -12,12 +12,15 @@
       v-if="!features.task_summary"
       data-testid="taskSummary-demoAlert"
     >
-      <span class="mr-2">
-        This is <b>DEMO</b> data. Task summary available only in <b>PRO</b> version.
+      <span class="me-2">
+        <i18n-t keypath="task_summary_demo_only" tag="span">
+          <template #demo><b>DEMO</b></template>
+          <template #pro><b>PRO</b></template>
+        </i18n-t>
       </span>
 
       <v-btn
-        class="ml-2"
+        class="ms-2"
         color="hsl(348deg, 86%, 61%)"
         @click="upgradeToPro('task_summary')"
         data-testid="taskSummary-upgrade"
@@ -26,13 +29,13 @@
       </v-btn>
     </v-alert>
 
-    <div class="pl-5 pt-5 d-flex" style="column-gap: 10px">
+    <div class="ps-5 pt-5 d-flex" style="column-gap: 10px">
       <div class="AnsibleServerStatus AnsibleServerStatus--ok">
         <div
           class="AnsibleServerStatus__count"
           data-testid="taskSummary-okServers"
         >{{ okServers }}</div>
-        <div class="AnsibleServerStatus__title">OK SERVERS</div>
+        <div class="AnsibleServerStatus__title">{{ $t('ok_servers') }}</div>
       </div>
 
       <div class="AnsibleServerStatus AnsibleServerStatus--bad">
@@ -40,12 +43,12 @@
           class="AnsibleServerStatus__count"
           data-testid="taskSummary-notOkServers"
         >{{ notOkServers }}</div>
-        <div class="AnsibleServerStatus__title">NOT OK SERVERS</div>
+        <div class="AnsibleServerStatus__title">{{ $t('not_ok_servers') }}</div>
       </div>
     </div>
 
     <v-btn-toggle
-      class="AnsibleStageView__filter pl-5 mt-8 mb-3"
+      class="AnsibleStageView__filter ps-5 mt-8 mb-3"
       density="compact"
       v-model="tab"
       mandatory
@@ -54,8 +57,11 @@
       <v-btn
         value="notOkServers"
         data-testid="taskSummary-filter-notOkServers"
-      > Not ok servers </v-btn>
-      <v-btn value="allServers" data-testid="taskSummary-filter-allServers"> All servers </v-btn>
+      >{{ $t('not_ok_servers') }}</v-btn>
+      <v-btn
+        value="allServers"
+        data-testid="taskSummary-filter-allServers"
+      >{{ $t('all_servers') }}</v-btn>
     </v-btn-toggle>
 
     <v-data-table
@@ -111,14 +117,14 @@
       <template v-slot:default>
         <thead>
           <tr>
-            <th>Host</th>
-            <th>Changed</th>
-            <th>Failed</th>
-            <th>Ignored</th>
-            <th>Ok</th>
-            <th>Rescued</th>
-            <th>Skipped</th>
-            <th>Unreachable</th>
+            <th>{{ $t('host') }}</th>
+            <th>{{ $t('changed') }}</th>
+            <th>{{ $t('failed') }}</th>
+            <th>{{ $t('ignored') }}</th>
+            <th>{{ $t('ok') }}</th>
+            <th>{{ $t('rescued') }}</th>
+            <th>{{ $t('skipped') }}</th>
+            <th>{{ $t('unreachable') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -216,11 +222,11 @@
 // column; Vuetify 4 has a 28 px button and 8 px. A focused icon (the one just clicked) has the
 // circle of `.v-icon--link:focus::after`: the icon colour at .12, 1.3 times the icon.
 .AnsibleStageView__errors thead th:first-child {
-  padding-right: 16px;
+  padding-inline-end: 16px;
 }
 
 .AnsibleStageView__errors .v-data-table__td--expanded-row {
-  padding-right: 16px;
+  padding-inline-end: 16px;
 
   > .v-btn {
     width: 24px;
@@ -246,7 +252,7 @@
   column-gap: 0;
 
   > .v-data-table__td-title {
-    padding-right: 16px;
+    padding-inline-end: 16px;
   }
 
   &.v-data-table__td--expanded-row {
@@ -319,17 +325,17 @@ export default {
           width: 1,
         },
         {
-          title: 'Server',
+          title: this.$t('server'),
           key: 'host',
           sortable: false,
         },
         {
-          title: 'Task',
+          title: this.$t('task_label'),
           key: 'task',
           sortable: false,
         },
         {
-          title: 'Error',
+          title: this.$t('error'),
           key: 'error',
           sortable: false,
         },

@@ -1,11 +1,11 @@
 <template>
-  <v-tabs class="pl-4" data-testid="team-menu">
+  <v-tabs class="ps-4" data-testid="team-menu">
     <v-tab
       key="team"
       :to="`/project/${projectId}/team`"
       data-testid="team-members"
     >
-      Members
+      {{ $t('members') }}
     </v-tab>
 
     <v-tab
@@ -14,7 +14,7 @@
       :to="`/project/${projectId}/invites`"
       data-testid="team-invites"
     >
-      Invites
+      {{ $t('invites') }}
     </v-tab>
 
     <v-tab
@@ -22,7 +22,7 @@
       :to="`/project/${projectId}/roles`"
       data-testid="team-roles"
     >
-      Roles
+      {{ $t('roles') }}
     </v-tab>
   </v-tabs>
 </template>

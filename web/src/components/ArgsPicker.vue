@@ -37,14 +37,14 @@
               @keydown.enter.prevent="saveVar()"
             />
 
-            <div class="text-right mt-2">
+            <div class="text-end mt-2">
 
               <v-btn
                 color="primary"
                 v-if="editedVar.type === 'enum'"
                 :data-testid="`${testId}Dialog-addValue`"
                 @click="addEditedVarValue()"
-              >Add Value</v-btn>
+              >{{ $t('add_value') }}</v-btn>
             </div>
           </v-form>
         </v-card-text>
@@ -116,7 +116,7 @@
         </draggable>
         <v-chip @click="editVar(null)" :data-testid="`${testId}-add`">
           + <span
-                class="ml-1"
+                class="ms-1"
                 v-if="modifiedVars.length === 0"
             >{{ addArgTitle || $t('addArg') }}</span>
         </v-chip>

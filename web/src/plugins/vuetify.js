@@ -1,6 +1,7 @@
 import { defineComponent, h } from 'vue';
 import { createVuetify } from 'vuetify';
 import { aliases, mdi } from 'vuetify/iconsets/mdi';
+import { en, he } from 'vuetify/locale';
 import OpenTofuIcon from '@/components/OpenTofuIcon.vue';
 import PulumiIcon from '@/components/PulumiIcon.vue';
 import TerragruntIcon from '@/components/TerragruntIcon.vue';
@@ -72,6 +73,14 @@ const colors = {
 };
 
 export default createVuetify({
+  // Direction (`rtl` of the locale map: Hebrew) and the texts of Vuetify itself follow the
+  // locale of the application: main.js keeps `locale.current` in sync with vue-i18n.
+  locale: {
+    locale: 'en',
+    fallback: 'en',
+    messages: { en, he },
+    rtl: { he: true },
+  },
   icons: {
     defaultSet: 'mdi',
     aliases: {

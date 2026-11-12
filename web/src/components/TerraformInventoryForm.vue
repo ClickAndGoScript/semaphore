@@ -16,7 +16,7 @@
 
     <v-text-field
       v-model="item.inventory"
-      label="Workspace name"
+      :label="$t('workspace_name')"
       :rules="[v => !!v || $t('path_required')]"
       required
       :disabled="formSaving"
@@ -25,7 +25,7 @@
 
     <v-select
       v-model="item.ssh_key_id"
-      label="SSH key for private modules *"
+      :label="$t('ssh_key_private_modules_required')"
       :rules="[v => !!v || 'Key is required']"
       density="compact"
       required

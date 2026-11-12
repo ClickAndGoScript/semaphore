@@ -18,7 +18,7 @@
   }
 
   :where(.v-application, .v-overlay-container) :where(ul, ol) {
-    padding-left: 24px;
+    padding-inline-start: 24px;
   }
 
   code,

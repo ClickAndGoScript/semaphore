@@ -121,7 +121,7 @@
         v-if="modelValue.target_type"
         closable
         size="small"
-        class="mr-2"
+        class="me-2"
         data-testid="audit-object-chip"
         @click:close="update({ target_type: null, target_id: null })"
       >

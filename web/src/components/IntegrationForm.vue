@@ -15,8 +15,8 @@
 
     <v-text-field
       v-model="item.name"
-      label="Name"
-      :rules="[(v) => !!v || 'Name is required']"
+      :label="$t('name')"
+      :rules="[(v) => !!v || $t('name_required')]"
       required
       :disabled="formSaving"
       variant="outlined"
@@ -29,7 +29,7 @@
       class="d-flex justify-space-between align-center mb-2 IntegrationForm__target"
       data-testid="integrationForm-target"
     >
-      <b style="font-size: 13px; margin-left: 5px">{{ $t('integrationRunTarget') }}</b>
+      <b style="font-size: 13px; margin-inline-start: 5px">{{ $t('integrationRunTarget') }}</b>
       <v-btn-toggle
         :model-value="target"
         @update:model-value="setTarget($event)"
@@ -102,14 +102,14 @@
         @click="upgradeToPro('workflow_integrations_management')"
         data-testid="integrationForm-upgrade"
       >
-        Upgrade to PRO
+        {{ $t('upgrade_to_pro_full') }}
       </v-chip>
     </div>
 
     <v-autocomplete
       v-else
       v-model="item.template_id"
-      label="Task Template to run"
+      :label="$t('task_template_to_run')"
       clearable
       :items="templates"
       item-value="id"
@@ -135,7 +135,7 @@
           width: 28px;
           height: 28px;
           transform: rotate(45deg);
-          left: calc(50% - 14px);
+          inset-inline-start: calc(50% - 14px);
           top: -14px;
           border-radius: 0;
         "
@@ -152,7 +152,7 @@
 
     <v-select
       v-model="item.auth_method"
-      label="Auth method"
+      :label="$t('auth_method')"
       :items="authMethods"
       item-value="id"
       item-title="title"
@@ -166,7 +166,7 @@
       <v-text-field
           v-if="['token', 'hmac', 'hmac-sha512'].includes(item.auth_method)"
           v-model="item.auth_header"
-          label="Auth header"
+          :label="$t('auth_header')"
           :disabled="formSaving"
           variant="outlined"
           density="compact"

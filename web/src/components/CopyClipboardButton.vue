@@ -2,7 +2,7 @@
   <span>
     <!-- eslint-disable-next-line vuejs-accessibility/form-control-has-label -->
     <textarea
-      style="position: absolute; left: -9999px; top: -9999px"
+      style="position: absolute; inset-inline-start: -9999px; top: -9999px"
       ref="copy_to_clipboard_textarea"
       :data-testid="`${testId}-buffer`"
     ></textarea>

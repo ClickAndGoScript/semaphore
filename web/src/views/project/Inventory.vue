@@ -12,7 +12,7 @@
       :icon="getAppIcon(itemApp)"
       :icon-color="getAppColor(itemApp)"
       :max-width="450"
-      title="Choose workspace to attach"
+      :title="$t('choose_workspace_to_attach')"
       @save="attachInventory($event.itemId)"
     >
       <template v-slot:form="{ onSave, needSave, needReset }">
@@ -85,7 +85,7 @@
       >
         <template v-slot:activator="{ props }">
           <v-btn
-            class="pr-2"
+            class="pe-2"
             v-bind="props"
             color="primary"
             variant="elevated"
@@ -127,7 +127,7 @@
       :data-state="items.length === 0 ? 'empty' : 'ready'"
     >
       <template v-slot:item.name="{ item }">
-        <v-icon class="mr-3 InventoryTable__appIcon" size="small" data-testid="inventory-rowIcon">
+        <v-icon class="me-3 InventoryTable__appIcon" size="small" data-testid="inventory-rowIcon">
           {{ getAppIcon(getAppByType(item.type)) }}
         </v-icon>
 

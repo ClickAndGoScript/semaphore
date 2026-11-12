@@ -245,7 +245,7 @@ export default {
     flex: 0 0 26px;
     width: 26px;
     height: 26px;
-    margin-right: 10px;
+    margin-inline-end: 10px;
     border-radius: 7px;
     display: inline-flex;
     align-items: center;

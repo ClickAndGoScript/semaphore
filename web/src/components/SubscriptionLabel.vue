@@ -3,7 +3,7 @@
         style="
         background: #f14668;
         color: white;
-        margin-left: 20px;
+        margin-inline-start: 20px;
         padding: 2px 8px 2px;
         border-radius: 6px;
         font-size: 16px;
@@ -16,7 +16,7 @@
         style="transform: scale(1.1) translateY(-1px)"
         >
         mdi-professional-hexagon
-        </v-icon> Subscription
+        </v-icon> {{ $t('subscription') }}
     </span>
 </template>
 <script>

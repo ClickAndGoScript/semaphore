@@ -11,14 +11,14 @@
         <v-icon
           start
           size="small"
-          class="mr-1 CollapsibleSection__chevron"
+          class="me-1 CollapsibleSection__chevron"
           :class="{ 'CollapsibleSection__chevron--open': modelValue }"
         >mdi-chevron-right</v-icon>
         {{ title }}
         <v-chip
           v-if="badge"
           size="x-small"
-          class="ml-2 CollapsibleSection__badge"
+          class="ms-2 CollapsibleSection__badge"
           data-testid="collapsibleSection-badge"
         >{{ badge }}</v-chip>
       </v-btn>
@@ -66,6 +66,10 @@
   &--open {
     transform: rotate(90deg);
   }
+}
+
+html[dir='rtl'] .CollapsibleSection__chevron:not(.CollapsibleSection__chevron--open) {
+  transform: rotate(180deg);
 }
 </style>
 

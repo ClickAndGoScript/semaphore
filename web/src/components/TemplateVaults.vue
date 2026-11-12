@@ -118,7 +118,7 @@
           class="TemplateVaults__chip"
           data-testid="templateVaults-add"
         >
-          + <span class="ml-1" v-if="modifiedVaults.length === 0">{{ $t('vaultAdd') }}</span>
+          + <span class="ms-1" v-if="modifiedVaults.length === 0">{{ $t('vaultAdd') }}</span>
         </v-chip>
       </v-chip-group>
     </fieldset>

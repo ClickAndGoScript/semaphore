@@ -16,7 +16,7 @@
     <v-text-field
       v-model="item.name"
       data-testid="integrationMatcherForm-name"
-      label="Name"
+      :label="$t('name')"
       :rules="[v => !!v || 'Name is required']"
       required
       :disabled="formSaving"
@@ -30,7 +30,7 @@
       <v-select
         v-model="item.match_type"
         data-testid="integrationMatcherForm-matchType"
-        label="Match on *"
+        :label="$t('match_on_required')"
         :items="matchTypes"
         item-value="id"
         item-title="text"
@@ -44,7 +44,7 @@
         v-model="item.body_data_type"
         data-testid="integrationMatcherForm-bodyDataType"
         v-if="item.match_type == 'body'"
-        label="Body Data Format *"
+        :label="$t('body_data_format_required')"
         :items="bodyDataFormats"
         item-value="id"
         item-title="text"
@@ -57,7 +57,7 @@
       <v-text-field
         v-model="item.key"
         data-testid="integrationMatcherForm-key"
-        label="Key *"
+        :label="$t('key_required_label')"
         :rules="[v => !!v || 'Key is required']"
         variant="outlined"
         density="compact"
@@ -67,7 +67,7 @@
       <v-select
         v-model="item.method"
         data-testid="integrationMatcherForm-method"
-        label="Comparison Method *"
+        :label="$t('comparison_method_required')"
         :items="methods"
         item-value="id"
         item-title="text"
@@ -80,7 +80,7 @@
       <v-text-field
         v-model="item.value"
         data-testid="integrationMatcherForm-value"
-        label="Value *"
+        :label="$t('value_required_label')"
         :rules="[v => !!v || 'Value is required']"
         variant="outlined"
         density="compact"
@@ -103,10 +103,10 @@ export default {
       MATCHER_TYPE_TITLES,
       matchTypes: [{
         id: 'body',
-        text: 'Body',
+        text: this.$t('body'),
       }, {
         id: 'header',
-        text: 'Header',
+        text: this.$t('header'),
       }],
       bodyDataFormats: [{
         id: 'json',
@@ -123,7 +123,7 @@ export default {
         text: '!=',
       }, {
         id: 'contains',
-        text: 'Contains',
+        text: this.$t('contains'),
       }],
     };
   },

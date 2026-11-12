@@ -1,6 +1,9 @@
 <template>
   <div class="d-flex justify-space-between align-center mb-2" data-testid="secretSource-toggle">
-    <b style="font-size: 13px; margin-left: 5px" data-testid="secretSource-label">{{ label }}</b>
+    <b
+      style="font-size: 13px; margin-inline-start: 5px"
+      data-testid="secretSource-label"
+    >{{ label }}</b>
     <v-btn-toggle
         data-testid="secretSource-options"
         :model-value="modelValue"
@@ -40,9 +43,9 @@ export default {
   data() {
     return {
       sources: [
-        { value: 'database', text: 'Store in DB' },
-        { value: 'env', text: 'From ENV' },
-        { value: 'file', text: 'From File' },
+        { value: 'database', text: this.$t('store_in_database') },
+        { value: 'env', text: this.$t('from_environment') },
+        { value: 'file', text: this.$t('from_file') },
       ],
     };
   },

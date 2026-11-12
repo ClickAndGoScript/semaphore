@@ -54,7 +54,7 @@
       <v-menu location="bottom">
         <template v-slot:activator="{ props }">
           <v-btn
-            class="pr-2"
+            class="pe-2"
             v-bind="props"
             color="primary"
             variant="elevated"
@@ -74,7 +74,7 @@
             <template v-slot:prepend>
               <v-icon>mdi-calendar-sync</v-icon>
             </template>
-            <v-list-item-title>Cron</v-list-item-title>
+            <v-list-item-title>{{ $t('cron') }}</v-list-item-title>
           </v-list-item>
           <v-list-item
             link
@@ -84,7 +84,7 @@
             <template v-slot:prepend>
               <v-icon>mdi-clock-time-eight-outline</v-icon>
             </template>
-            <v-list-item-title>Run once</v-list-item-title>
+            <v-list-item-title>{{ $t('run_once') }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>

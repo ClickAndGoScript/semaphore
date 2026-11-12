@@ -3,7 +3,7 @@
     <h4 data-testid="tableSettings-title">{{ $t('columns') }}</h4>
     <div class="d-flex flex-row flex-wrap">
       <v-checkbox
-        class="mr-6"
+        class="me-6"
         v-for="(header) in columns"
         :key="header.value"
         :label="header.text"

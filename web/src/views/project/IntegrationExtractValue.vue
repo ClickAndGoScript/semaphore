@@ -7,8 +7,8 @@
     <EditDialog
       v-model="editDialog"
       test-id="integrationValueDialog"
-      :save-button-text="itemId === 'new' ? 'Create' : 'Save'"
-      :title="`${itemId === 'new' ? 'New' : 'Edit'} Extract Value`"
+      :save-button-text="itemId === 'new' ? $t('create') : $t('save')"
+      :title="itemId === 'new' ? $t('new_extracted_value') : $t('edit_extracted_value')"
       :max-width="450"
       :transition="false"
       @save="loadItems"
@@ -37,8 +37,8 @@
 
     <YesNoDialog
       test-id="integrationValueDeleteDialog"
-      title="Delete Integration ExtractValue"
-      text="Are you sure you want to delete this Integration ExtractValue?"
+      :title="$t('delete_extracted_value')"
+      :text="$t('delete_extracted_value_confirm')"
       v-model="deleteItemDialog"
       @yes="deleteItem(itemId)"
     />
@@ -51,7 +51,7 @@
       <v-toolbar-title
         class="flex-0-1"
         data-testid="integrationValue-title"
-      >ExtractValue</v-toolbar-title>
+      >{{ $t('extracted_values') }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
         v-if="can(USER_PERMISSIONS.manageProjectResources)"
@@ -59,7 +59,7 @@
         variant="elevated"
         @click="editItem('new')"
         data-testid="integrationValue-new"
-        >New Extracted Value</v-btn
+        >{{ $t('new_extracted_value') }}</v-btn
       >
     </v-toolbar>
     <!-- A dash for the range of an empty table, as the footer of Vuetify 2 wrote it. -->
@@ -94,7 +94,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="askDeleteItem(item.id)"
             data-testid="integrationValue-rowDelete"
           >
@@ -104,7 +104,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="editItem(item.id)"
             data-testid="integrationValue-rowEdit"
           >

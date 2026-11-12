@@ -53,7 +53,7 @@
             width="170"
             :disabled="testNotificationProgress"
             data-testid="settings-testAlerts"
-          >Test Alerts</v-btn>
+          >{{ $t('test_alerts') }}</v-btn>
           <v-btn
             color="primary"
             @click="saveProject()"

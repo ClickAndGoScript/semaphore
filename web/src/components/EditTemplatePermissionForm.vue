@@ -40,7 +40,7 @@
     </v-select>
 
     <v-list-subheader
-      class="pl-0"
+      class="ps-0"
       data-testid="templatePerm-permissionsTitle"
     >{{ $t('permissions') }}</v-list-subheader>
 

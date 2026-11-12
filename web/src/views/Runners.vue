@@ -59,7 +59,7 @@
               <CopyClipboardButton
                 :text="(newRunner || {}).registration_token"
                 test-id="runnerToken-registrationTokenCopy"
-                style="position: absolute; right: 10px; top: 2px"
+                style="position: absolute; inset-inline-end: 10px; top: 2px"
               />
             </div>
           </div>
@@ -81,7 +81,7 @@
           <v-checkbox
               v-model="advancedOptions"
               data-testid="runnerToken-advancedOptions"
-              label="Advanced options"
+              :label="$t('advanced_options')"
             />
 
           <HighlightedCard
@@ -110,8 +110,12 @@
             class="RunnerTokenTabs"
             data-testid="runnerToken-registerTabs"
           >
-            <v-tab value="env" data-testid="runnerToken-tab-env">Env Vars</v-tab>
-            <v-tab value="config" data-testid="runnerToken-tab-config">Config file</v-tab>
+            <v-tab value="env" data-testid="runnerToken-tab-env">
+              {{ $t('environment_variables') }}
+            </v-tab>
+            <v-tab value="config" data-testid="runnerToken-tab-config">
+              {{ $t('config_file') }}
+            </v-tab>
             <v-tab value="docker" data-testid="runnerToken-tab-docker">Docker</v-tab>
           </v-tabs>
 
@@ -119,7 +123,7 @@
 
           <v-window v-model="registerTab">
             <v-window-item value="env">
-              <div class="mt-3">Register and start the runner:</div>
+              <div class="mt-3">{{ $t('register_and_start_runner') }}</div>
               <div style="position: relative">
                 <pre
                   class="pa-2"
@@ -137,13 +141,13 @@
                 <CopyClipboardButton
                   :text="runnerRegisterEnvCommand"
                   test-id="runnerToken-registerEnvCommandCopy"
-                  style="position: absolute; right: 10px; top: 10px"
+                  style="position: absolute; inset-inline-end: 10px; top: 10px"
                 />
               </div>
             </v-window-item>
 
             <v-window-item value="config">
-              <div class="mt-3">Config file content:</div>
+              <div class="mt-3">{{ $t('config_file_content') }}</div>
               <div style="position: relative">
                 <pre
                   class="pa-2"
@@ -161,11 +165,11 @@
                 <CopyClipboardButton
                   :text="runnerRegisterConfigContent"
                   test-id="runnerToken-registerConfigContentCopy"
-                  style="position: absolute; right: 10px; top: 10px"
+                  style="position: absolute; inset-inline-end: 10px; top: 10px"
                 />
               </div>
 
-              <div class="mt-3">Register and start the runner:</div>
+              <div class="mt-3">{{ $t('register_and_start_runner') }}</div>
               <div style="position: relative">
                 <pre
                   class="pa-2"
@@ -183,13 +187,13 @@
                 <CopyClipboardButton
                   :text="runnerRegisterConfigCommand"
                   test-id="runnerToken-registerConfigCommandCopy"
-                  style="position: absolute; right: 10px; top: 10px"
+                  style="position: absolute; inset-inline-end: 10px; top: 10px"
                 />
               </div>
             </v-window-item>
 
             <v-window-item value="docker">
-              <div class="mt-3">Register and start the runner:</div>
+              <div class="mt-3">{{ $t('register_and_start_runner') }}</div>
               <div style="position: relative">
                 <pre
                   class="pa-2"
@@ -207,7 +211,7 @@
                 <CopyClipboardButton
                   :text="runnerRegisterDockerCommand"
                   test-id="runnerToken-registerDockerCommandCopy"
-                  style="position: absolute; right: 10px; top: 10px"
+                  style="position: absolute; inset-inline-end: 10px; top: 10px"
                 />
               </div>
             </v-window-item>
@@ -226,7 +230,7 @@
               >
 
               <CopyClipboardButton
-                style="position: absolute; right: 10px; top: 2px"
+                style="position: absolute; inset-inline-end: 10px; top: 2px"
                 :text="(newRunner || {}).token"
                 test-id="runnerToken-tokenCopy"
               />
@@ -236,7 +240,7 @@
           <v-checkbox
               v-model="advancedOptions"
               data-testid="runnerToken-advancedOptions"
-              label="Advanced options"
+              :label="$t('advanced_options')"
             />
 
           <HighlightedCard
@@ -259,7 +263,9 @@
             />
           </HighlightedCard>
 
-          <h2 class="mt-11 mb-4" data-testid="runnerToken-variantsOfUsage">Variants of usage</h2>
+          <h2 class="mt-11 mb-4" data-testid="runnerToken-variantsOfUsage">
+            {{ $t('usage_variants') }}
+          </h2>
 
           <v-tabs
             v-model="usageTab"
@@ -267,9 +273,13 @@
             class="RunnerTokenTabs"
             data-testid="runnerToken-usageTabs"
           >
-            <v-tab value="config" data-testid="runnerToken-tab-config">Config file</v-tab>
-            <v-tab value="setup" data-testid="runnerToken-tab-setup">Setup</v-tab>
-            <v-tab value="env" data-testid="runnerToken-tab-env">Env Vars</v-tab>
+            <v-tab value="config" data-testid="runnerToken-tab-config">
+              {{ $t('config_file') }}
+            </v-tab>
+            <v-tab value="setup" data-testid="runnerToken-tab-setup">{{ $t('setup') }}</v-tab>
+            <v-tab value="env" data-testid="runnerToken-tab-env">
+              {{ $t('environment_variables') }}
+            </v-tab>
             <v-tab value="docker" data-testid="runnerToken-tab-docker">Docker</v-tab>
           </v-tabs>
 
@@ -277,7 +287,7 @@
 
           <v-window v-model="usageTab">
             <v-window-item value="config">
-              <div class="mt-3">Config file content:</div>
+              <div class="mt-3">{{ $t('config_file_content') }}</div>
               <div style="position: relative">
                 <pre
                   style="
@@ -293,13 +303,13 @@
                 >
 
                 <CopyClipboardButton
-                  style="position: absolute; right: 10px; top: 10px"
+                  style="position: absolute; inset-inline-end: 10px; top: 10px"
                   :text="runnerConfigCommand"
                   test-id="runnerToken-configCommandCopy"
                 />
               </div>
 
-              <div class="mt-3">Launching the runner:</div>
+              <div class="mt-3">{{ $t('launching_runner') }}</div>
               <div>
                 <pre
                   style="
@@ -317,7 +327,7 @@ semaphore runner start --config /path/to/config/file</pre
               </div>
             </v-window-item>
             <v-window-item value="setup">
-              <div class="mt-3">Config file creation:</div>
+              <div class="mt-3">{{ $t('config_file_creation') }}</div>
               <div style="position: relative">
                 <pre
                   style="
@@ -333,14 +343,14 @@ semaphore runner start --config /path/to/config/file</pre
                 >
 
                 <CopyClipboardButton
-                  style="position: absolute; right: 10px; top: 10px"
+                  style="position: absolute; inset-inline-end: 10px; top: 10px"
                   :text="runnerSetupCommand"
                   test-id="runnerToken-setupCommandCopy"
                 />
               </div>
 
               <div class="mt-3">
-                <div>Launching the runner:</div>
+                <div>{{ $t('launching_runner') }}</div>
                 <pre
                   style="
                     overflow: auto;
@@ -357,7 +367,7 @@ semaphore runner start --config ./config.runner.json</pre
               </div>
             </v-window-item>
             <v-window-item value="env">
-              <div class="mt-3">Launching the runner:</div>
+              <div class="mt-3">{{ $t('launching_runner') }}</div>
               <div style="position: relative">
                 <pre
                   style="
@@ -373,7 +383,7 @@ semaphore runner start --config ./config.runner.json</pre
                 >
 
                 <CopyClipboardButton
-                  style="position: absolute; right: 10px; top: 10px"
+                  style="position: absolute; inset-inline-end: 10px; top: 10px"
                   :text="runnerEnvCommand"
                   test-id="runnerToken-envCommandCopy"
                 />
@@ -381,7 +391,7 @@ semaphore runner start --config ./config.runner.json</pre
             </v-window-item>
 
             <v-window-item value="docker">
-              <div class="mt-3">Launching the runner:</div>
+              <div class="mt-3">{{ $t('launching_runner') }}</div>
               <div style="position: relative">
                 <pre
                   style="
@@ -397,7 +407,7 @@ semaphore runner start --config ./config.runner.json</pre
                 >
 
                 <CopyClipboardButton
-                  style="position: absolute; right: 10px; top: 10px"
+                  style="position: absolute; inset-inline-end: 10px; top: 10px"
                   :text="runnerDockerCommand"
                   test-id="runnerToken-dockerCommandCopy"
                 />
@@ -428,11 +438,11 @@ semaphore runner start --config ./config.runner.json</pre
       <v-btn
         icon
         variant="text"
-        class="mr-4"
+        class="me-4"
         @click="returnToProjects()"
         data-testid="runners-back"
       >
-        <v-icon>mdi-arrow-left</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}</v-icon>
       </v-btn>
 
       <v-toolbar-title
@@ -451,7 +461,7 @@ semaphore runner start --config ./config.runner.json</pre
     <v-btn
       v-else
       :disabled="!features.project_runners"
-      style="position: absolute; right: 15px; top: 15px"
+      style="position: absolute; inset-inline-end: 15px; top: 15px"
       color="primary"
       @click="editItem('new')"
       data-testid="runners-new"
@@ -470,7 +480,7 @@ semaphore runner start --config ./config.runner.json</pre
       <span v-html="$t('project_runners_only_pro')" data-testid="runners-licenseAlertText"></span>
       <v-btn
         v-if="canManageSystem"
-        class="ml-2 text-white"
+        class="ms-2 text-white"
         color="hsl(348deg, 86%, 61%)"
         @click="upgradeToPro('project_runners')"
         data-testid="runners-upgrade"
@@ -489,23 +499,25 @@ semaphore runner start --config ./config.runner.json</pre
       v-if="!systemInfo.use_remote_runner && projectId == null"
       data-testid="runners-remoteRunnersDisabled"
     >
-      Global runners
-      <a
-        target="_blank"
-        data-testid="runners-remoteRunnersDocs"
-        href="https://docs.semaphoreui.com/administration-guide/runners/#set-up-a-server"
-      >disabled</a
-      >.
+      <i18n-t keypath="global_runners_disabled" tag="span">
+        <template #disabled>
+          <a
+            target="_blank"
+            data-testid="runners-remoteRunnersDocs"
+            href="https://docs.semaphoreui.com/administration-guide/runners/#set-up-a-server"
+          >{{ $t('disabled') }}</a>
+        </template>
+      </i18n-t>
     </v-alert>
 
     <div
       v-if="globalFilter || defaultFilter || tagFilter || unregisteredFilter"
-      class="mt-4 ml-4 d-flex align-center"
+      class="mt-4 ms-4 d-flex align-center"
       data-testid="runners-filters"
     >
       <v-chip
         v-if="globalFilter"
-        class="mr-2"
+        class="me-2"
         size="small"
         closable
         color="info"
@@ -517,7 +529,7 @@ semaphore runner start --config ./config.runner.json</pre
       </v-chip>
       <v-chip
         v-if="defaultFilter"
-        class="mr-2"
+        class="me-2"
         size="small"
         closable
         color="warning"
@@ -530,7 +542,7 @@ semaphore runner start --config ./config.runner.json</pre
 
       <v-chip
         v-if="unregisteredFilter"
-        class="mr-2"
+        class="me-2"
         closable
         size="small"
         @click:close="unregisteredFilter = false"
@@ -579,7 +591,7 @@ semaphore runner start --config ./config.runner.json</pre
         {{ item.name || '&mdash;' }}
         <v-chip
           v-if="item.is_default"
-          class="ml-2"
+          class="ms-2"
           size="small"
           color="warning"
           variant="flat"
@@ -592,7 +604,7 @@ semaphore runner start --config ./config.runner.json</pre
 
         <v-chip
           v-if="item.project_id == null"
-          class="ml-2"
+          class="ms-2"
           size="small"
           color="info"
           variant="flat"
@@ -605,7 +617,7 @@ semaphore runner start --config ./config.runner.json</pre
 
         <v-chip
           v-if="!item.registered"
-          class="ml-2"
+          class="ms-2"
           size="small"
           style="cursor: pointer"
           @click="unregisteredFilter = !unregisteredFilter"
@@ -656,7 +668,7 @@ semaphore runner start --config ./config.runner.json</pre
             :key="t"
             size="x-small"
             label
-            class="mr-1 mb-1"
+            class="me-1 mb-1"
             style="cursor: pointer"
             :color="tagFilter === t ? 'primary' : undefined"
             :variant="tagFilter === t ? 'flat' : 'tonal'"
@@ -679,7 +691,7 @@ semaphore runner start --config ./config.runner.json</pre
             <template v-slot:activator="{ props }">
               <v-btn
                 :disabled="item.project_id == null && !canManageSystem"
-                class="mr-1"
+                class="me-1"
                 icon
                 variant="text"
                 @click="askRegenerateRegistrationToken(item)"
@@ -701,7 +713,7 @@ semaphore runner start --config ./config.runner.json</pre
             v-if="item.project_id != null || projectId == null"
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="askDeleteItem(item.id)"
             data-testid="runners-rowDelete"
             :disabled="item.project_id == null && !canManageSystem"
@@ -713,7 +725,7 @@ semaphore runner start --config ./config.runner.json</pre
             v-if="item.project_id != null || projectId == null"
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="editItem(item.id)"
             data-testid="runners-rowEdit"
             :disabled="item.project_id == null && !canManageSystem"
@@ -731,7 +743,7 @@ semaphore runner start --config ./config.runner.json</pre
                 v-bind="props"
                 icon
                 variant="text"
-                class="mr-1"
+                class="me-1"
                 @click="clearCache(item)"
                 data-testid="runners-rowClearCache"
                 :disabled="item.project_id == null && !canManageSystem"
@@ -749,9 +761,15 @@ semaphore runner start --config ./config.runner.json</pre
               data-testid="runners-rowCleaningInfo"
             >
               <span v-if="item.touched < item.cleaning_requested">
-                Already requested {{ $filters.formatDate(item.cleaning_requested) }}.
+                {{ $t('already_requested_at', {
+                  date: $filters.formatDate(item.cleaning_requested),
+                }) }}
               </span>
-              <span v-else> Last cleaned {{ $filters.formatDate(item.cleaning_requested) }}. </span>
+              <span v-else>
+                {{ $t('last_cleaned_at', {
+                  date: $filters.formatDate(item.cleaning_requested),
+                }) }}
+              </span>
             </div>
           </v-tooltip>
         </div>
@@ -807,11 +825,11 @@ semaphore runner start --config ./config.runner.json</pre
     column-gap: 0;
 
     > .v-data-table__td-title {
-      padding-right: 16px;
+      padding-inline-end: 16px;
     }
 
     > .v-data-table__td-value {
-      text-align: right;
+      text-align: end;
     }
   }
 }

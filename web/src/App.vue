@@ -139,6 +139,7 @@
     <v-navigation-drawer
       theme="dark"
       :color="darkMode ? '#003236' : '#005057'"
+      location="start"
       width="260"
       v-model="drawer"
       :mobile-breakpoint="960"
@@ -392,8 +393,7 @@
             <v-btn
               icon
               variant="text"
-              style="margin-left: -15px"
-              class="mr-1"
+              style="margin-inline: -15px 4px"
               :color="navEditMode ? 'primary' : undefined"
               :title="navEditMode ? $t('finishEditingMenu') : $t('editMenu')"
               @click="navEditMode = !navEditMode"
@@ -407,9 +407,10 @@
             <v-spacer />
 
             <!-- At the point (50, 0) of the window, as `absolute :position-x="50"` of Vuetify 2:
-                 the menu opens at the top of the window, 50 px from its left edge. -->
+                 the menu opens at the top of the window, 50 px from the drawer's edge
+                 (see langMenuTarget). -->
             <v-menu
-              :target="[50, 0]"
+              :target="langMenuTarget"
               location="bottom start"
               min-width="150"
               max-width="235"
@@ -775,13 +776,13 @@ html.WorkflowEditor-html body {
   transition-property: transform, visibility;
   // The border of Vuetify 2 lies over the content (`.v-navigation-drawer__border`), which keeps
   // the full width of the drawer; Vuetify 4 draws it beside the content, 1 px narrower.
-  border-right-width: 0;
+  border-inline-end-width: 0;
 
   &::after {
     content: '';
     position: absolute;
     top: 0;
-    right: 0;
+    inset-inline-end: 0;
     width: 1px;
     height: 100%;
     background-color: rgba(var(--v-border-color), var(--v-border-opacity));
@@ -837,7 +838,7 @@ html.WorkflowEditor-html body {
       }
 
       .DarkModeSwitchWrap {
-        margin-left: 10px;
+        margin-inline-start: 10px;
       }
     }
   }
@@ -876,7 +877,7 @@ html.WorkflowEditor-html body {
   .nav-pin-wrap {
     //opacity: 0;
     //transition: opacity 0.15s;
-    margin-left: auto;
+    margin-inline-start: auto;
     display: flex;
     align-items: center;
   }
@@ -984,19 +985,23 @@ html.WorkflowEditor-html body {
     .v-switch__track {
       position: absolute;
       top: 0;
-      left: -3px;
+      inset-inline-start: -3px;
       opacity: 0.32;
     }
 
     // The input is 30 px round the 18 px thumb.
     .v-selection-control__input {
       top: -4px;
-      left: -6px;
+      inset-inline-start: -6px;
       transform: none;
     }
 
     .v-selection-control--dirty .v-selection-control__input {
       transform: translateX(20px);
+    }
+
+    html[dir='rtl'] & .v-selection-control--dirty .v-selection-control__input {
+      transform: translateX(-20px);
     }
   }
 
@@ -1006,13 +1011,13 @@ html.WorkflowEditor-html body {
     transform: translateY(-50%);
     pointer-events: none;
     color: #fff !important;
-    transition: left 0.2s ease;
+    transition: inset-inline-start 0.2s ease;
     // On the thumb, as in Vuetify 2 (off: at 0 px, on: at 20 px).
-    left: 1px;
+    inset-inline-start: 1px;
   }
 
   &--dark .DarkModeSwitchWrap__icon {
-    left: 22px;
+    inset-inline-start: 22px;
   }
 }
 
@@ -1081,24 +1086,22 @@ html.WorkflowEditor-html body {
 // Tables: `.v-table` is the root of both v-data-table and v-table (v-simple-table in Vuetify 2,
 // which drew `.v-data-table` too).
 .v-data-table .v-data-table-footer {
-  margin-left: 16px !important;
-  margin-right: 16px !important;
+  margin-inline: 16px !important;
 }
 
 .v-table__wrapper {
-  padding-left: 16px !important;
-  padding-right: 16px !important;
+  padding-inline: 16px !important;
 }
 
 .v-table {
   td:first-child,
   th:first-child {
-    padding-left: 2px !important;
+    padding-inline-start: 2px !important;
   }
 
   td:last-child,
   th:last-child {
-    padding-right: 2px !important;
+    padding-inline-end: 2px !important;
   }
 
   // The header row is the last one of the head; while the table loads Vuetify 4 adds its progress
@@ -1138,7 +1141,7 @@ html.WorkflowEditor-html body {
 }
 
 .v-toolbar-title:not(:first-child) {
-  margin-left: 10px !important;
+  margin-inline-start: 10px !important;
 }
 
 .v-slide-group__prev--disabled {
@@ -1153,8 +1156,8 @@ html.WorkflowEditor-html body {
   // With the nav icon hidden the title starts the toolbar, at the content padding
   // (assets/scss/vuetify2.scss).
   .v-toolbar-title:not(:first-child) {
-    padding-left: 0 !important;
-    margin-left: 0 !important;
+    padding-inline-start: 0 !important;
+    margin-inline-start: 0 !important;
   }
 }
 
@@ -1224,6 +1227,10 @@ html.WorkflowEditor-html body {
   .CenterToScreen {
     transform: translateX(-130px);
   }
+
+  html[dir='rtl'] .CenterToScreen {
+    transform: translateX(130px);
+  }
 }
 </style>
 
@@ -1247,6 +1254,7 @@ import YesNoDialog from '@/components/YesNoDialog.vue';
 import TaskLogDialog from '@/components/TaskLogDialog.vue';
 import SystemInfoDialog from '@/components/SystemInfoDialog.vue';
 import delay from '@/lib/delay';
+import { applyDocumentLocale } from '@/plugins/i18';
 
 const PROJECT_COLORS = ['red', 'blue', 'orange', 'green'];
 
@@ -1289,6 +1297,9 @@ const LANGUAGES = {
   },
   cs: {
     title: 'Czech',
+  },
+  he: {
+    title: 'עברית',
   },
 };
 
@@ -1432,6 +1443,11 @@ export default {
   },
 
   computed: {
+    // The point 50 px in from the drawer's edge: the left edge of the window, the right one in RTL.
+    langMenuTarget() {
+      return [this.$vuetify.locale.isRtl ? window.innerWidth - 50 : 50, 0];
+    },
+
     isPro() {
       return (process.env.VUE_APP_BUILD_TYPE || '').startsWith('pro_');
     },
@@ -1451,6 +1467,10 @@ export default {
 
     lang() {
       return getLangInfo(this.$i18n.locale);
+    },
+
+    isRtl() {
+      return this.lang.flag === 'he';
     },
 
     // Menus of the drawer take the theme of the application, as detached menus did in
@@ -1835,12 +1855,14 @@ export default {
       if (typeof lang !== 'string' || lang === '') {
         localStorage.removeItem('lang');
         this.$i18n.locale = getSystemLang().flag;
+        applyDocumentLocale(this.$i18n.locale);
         return;
       }
 
       const locale = getLangInfo(lang).flag;
       localStorage.setItem('lang', locale);
       this.$i18n.locale = locale;
+      applyDocumentLocale(locale);
     },
 
     async selectLanguage(lang) {

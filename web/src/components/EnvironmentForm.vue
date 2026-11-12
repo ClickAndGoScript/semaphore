@@ -50,8 +50,8 @@
     </v-row>
 
     <v-tabs grow v-model="tab" data-testid="varGroup-tabs">
-      <v-tab value="variables" data-testid="varGroup-tab-variables">Variables</v-tab>
-      <v-tab value="secrets" data-testid="varGroup-tab-secrets">Secrets</v-tab>
+      <v-tab value="variables" data-testid="varGroup-tab-variables">{{ $t('variables') }}</v-tab>
+      <v-tab value="secrets" data-testid="varGroup-tab-secrets">{{ $t('secrets') }}</v-tab>
     </v-tabs>
 
     <v-divider style="margin-top: -1px" class="mb-7" />
@@ -69,7 +69,7 @@
             max-width="400"
           >
             <template v-slot:activator="{ props }">
-              <v-icon class="ml-1" v-bind="props" data-testid="varGroup-varsHelp"
+              <v-icon class="ms-1" v-bind="props" data-testid="varGroup-varsHelp"
                 >mdi-help-box </v-icon>
             </template>
             <div>
@@ -90,21 +90,21 @@
             <v-btn
               value="table"
               size="small"
-              class="mr-0"
+              class="me-0"
               style="border-radius: 4px"
               data-testid="varGroup-extraVarsMode-table"
-            > Table </v-btn>
+            > {{ $t('table') }} </v-btn>
             <v-btn
               value="json"
               size="small"
-              class="mr-0"
+              class="me-0"
               style="border-radius: 4px"
               data-testid="varGroup-extraVarsMode-json"
             > JSON </v-btn>
             <v-btn
               value="yaml"
               size="small"
-              class="mr-0"
+              class="me-0"
               style="border-radius: 4px"
               data-testid="varGroup-extraVarsMode-yaml"
             > YAML </v-btn>
@@ -133,7 +133,7 @@
             v-model="json"
             type="json"
             v-if="extraVarsEditMode === 'json'"
-            style="position: absolute; right: 10px; top: 0; margin: 10px"
+            style="position: absolute; inset-inline-end: 10px; top: 0; margin: 10px"
             test-id="varGroup-extraVarsJsonEditor"
           />
         </div>
@@ -155,7 +155,7 @@
             v-model="yaml"
             type="yaml"
             v-if="extraVarsEditMode === 'yaml'"
-            style="position: absolute; right: 10px; top: 0; margin: 10px"
+            style="position: absolute; inset-inline-end: 10px; top: 0; margin: 10px"
             test-id="varGroup-extraVarsYamlEditor"
           />
         </div>
@@ -216,7 +216,7 @@
                       v-if="props.item.type === 'list' || props.item.type === 'dict'"
                       v-model="props.item.value"
                       :type="props.item.type === 'list' ? 'json_array' : 'json'"
-                      class="ml-1 EnvVarExpandBtn"
+                      class="ms-1 EnvVarExpandBtn"
                       test-id="varGroup-varValueEditor"
                     />
                   </div>
@@ -314,18 +314,18 @@
           "
         >
           <div style="font-weight: bold; font-size: 20px" data-testid="varGroup-secretStorageName">
-            <v-icon size="small" class="mr-1">{{ getIcon(secretStorage.type) }}</v-icon>
+            <v-icon size="small" class="me-1">{{ getIcon(secretStorage.type) }}</v-icon>
             {{ secretStorage.name }}
           </div>
           <pre
             data-testid="varGroup-secretStoragePattern"
-          >Source path pattern: <b>{{ item.secret_storage_key_prefix }}*</b></pre>
+          >{{ $t('source_path_pattern') }}: <b>{{ item.secret_storage_key_prefix }}*</b></pre>
 
           <div class="d-flex items-center justify-space-between mt-2">
             <v-checkbox
               class="mt-0 mb-2 EnvSyncEnabled"
               v-model="item.sync_enabled"
-              :label="$t('Sync keys enabled')"
+              :label="$t('sync_keys_enabled')"
               :disabled="formSaving"
               hide-details
               data-testid="varGroup-syncEnabled"
@@ -333,7 +333,7 @@
 
             <div class="d-flex align-center">
               <v-btn
-                style="margin-right: -10px"
+                style="margin-inline-end: -10px"
                 class="EnvSyncPaths"
                 variant="text"
                 color="primary"
@@ -343,9 +343,9 @@
                 data-testid="varGroup-syncPaths"
               >
                 <v-icon start>mdi-cog-sync</v-icon>
-                Sync paths
+                {{ $t('sync_paths') }}
                 <v-chip
-                  class="ml-2 EnvSyncPathsCount"
+                  class="ms-2 EnvSyncPathsCount"
                   variant="outlined"
                   style="transform: translateY(-1px)"
                   color="primary"
@@ -361,16 +361,18 @@
 
         <v-dialog v-model="syncSettingsDialog" max-width="500" persistent>
           <v-card data-testid="varGroupSyncDialog">
-            <v-card-title data-testid="varGroupSyncDialog-title">Sync paths</v-card-title>
+            <v-card-title data-testid="varGroupSyncDialog-title">
+              {{ $t('sync_paths') }}
+            </v-card-title>
             <v-card-text class="pt-4 pb-0">
               <v-text-field
                 style="width: 140px"
                 v-model.number="item.sync_interval"
                 min="0"
-                :label="$t('Auto-sync interval')"
+                :label="$t('auto_sync_interval')"
                 persistent-hint
                 :disabled="formSaving"
-                suffix="minutes"
+                :suffix="$t('minutes')"
                 variant="outlined"
                 density="compact"
                 class="EnvSyncInterval"
@@ -407,7 +409,7 @@
               max-width="400"
             >
               <template v-slot:activator="{ props }">
-                <v-icon class="ml-1" v-bind="props" data-testid="varGroup-secretVarsHelp"
+                <v-icon class="ms-1" v-bind="props" data-testid="varGroup-secretVarsHelp"
                   >mdi-help-box </v-icon>
               </template>
               <div>
@@ -433,7 +435,7 @@
             v-if="secrets.filter((s) => !s.remove && s.type === 'var').length > 0"
             data-testid="varGroup-secretVarsWarning"
           >
-            Secrets passed this way may appear in plain text in Ansible logs.
+            {{ $t('secret_vars_log_warning') }}
           </v-alert>
 
           <v-data-table
@@ -689,7 +691,7 @@
     font-size: 18px;
   }
   position: absolute;
-  right: 68px;
+  inset-inline-end: 68px;
 }
 </style>
 <script>
@@ -944,10 +946,10 @@ export default {
       secretTableHeaders: [{ key: 'name' }, { key: 'value' }, { key: 'actions', sortable: false }],
 
       extraVarTypes: [
-        { text: 'String', value: 'string' },
-        { text: 'Number', value: 'number' },
-        { text: 'List', value: 'list' },
-        { text: 'Dict', value: 'dict' },
+        { text: this.$t('string_type'), value: 'string' },
+        { text: this.$t('number_type'), value: 'number' },
+        { text: this.$t('list_type'), value: 'list' },
+        { text: this.$t('dict_type'), value: 'dict' },
       ],
 
       secretStorages: null,

@@ -1,7 +1,7 @@
 <template>
   <v-progress-circular
     color="white"
-    class="indeterminate-progress-circular mr-2"
+    class="indeterminate-progress-circular me-2"
     size="20"
     width="10"
     :rotate="rotate"

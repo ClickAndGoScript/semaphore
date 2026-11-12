@@ -23,7 +23,7 @@
             <RestoreProjectForm item-id="new" ref="editForm" @save="onSave" />
         </div>
 
-        <div class="text-right">
+        <div class="text-end">
             <v-btn
               color="primary"
               @click="restoreProject()"
