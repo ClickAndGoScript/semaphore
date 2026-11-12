@@ -56,7 +56,7 @@
       <v-menu location="bottom" :offset="[0, 4]">
         <template v-slot:activator="{ props }">
           <v-btn
-            class="pr-2"
+            class="pe-2"
             v-bind="props"
             color="primary"
             variant="elevated"
@@ -167,7 +167,9 @@
             >
               <div class="SecretStoragesEnterpriseMenu__button">
                 Enterprise
-                <v-icon color="white" size="small" class="ml-1">mdi-arrow-right</v-icon>
+                <v-icon color="white" size="small" class="ms-1">
+                  {{ $vuetify.locale.isRtl ? 'mdi-arrow-left' : 'mdi-arrow-right' }}
+                </v-icon>
               </div>
             </a>
           </div>
@@ -175,7 +177,7 @@
       </v-menu>
     </v-toolbar>
 
-    <v-tabs class="pl-4" data-testid="secretStorages-tabs">
+    <v-tabs class="ps-4" data-testid="secretStorages-tabs">
       <v-tab key="keys" :to="`/project/${projectId}/keys`" data-testid="keystore-keys">
         Keys
       </v-tab>
@@ -198,7 +200,7 @@
       class="PageAlert"
       data-testid="secretStorages-proAlert"
     >
-      <span class="mr-1" v-html="$t('secret_storage_only_pro')"></span>
+      <span class="me-1" v-html="$t('secret_storage_only_pro')"></span>
 
       <v-btn
         v-if="isAdmin"
@@ -224,11 +226,11 @@
       :data-state="items.length === 0 ? 'empty' : 'ready'"
     >
       <template v-slot:item.name="{ item }">
-        <v-icon class="mr-3" size="small" :data-testid="`secretStorages-rowIcon-${item.type}`">
+        <v-icon class="me-3" size="small" :data-testid="`secretStorages-rowIcon-${item.type}`">
           {{ getIcon(item.type) }}
         </v-icon>
 
-        <span class="mr-2" data-testid="secretStorages-rowName">{{ item.name }}</span>
+        <span class="me-2" data-testid="secretStorages-rowName">{{ item.name }}</span>
 
         <v-chip
           v-if="item.readonly"

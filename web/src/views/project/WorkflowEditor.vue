@@ -52,7 +52,7 @@
           v-if="item != null && item.revision"
           size="x-small"
           variant="outlined"
-          class="WorkflowEditor__chip ml-3"
+          class="WorkflowEditor__chip ms-3"
           :title="$t('workflowRevisionHint')"
           data-testid="workflowEditor-revision"
         >{{ $t('workflowRevisionLabel', { number: item.revision }) }}</v-chip>
@@ -62,7 +62,7 @@
               size="x-small"
               variant="outlined"
               color="warning"
-              class="WorkflowEditor__chip ml-2"
+              class="WorkflowEditor__chip ms-2"
               v-bind="props"
               data-testid="workflowEditor-activeRuns"
             >
@@ -93,7 +93,7 @@
         variant="text"
         :disabled="!canRedo"
         :title="$t('workflowRedo')"
-        class="mr-2"
+        class="me-2"
         @click="redo()"
         data-testid="workflowEditor-redo"
       >
@@ -118,7 +118,7 @@
             size="small"
             variant="outlined"
             color="warning"
-            class="WorkflowEditor__chip mr-4"
+            class="WorkflowEditor__chip me-4"
             v-bind="props"
             data-testid="workflowEditor-problemsMenu"
           >
@@ -149,7 +149,7 @@
         size="small"
         variant="outlined"
         color="success"
-        class="WorkflowEditor__chip mr-4"
+        class="WorkflowEditor__chip me-4"
         data-testid="workflowEditor-validationPassed"
       >
         <v-icon start size="small">mdi-check</v-icon>
@@ -197,7 +197,8 @@
           data-testid="workflowEditor-sideToggle"
         >
           <v-icon size="small">
-            {{ sideCollapsed ? 'mdi-chevron-right' : 'mdi-chevron-left' }}
+            {{ (sideCollapsed !== $vuetify.locale.isRtl)
+              ? 'mdi-chevron-right' : 'mdi-chevron-left' }}
           </v-icon>
         </button>
 
@@ -1022,7 +1023,7 @@ $worklow_pallete_width_collapsed: 60px;
     width: 280px;
     flex: 0 0 280px;
     overflow-y: auto;
-    border-right: 1px solid rgba(127, 127, 127, 0.2);
+    border-inline-end: 1px solid rgba(127, 127, 127, 0.2);
 
     // The left panel hosts the collapse tab protruding over the canvas, so it
     // must not clip overflow itself — scrolling moves to __sideScroll. z-index
@@ -1036,8 +1037,8 @@ $worklow_pallete_width_collapsed: 60px;
     &--right {
       width: 360px;
       flex: 0 0 360px;
-      border-right: none;
-      border-left: 1px solid rgba(127, 127, 127, 0.2);
+      border-inline-end: none;
+      border-inline-start: 1px solid rgba(127, 127, 127, 0.2);
     }
 
     &--collapsed {
@@ -1057,7 +1058,7 @@ $worklow_pallete_width_collapsed: 60px;
   &__sideToggle {
     position: absolute;
     top: 50%;
-    right: -20px;
+    inset-inline-end: -20px;
     transform: translateY(-50%);
     width: 20px;
     height: 48px;
@@ -1066,8 +1067,9 @@ $worklow_pallete_width_collapsed: 60px;
     justify-content: center;
     padding: 0;
     border: 1px solid rgba(127, 127, 127, 0.2);
-    border-left: none;
-    border-radius: 0 8px 8px 0;
+    border-inline-start: none;
+    border-start-end-radius: 8px;
+    border-end-end-radius: 8px;
     cursor: pointer;
     background: inherit;
     background: white;

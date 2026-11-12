@@ -69,7 +69,7 @@
             max-width="400"
           >
             <template v-slot:activator="{ props }">
-              <v-icon class="ml-1" v-bind="props" data-testid="varGroup-varsHelp"
+              <v-icon class="ms-1" v-bind="props" data-testid="varGroup-varsHelp"
                 >mdi-help-box </v-icon>
             </template>
             <div>
@@ -90,21 +90,21 @@
             <v-btn
               value="table"
               size="small"
-              class="mr-0"
+              class="me-0"
               style="border-radius: 4px"
               data-testid="varGroup-extraVarsMode-table"
             > {{ $t('table') }} </v-btn>
             <v-btn
               value="json"
               size="small"
-              class="mr-0"
+              class="me-0"
               style="border-radius: 4px"
               data-testid="varGroup-extraVarsMode-json"
             > JSON </v-btn>
             <v-btn
               value="yaml"
               size="small"
-              class="mr-0"
+              class="me-0"
               style="border-radius: 4px"
               data-testid="varGroup-extraVarsMode-yaml"
             > YAML </v-btn>
@@ -133,7 +133,7 @@
             v-model="json"
             type="json"
             v-if="extraVarsEditMode === 'json'"
-            style="position: absolute; right: 10px; top: 0; margin: 10px"
+            style="position: absolute; inset-inline-end: 10px; top: 0; margin: 10px"
             test-id="varGroup-extraVarsJsonEditor"
           />
         </div>
@@ -155,7 +155,7 @@
             v-model="yaml"
             type="yaml"
             v-if="extraVarsEditMode === 'yaml'"
-            style="position: absolute; right: 10px; top: 0; margin: 10px"
+            style="position: absolute; inset-inline-end: 10px; top: 0; margin: 10px"
             test-id="varGroup-extraVarsYamlEditor"
           />
         </div>
@@ -216,7 +216,7 @@
                       v-if="props.item.type === 'list' || props.item.type === 'dict'"
                       v-model="props.item.value"
                       :type="props.item.type === 'list' ? 'json_array' : 'json'"
-                      class="ml-1 EnvVarExpandBtn"
+                      class="ms-1 EnvVarExpandBtn"
                       test-id="varGroup-varValueEditor"
                     />
                   </div>
@@ -314,7 +314,7 @@
           "
         >
           <div style="font-weight: bold; font-size: 20px" data-testid="varGroup-secretStorageName">
-            <v-icon size="small" class="mr-1">{{ getIcon(secretStorage.type) }}</v-icon>
+            <v-icon size="small" class="me-1">{{ getIcon(secretStorage.type) }}</v-icon>
             {{ secretStorage.name }}
           </div>
           <pre
@@ -333,7 +333,7 @@
 
             <div class="d-flex align-center">
               <v-btn
-                style="margin-right: -10px"
+                style="margin-inline-end: -10px"
                 class="EnvSyncPaths"
                 variant="text"
                 color="primary"
@@ -345,7 +345,7 @@
                 <v-icon start>mdi-cog-sync</v-icon>
                 {{ $t('sync_paths') }}
                 <v-chip
-                  class="ml-2 EnvSyncPathsCount"
+                  class="ms-2 EnvSyncPathsCount"
                   variant="outlined"
                   style="transform: translateY(-1px)"
                   color="primary"
@@ -409,7 +409,7 @@
               max-width="400"
             >
               <template v-slot:activator="{ props }">
-                <v-icon class="ml-1" v-bind="props" data-testid="varGroup-secretVarsHelp"
+                <v-icon class="ms-1" v-bind="props" data-testid="varGroup-secretVarsHelp"
                   >mdi-help-box </v-icon>
               </template>
               <div>
@@ -691,7 +691,7 @@
     font-size: 18px;
   }
   position: absolute;
-  right: 68px;
+  inset-inline-end: 68px;
 }
 </style>
 <script>

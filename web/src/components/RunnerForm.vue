@@ -54,7 +54,7 @@
         variant="flat"
         size="small"
         label
-        style="position: absolute; top: -10px; right: 15px"
+        style="position: absolute; top: -10px; inset-inline-end: 15px"
         @click="upgradeToPro('runners')"
         data-testid="runner-tagsUpgrade"
       >
@@ -72,7 +72,7 @@
         <v-checkbox v-model="item.is_default" data-testid="runner-isDefault">
           <template v-slot:label>
             {{ $t('is_default') }}
-            <v-chip class="ml-2" color="error" size="small" variant="flat">{{ $t('new') }}</v-chip>
+            <v-chip class="ms-2" color="error" size="small" variant="flat">{{ $t('new') }}</v-chip>
           </template>
         </v-checkbox>
       </v-col>
@@ -84,7 +84,7 @@
         >
           <template v-slot:label>
             {{ $t('register') }}
-            <v-chip class="ml-2" color="error" size="small" variant="flat">{{ $t('new') }}</v-chip>
+            <v-chip class="ms-2" color="error" size="small" variant="flat">{{ $t('new') }}</v-chip>
           </template>
         </v-checkbox>
       </v-col>
@@ -123,7 +123,7 @@
     ></v-text-field>
 
     <v-checkbox
-      style="position: absolute; left: 24px; bottom: 15px"
+      style="position: absolute; inset-inline-start: 24px; bottom: 15px"
       class="mt-0"
       v-model="item.active"
       :label="$t('enabled')"

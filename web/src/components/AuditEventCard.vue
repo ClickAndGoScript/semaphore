@@ -203,8 +203,8 @@ export default {
 
   th {
     width: 40%;
-    padding: 2px 8px 2px 0;
-    text-align: left;
+    padding-block: 2px; padding-inline: 0 8px;
+    text-align: start;
     vertical-align: top;
     font-weight: normal;
     opacity: 0.7;

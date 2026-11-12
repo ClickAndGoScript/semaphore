@@ -35,7 +35,7 @@
         >
           {{ $t('workflows') }}
         </router-link>
-        <v-icon>mdi-chevron-right</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}</v-icon>
         <span class="breadcrumbs__item" data-testid="workflow-name">{{ item.name }}</span>
       </v-toolbar-title>
 
@@ -45,7 +45,7 @@
         v-if="canRun"
         color="primary"
         variant="flat"
-        class="mr-3"
+        class="me-3"
         @click="runWorkflow()"
         data-testid="workflow-run"
       >

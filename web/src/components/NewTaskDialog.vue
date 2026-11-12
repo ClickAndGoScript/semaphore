@@ -10,11 +10,13 @@
     <template #title>
       <v-icon
         size="small"
-        class="mr-4 NewTaskDialog__icon"
+        class="me-4 NewTaskDialog__icon"
         data-testid="newTask-templateTypeIcon"
       >{{ TEMPLATE_TYPE_ICONS[template?.type || ''] }}</v-icon>
       <span class="breadcrumbs__item" data-testid="newTask-templateName">{{ templateTitle }}</span>
-      <v-icon class="NewTaskDialog__icon">mdi-chevron-right</v-icon>
+      <v-icon class="NewTaskDialog__icon">
+        {{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}
+      </v-icon>
       <span class="breadcrumbs__item" data-testid="newTask-title">{{ $t('newTask') }}</span>
     </template>
 

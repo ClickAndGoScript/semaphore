@@ -40,8 +40,8 @@
     />
 
     <v-toolbar flat>
-      <v-btn icon variant="text" class="mr-4" @click="returnToProjects()" data-testid="users-back">
-        <v-icon>mdi-arrow-left</v-icon>
+      <v-btn icon variant="text" class="me-4" @click="returnToProjects()" data-testid="users-back">
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}</v-icon>
       </v-btn>
       <v-toolbar-title data-testid="users-title">{{ $t('users') }}</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -117,7 +117,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="askDeleteItem(item.id)"
             data-testid="users-rowDelete"
           >
@@ -127,7 +127,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="editItem(item.id)"
             data-testid="users-rowEdit"
           >

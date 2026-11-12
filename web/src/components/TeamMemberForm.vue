@@ -25,7 +25,7 @@
         <v-btn
           value="email"
           size="small"
-          class="mr-0"
+          class="me-0"
           style="border-radius: 4px;"
           data-testid="teamMember-inviteType-email"
         >
@@ -34,7 +34,7 @@
         <v-btn
           value="username"
           size="small"
-          class="mr-0"
+          class="me-0"
           style="border-radius: 4px;"
           data-testid="teamMember-inviteType-username"
         >
@@ -146,14 +146,15 @@
 .TeamMemberForm__inviteType > .v-btn {
   height: 28px;
   min-width: auto;
-  margin: 4px 0 4px 4px;
+  margin-block: 4px;
+  margin-inline: 4px 0;
   // The transparent thin frame of a toggle button, without the left side after the first
   // (`.v-btn-toggle > .v-btn.v-btn`).
   border: thin solid transparent;
   opacity: .8;
 
   &:not(:first-child) {
-    border-left-width: 0;
+    border-inline-start-width: 0;
   }
 
   &.v-btn--active {

@@ -49,7 +49,7 @@
       data-testid="globalRoles-licenseAlert"
     >
       <span
-        class="mr-1"
+        class="me-1"
         v-html="$t('global_roles_only_pro')"
         data-testid="globalRoles-licenseAlertText"
       ></span>
@@ -110,7 +110,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="askDeleteItem(item.id)"
             data-testid="globalRoles-rowDelete"
           >
@@ -120,7 +120,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="editItem(item.id)"
             data-testid="globalRoles-rowEdit"
           >

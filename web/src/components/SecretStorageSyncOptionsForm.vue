@@ -53,7 +53,7 @@
       <v-btn
         icon
         variant="text"
-        class="ml-1 mt-1"
+        class="ms-1 mt-1"
         @click="removePath(i)"
         data-testid="secretStorageSync-removePath"
       >
@@ -65,7 +65,7 @@
       variant="text"
       color="primary"
       @click="addPath"
-      style="position: absolute; left: 12px; bottom: 12px"
+      style="position: absolute; inset-inline-start: 12px; bottom: 12px"
       data-testid="secretStorageSync-addPath"
     >
       <v-icon start>mdi-plus</v-icon>

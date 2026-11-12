@@ -25,7 +25,7 @@
          has no negative margins). -->
     <v-row class="mb-n3">
       <v-col cols="12" md="12" class="pb-0">
-        <div class="ml-4 mr-4 mt-6">
+        <div class="ms-4 me-4 mt-6">
           <v-select
             v-model="item.value_source"
             data-testid="integrationValueForm-valueSource"

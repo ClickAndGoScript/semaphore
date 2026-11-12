@@ -12,7 +12,7 @@
         >
           {{ $t('workflows') }}
         </router-link>
-        <span class="ml-2" data-testid="workflowRun-name">
+        <span class="ms-2" data-testid="workflowRun-name">
           / {{ workflow ? workflow.name : $t('workflowRun') }} #{{ runId }}
           <span
             v-if="details && details.run.version"
@@ -38,7 +38,7 @@
         v-if="details"
         :color="statusColor(details.run.status)"
         size="small"
-        class="WorkflowRun__status mr-3"
+        class="WorkflowRun__status me-3"
         :data-testid="`workflowRun-status-${details.run.status}`"
       >{{ details.run.status }}</v-chip>
 
@@ -47,7 +47,7 @@
         color="error"
         size="small"
         variant="outlined"
-        class="mr-3"
+        class="me-3"
         :loading="stopping"
         @click="stopRun()"
         data-testid="workflowRun-stop"
@@ -75,7 +75,7 @@
       data-testid="workflowRun-vars"
     >
       <span
-        class="text-body-small text-medium-emphasis mr-2"
+        class="text-body-small text-medium-emphasis me-2"
         data-testid="workflowRun-varsTitle"
       >{{ $t('workflowRunVariables') }}</span>
       <v-chip
@@ -84,7 +84,7 @@
         size="x-small"
         label
         variant="outlined"
-        class="WorkflowRun__var mr-1 mb-1"
+        class="WorkflowRun__var me-1 mb-1"
         :title="`${v.name} = ${v.value}`"
         :data-testid="`workflowRun-var-${v.name}`"
       >
@@ -126,20 +126,20 @@
             >
               <div class="WorkflowRun__approvalText" data-testid="workflowRun-approvalText">
                 <strong>#{{ a.nodeId }}</strong>
-                <span class="ml-2">{{ a.message || $t('workflowApprovalPending') }}</span>
+                <span class="ms-2">{{ a.message || $t('workflowApprovalPending') }}</span>
               </div>
               <v-spacer />
               <v-btn
                 size="small"
                 color="success"
-                class="ml-3"
+                class="ms-3"
                 @click="resolveApproval(a.nodeId, 'approved')"
                 data-testid="workflowRun-approvalApprove"
               >{{ $t('workflowApprove') }}</v-btn>
               <v-btn
                 size="small"
                 color="error"
-                class="ml-2"
+                class="ms-2"
                 @click="resolveApproval(a.nodeId, 'rejected')"
                 data-testid="workflowRun-approvalReject"
               >{{ $t('workflowReject') }}</v-btn>
@@ -219,7 +219,7 @@
   &__approval {
     display: flex;
     align-items: center;
-    border-left: 3px solid #ff9800 !important;
+    border-inline-start: 3px solid #ff9800 !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
   }
 

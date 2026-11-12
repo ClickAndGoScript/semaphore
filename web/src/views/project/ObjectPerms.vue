@@ -29,7 +29,7 @@
       data-testid="templatePerms-licenseAlert"
     >
       <span
-        class="mr-1"
+        class="me-1"
         v-html="$t('roles_only_enterprise')"
         data-testid="templatePerms-licenseText"
       ></span>
@@ -54,7 +54,7 @@
       :disabled="!features.custom_roles_management"
       color="primary"
       @click="editItem('new')"
-      style="position: absolute; right: 16px"
+      style="position: absolute; inset-inline-end: 16px"
       data-testid="templatePerms-new"
       >{{ $t('Add Role') }}
     </v-btn>
@@ -82,7 +82,7 @@
             v-if="getRole(item.role_slug)"
             size="x-small"
             label
-            class="ml-2 template-perms__scope"
+            class="ms-2 template-perms__scope"
             data-testid="templatePerms-rowScope"
           >
             {{ $t(roleScope(getRole(item.role_slug))) }}
@@ -126,7 +126,7 @@
   column-gap: 0;
 
   > .v-data-table__td-title {
-    padding-right: 16px;
+    padding-inline-end: 16px;
   }
 }
 

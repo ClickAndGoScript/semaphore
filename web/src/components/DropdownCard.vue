@@ -10,7 +10,7 @@
         width: 28px;
         height: 28px;
         transform: rotate(45deg);
-        left: calc(50% - 14px);
+        inset-inline-start: calc(50% - 14px);
         top: -14px;
         border-radius: 0;
       "

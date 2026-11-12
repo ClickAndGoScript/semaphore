@@ -8,11 +8,11 @@
       <v-btn
         icon
         variant="text"
-        class="mr-4"
+        class="me-4"
         @click="returnToProjects()"
         data-testid="activeTasks-back"
       >
-        <v-icon>mdi-arrow-left</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}</v-icon>
       </v-btn>
       <v-toolbar-title data-testid="activeTasks-title">{{ $t('activeTasks') }}</v-toolbar-title>
     </v-toolbar>
@@ -48,7 +48,7 @@
       </template>
 
       <template v-slot:item.status="{item}">
-        <div class="pr-4">
+        <div class="pe-4">
           <TaskStatus :status="item.status" data-testid="activeTasks-rowStatus"/>
         </div>
       </template>
@@ -72,7 +72,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="deleteItem(item.task_id)"
             data-testid="activeTasks-rowStop"
           >

@@ -157,7 +157,7 @@
               <div class="text-center">
                 <a
                   @click="signOut()"
-                  class="mr-6 text-primary cursor-pointer"
+                  class="me-6 text-primary cursor-pointer"
                   data-testid="auth-returnToLogin"
                 >{{ $t('Return to login') }}</a>
                 <a
@@ -373,11 +373,11 @@
   }
 
   &:before {
-    margin-right: 10px;
+    margin-inline-end: 10px;
   }
 
   &:after {
-    margin-left: 10px;
+    margin-inline-start: 10px;
   }
 }
 // Sign-in / LDAP tabs as the borderless `v-btn-toggle` of Vuetify 2 with small buttons: 28 px

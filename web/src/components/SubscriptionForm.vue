@@ -30,7 +30,7 @@
           data-testid="subscription-proUserNo"
           color="primary"
           :disabled="formSaving"
-          style="width: calc(50% - 5px); margin-right: 10px"
+          style="width: calc(50% - 5px); margin-inline-end: 10px"
         >
           {{ $t('no') }}
         </v-btn>
@@ -96,7 +96,7 @@
             data-testid="subscription-actionsMenu"
             size="40"
             class="SubscriptionForm__fab"
-            style="position: absolute; top: 15px; right: -15px"
+            style="position: absolute; top: 15px; inset-inline-end: -15px"
           >
             <v-icon>mdi-dots-horizontal</v-icon>
           </v-btn>
@@ -130,7 +130,7 @@
         icon
         size="40"
         class="SubscriptionForm__fab"
-        style="position: absolute; top: 30px; right: -15px"
+        style="position: absolute; top: 30px; inset-inline-end: -15px"
         @click="uploadKeyFile()"
         data-testid="subscription-upload"
       >
@@ -244,7 +244,7 @@
                       border-radius: 100px;
                       width: 8px;
                       height: 8px;
-                      margin-right: 5px;
+                      margin-inline-end: 5px;
                       margin-top: 1px;
                     "
                     :style="{

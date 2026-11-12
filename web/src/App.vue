@@ -139,7 +139,7 @@
     <v-navigation-drawer
       theme="dark"
       :color="darkMode ? '#003236' : '#005057'"
-      :location="isRtl ? 'right' : 'left'"
+      location="start"
       width="260"
       v-model="drawer"
       :mobile-breakpoint="960"
@@ -407,9 +407,10 @@
             <v-spacer />
 
             <!-- At the point (50, 0) of the window, as `absolute :position-x="50"` of Vuetify 2:
-                 the menu opens at the top of the window, 50 px from its left edge. -->
+                 the menu opens at the top of the window, 50 px from the drawer's edge
+                 (see langMenuTarget). -->
             <v-menu
-              :target="[50, 0]"
+              :target="langMenuTarget"
               location="bottom start"
               min-width="150"
               max-width="235"
@@ -984,19 +985,23 @@ html.WorkflowEditor-html body {
     .v-switch__track {
       position: absolute;
       top: 0;
-      left: -3px;
+      inset-inline-start: -3px;
       opacity: 0.32;
     }
 
     // The input is 30 px round the 18 px thumb.
     .v-selection-control__input {
       top: -4px;
-      left: -6px;
+      inset-inline-start: -6px;
       transform: none;
     }
 
     .v-selection-control--dirty .v-selection-control__input {
       transform: translateX(20px);
+    }
+
+    html[dir='rtl'] & .v-selection-control--dirty .v-selection-control__input {
+      transform: translateX(-20px);
     }
   }
 
@@ -1006,13 +1011,13 @@ html.WorkflowEditor-html body {
     transform: translateY(-50%);
     pointer-events: none;
     color: #fff !important;
-    transition: left 0.2s ease;
+    transition: inset-inline-start 0.2s ease;
     // On the thumb, as in Vuetify 2 (off: at 0 px, on: at 20 px).
-    left: 1px;
+    inset-inline-start: 1px;
   }
 
   &--dark .DarkModeSwitchWrap__icon {
-    left: 22px;
+    inset-inline-start: 22px;
   }
 }
 
@@ -1081,24 +1086,22 @@ html.WorkflowEditor-html body {
 // Tables: `.v-table` is the root of both v-data-table and v-table (v-simple-table in Vuetify 2,
 // which drew `.v-data-table` too).
 .v-data-table .v-data-table-footer {
-  margin-left: 16px !important;
-  margin-right: 16px !important;
+  margin-inline: 16px !important;
 }
 
 .v-table__wrapper {
-  padding-left: 16px !important;
-  padding-right: 16px !important;
+  padding-inline: 16px !important;
 }
 
 .v-table {
   td:first-child,
   th:first-child {
-    padding-left: 2px !important;
+    padding-inline-start: 2px !important;
   }
 
   td:last-child,
   th:last-child {
-    padding-right: 2px !important;
+    padding-inline-end: 2px !important;
   }
 
   // The header row is the last one of the head; while the table loads Vuetify 4 adds its progress
@@ -1440,6 +1443,11 @@ export default {
   },
 
   computed: {
+    // The point 50 px in from the drawer's edge: the left edge of the window, the right one in RTL.
+    langMenuTarget() {
+      return [this.$vuetify.locale.isRtl ? window.innerWidth - 50 : 50, 0];
+    },
+
     isPro() {
       return (process.env.VUE_APP_BUILD_TYPE || '').startsWith('pro_');
     },

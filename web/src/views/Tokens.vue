@@ -64,8 +64,8 @@
     </v-dialog>
 
     <v-toolbar flat>
-      <v-btn icon variant="text" class="mr-4" @click="returnToProjects()" data-testid="tokens-back">
-        <v-icon>mdi-arrow-left</v-icon>
+      <v-btn icon variant="text" class="me-4" @click="returnToProjects()" data-testid="tokens-back">
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}</v-icon>
       </v-btn>
       <v-toolbar-title
         class="flex-0-1"
@@ -75,7 +75,7 @@
 
       <a
         :href="`${systemInfo?.web_host || ''}/swagger/index.html`"
-        class="mr-6"
+        class="me-6"
         target="_blank"
         data-testid="tokens-apiReference"
       >
@@ -105,10 +105,10 @@
       <template v-slot:item.id="{ item }">
         <code
           v-if="item.token_id && item.show_token_id"
-          class="mr-2"
+          class="me-2"
           data-testid="tokens-rowToken"
         >{{ item.token_id }}</code>
-        <code v-else class="mr-2" data-testid="tokens-rowId">{{ item.id }}***</code>
+        <code v-else class="me-2" data-testid="tokens-rowId">{{ item.id }}***</code>
 
         <v-btn
           icon
@@ -149,7 +149,7 @@
       </template>
 
       <template v-slot:item.expired="{ item }">
-        <div class="pr-4">
+        <div class="pe-4">
           <v-chip
             v-if="item.expired"
             style="font-weight: bold"
@@ -185,7 +185,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="deleteItem(item.id)"
             data-testid="tokens-rowDelete"
           >
@@ -216,11 +216,11 @@
     column-gap: 0;
 
     > .v-data-table__td-title {
-      padding-right: 16px;
+      padding-inline-end: 16px;
     }
 
     > .v-data-table__td-value {
-      text-align: right;
+      text-align: end;
     }
   }
 }

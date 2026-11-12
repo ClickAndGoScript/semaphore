@@ -68,7 +68,7 @@
       :data-state="aliases == null ? 'loading' : (aliases.length === 0 ? 'empty' : 'ready')"
     >
       <div
-        class="mb-3 pl-1"
+        class="mb-3 ps-1"
         v-if="(aliases || []).length === 0"
         data-testid="integrations-aliasesEmpty"
       >{{ $t('no_aliases') }}</div>
@@ -79,7 +79,7 @@
         :key="alias.id"
         data-testid="integrations-alias"
       >
-        <code class="mr-2" data-testid="integrations-aliasUrl">{{ alias.url }}</code>
+        <code class="me-2" data-testid="integrations-aliasUrl">{{ alias.url }}</code>
 
         <CopyClipboardButton
           :text="alias.url"
@@ -135,7 +135,7 @@
           class="IntegrationsTarget IntegrationsTarget--workflow"
           data-testid="integrations-rowTarget-workflow"
         >
-          <v-icon size="small" class="mr-1">mdi-graph-outline</v-icon>
+          <v-icon size="small" class="me-1">mdi-graph-outline</v-icon>
           {{ (workflows.find((w) => w.id === item.workflow_id) || { name: '—' }).name }}
         </router-link>
         <router-link
@@ -144,7 +144,7 @@
           class="IntegrationsTarget IntegrationsTarget--template"
           data-testid="integrations-rowTarget-template"
         >
-          <v-icon size="small" class="mr-1">mdi-check-all</v-icon>
+          <v-icon size="small" class="me-1">mdi-check-all</v-icon>
           {{ (templates.find((t) => t.id === item.template_id) || { name: '—' }).name }}
         </router-link>
       </template>

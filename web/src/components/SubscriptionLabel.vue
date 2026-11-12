@@ -3,7 +3,7 @@
         style="
         background: #f14668;
         color: white;
-        margin-left: 20px;
+        margin-inline-start: 20px;
         padding: 2px 8px 2px;
         border-radius: 6px;
         font-size: 16px;

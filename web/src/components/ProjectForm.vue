@@ -62,7 +62,7 @@
       v-if="itemId === 'new' && !hideDemoSwitch"
       v-model="item.demo"
       :label="$t('demo')"
-      style="position: absolute; left: 24px; bottom: 15px"
+      style="position: absolute; inset-inline-start: 24px; bottom: 15px"
       hide-details
     />
   </v-form>

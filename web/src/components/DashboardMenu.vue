@@ -1,6 +1,6 @@
 <template>
   <div class="DashboardMenu" data-testid="dashboard-menu">
-    <v-tabs class="pl-4" data-testid="dashboard-tabs">
+    <v-tabs class="ps-4" data-testid="dashboard-tabs">
       <v-tab
         v-if="projectType === ''"
         key="history"

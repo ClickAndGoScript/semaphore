@@ -28,7 +28,7 @@
             color="success"
             style="
             position: absolute;
-            right: 70px;
+            inset-inline-end: 70px;
             top: 0;
             margin: 10px;
           "
@@ -45,7 +45,7 @@
             color="blue-grey"
             style="
             position: absolute;
-            right: 20px;
+            inset-inline-end: 20px;
             top: 0;
             margin: 10px;
           "

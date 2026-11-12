@@ -91,11 +91,11 @@
 
     <div
       v-if="!hideFooter"
-      class="d-flex align-center justify-end mt-2 mr-2 mb-4 TaskListPagination"
+      class="d-flex align-center justify-end mt-2 me-2 mb-4 TaskListPagination"
       data-testid="taskList-pagination"
     >
       <span
-        class="text-medium-emphasis mr-2"
+        class="text-medium-emphasis me-2"
         data-testid="taskList-perPageLabel"
       >{{ $t('rowsPerPage') }}</span>
 
@@ -103,7 +103,7 @@
         v-model="perPage"
         :disabled="loading"
         :items="perPageOptions"
-        class="TaskListPerPage mr-4"
+        class="TaskListPerPage me-4"
         density="compact"
         variant="underlined"
         hide-details
@@ -118,7 +118,7 @@
         @click="goPrev()"
         data-testid="taskList-prevPage"
       >
-        <v-icon>mdi-chevron-left</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-chevron-right' : 'mdi-chevron-left' }}</v-icon>
       </v-btn>
 
       <span
@@ -133,7 +133,7 @@
         @click="goNext()"
         data-testid="taskList-nextPage"
       >
-        <v-icon>mdi-chevron-right</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}</v-icon>
       </v-btn>
     </div>
   </div>

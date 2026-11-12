@@ -46,17 +46,17 @@
       <v-chip
         v-for="x in ['ssh', 'http', 'https', 'file', 'git']"
         size="x-small"
-        class="ml-1 RepositoryForm__urlType"
+        class="ms-1 RepositoryForm__urlType"
         :color="type ===x ? 'primary' : ''"
         @click="setType(x)"
         style="font-weight: bold;"
         :key="x"
         :data-testid="`repository-urlType-${x}`"
       >{{ x }}</v-chip>
-      <span class="text-body-small ml-3">local:</span>
+      <span class="text-body-small ms-3">local:</span>
       <v-chip
         size="x-small"
-        class="ml-1 RepositoryForm__urlType"
+        class="ms-1 RepositoryForm__urlType"
         :color="type ==='local' ? 'primary' : ''"
         @click="setType('local')"
         style="font-weight: bold;"
@@ -104,7 +104,7 @@
       <template v-slot:append>
         <!-- viewport-margin 4: on a phone the tooltip keeps the width of Vuetify 2, which pushed
              it only off the left edge (12 px), not off both -->
-        <v-tooltip location="left" content-class="opacity1 bg-black" viewport-margin="4">
+        <v-tooltip location="start" content-class="opacity1 bg-black" viewport-margin="4">
           <template v-slot:activator="{ props }">
             <v-icon
               v-bind="props"
@@ -116,9 +116,9 @@
           <div class="py-4" data-testid="repository-sshKeyHelpText">
             <!-- mb-4: the paragraph margin of Vuetify 2 (.v-application p) -->
             <p class="mb-4">{{ $t('credentialsToAccessToTheGitRepositoryItShouldBe') }}</p>
-            <!-- pl-6: the list indent of Vuetify 2 (.v-application ul); Vuetify 3 has none,
+            <!-- ps-6: the list indent of Vuetify 2 (.v-application ul); Vuetify 3 has none,
                  without it the bullets fall out of the tooltip box -->
-            <ul class="pl-6">
+            <ul class="ps-6">
               <li><code>{{ $t('ssh') }}</code> {{ $t('ifYouUseGitOrSshUrl') }}</li>
               <li><code>{{ $t('none') }}</code> {{ $t('ifYouUseHttpsOrFileUrl') }}</li>
             </ul>

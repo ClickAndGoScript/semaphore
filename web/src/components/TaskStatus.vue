@@ -15,7 +15,7 @@
     />
     <IndeterminateProgressCircular
       v-else
-      style="margin-left: -5px;"
+      style="margin-inline-start: -5px;"
       :data-testid="`taskStatus-${status}`"
     />
     {{ humanizeStatus(status) }}

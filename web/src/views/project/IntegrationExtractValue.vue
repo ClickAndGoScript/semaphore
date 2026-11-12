@@ -94,7 +94,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="askDeleteItem(item.id)"
             data-testid="integrationValue-rowDelete"
           >
@@ -104,7 +104,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="editItem(item.id)"
             data-testid="integrationValue-rowEdit"
           >

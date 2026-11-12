@@ -134,12 +134,12 @@
               :key="key"
               :data-testid="`templateForm-tab-${key || 'task'}`"
             >
-              <v-icon size="small" class="mr-2">{{ TEMPLATE_TYPE_ICONS[key] }}</v-icon>
+              <v-icon size="small" class="me-2">{{ TEMPLATE_TYPE_ICONS[key] }}</v-icon>
               {{ $t(TEMPLATE_TYPE_TITLES[key]) }}
             </v-tab>
           </v-tabs>
 
-          <div class="ml-4 mr-4 mt-6 TemplateForm__typeFields" v-if="item.type">
+          <div class="ms-4 me-4 mt-6 TemplateForm__typeFields" v-if="item.type">
             <v-text-field
               v-if="item.type === 'build'"
               v-model="item.start_version"
@@ -218,7 +218,7 @@
               <span
                 v-bind="props"
                 :tabindex="isMonorepo ? 0 : null"
-                style="position: absolute; right: 45px; top: 8px"
+                style="position: absolute; inset-inline-end: 45px; top: 8px"
               >
                 <v-chip
                   v-if="gitBranch"
@@ -250,7 +250,7 @@
               width: 28px;
               height: 28px;
               transform: rotate(45deg);
-              right: 55px;
+              inset-inline-end: 55px;
               top: -14px;
               border-radius: 0;
             "
@@ -447,7 +447,7 @@
               class="text-white TemplateForm__smallChip"
               size="small"
               label
-              style="position: absolute; top: -10px; right: 15px"
+              style="position: absolute; top: -10px; inset-inline-end: 15px"
               @click="upgradeToPro('docker_executor')"
               data-testid="templateForm-executorImageUpgrade"
             >
@@ -476,7 +476,7 @@
               <template v-slot:label>
                 {{ $t('jwt_enabled') }}
                 <v-chip
-                  class="ml-2 TemplateForm__smallChip"
+                  class="ms-2 TemplateForm__smallChip"
                   size="small"
                   color="error"
                   data-testid="templateForm-jwtNew"
@@ -588,7 +588,7 @@
             <RichEditor
               v-model="argsJson"
               type="json_array"
-              style="position: absolute; right: -23px; top: -18px; margin: 10px"
+              style="position: absolute; inset-inline-end: -23px; top: -18px; margin: 10px"
               test-id="templateForm-argsJson"
             />
           </div>

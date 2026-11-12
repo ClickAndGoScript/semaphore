@@ -1085,6 +1085,8 @@ export default {
 @use 'workflow/palette' as *;
 
 .WorkflowGraph {
+  // The node graph keeps its LTR flow (ports, edges, pan math) in RTL locales.
+  direction: ltr;
   --wf-surface: #{$wf-surface};
   --wf-text: #{$wf-text};
   --wf-text2: #{$wf-text2};

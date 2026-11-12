@@ -12,7 +12,7 @@
       v-if="!features.task_summary"
       data-testid="taskSummary-demoAlert"
     >
-      <span class="mr-2">
+      <span class="me-2">
         <i18n-t keypath="task_summary_demo_only" tag="span">
           <template #demo><b>DEMO</b></template>
           <template #pro><b>PRO</b></template>
@@ -20,7 +20,7 @@
       </span>
 
       <v-btn
-        class="ml-2"
+        class="ms-2"
         color="hsl(348deg, 86%, 61%)"
         @click="upgradeToPro('task_summary')"
         data-testid="taskSummary-upgrade"
@@ -29,7 +29,7 @@
       </v-btn>
     </v-alert>
 
-    <div class="pl-5 pt-5 d-flex" style="column-gap: 10px">
+    <div class="ps-5 pt-5 d-flex" style="column-gap: 10px">
       <div class="AnsibleServerStatus AnsibleServerStatus--ok">
         <div
           class="AnsibleServerStatus__count"
@@ -48,7 +48,7 @@
     </div>
 
     <v-btn-toggle
-      class="AnsibleStageView__filter pl-5 mt-8 mb-3"
+      class="AnsibleStageView__filter ps-5 mt-8 mb-3"
       density="compact"
       v-model="tab"
       mandatory
@@ -222,11 +222,11 @@
 // column; Vuetify 4 has a 28 px button and 8 px. A focused icon (the one just clicked) has the
 // circle of `.v-icon--link:focus::after`: the icon colour at .12, 1.3 times the icon.
 .AnsibleStageView__errors thead th:first-child {
-  padding-right: 16px;
+  padding-inline-end: 16px;
 }
 
 .AnsibleStageView__errors .v-data-table__td--expanded-row {
-  padding-right: 16px;
+  padding-inline-end: 16px;
 
   > .v-btn {
     width: 24px;
@@ -252,7 +252,7 @@
   column-gap: 0;
 
   > .v-data-table__td-title {
-    padding-right: 16px;
+    padding-inline-end: 16px;
   }
 
   &.v-data-table__td--expanded-row {

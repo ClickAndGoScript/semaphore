@@ -35,11 +35,11 @@
       <v-btn
           icon
           variant="text"
-          class="mr-4"
+          class="me-4"
           @click="returnToProjects()"
           data-testid="apps-back"
       >
-        <v-icon>mdi-arrow-left</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}</v-icon>
       </v-btn>
       <v-toolbar-title
         class="flex-0-1"
@@ -77,7 +77,7 @@
 
       <template v-slot:item.title="{ item }">
         <v-icon
-            class="mr-2"
+            class="me-2"
             size="small"
             data-testid="apps-rowIcon"
         >
@@ -97,7 +97,7 @@
               v-if="!isDefaultApp(item.id)"
               icon
               variant="text"
-              class="mr-1"
+              class="me-1"
               @click="askDeleteItem(item.id)"
               :disabled="item.id === userId"
               data-testid="apps-rowDelete"
@@ -108,7 +108,7 @@
           <v-btn
               icon
               variant="text"
-              class="mr-1"
+              class="me-1"
               @click="editItem(item.id)"
               data-testid="apps-rowEdit"
           >
@@ -167,11 +167,11 @@
     column-gap: 0;
 
     > .v-data-table__td-title {
-      padding-right: 16px;
+      padding-inline-end: 16px;
     }
 
     > .v-data-table__td-value {
-      text-align: right;
+      text-align: end;
     }
   }
 }

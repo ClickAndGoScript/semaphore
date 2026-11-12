@@ -3,7 +3,7 @@
     <v-icon
         v-if="status != null"
         size="small"
-        class="mr-1"
+        class="me-1"
         :color="statusColor"
         :icon="`mdi-${statusIcon}`"
         :data-testid="`taskLink-status-${status}`"
@@ -13,7 +13,7 @@
 
     <v-tooltip
         v-else
-        location="right"
+        location="end"
         max-width="350"
         transition="fade-transition"
         :disabled="!tooltip"

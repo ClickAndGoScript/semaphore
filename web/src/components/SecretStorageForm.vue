@@ -314,7 +314,7 @@
       :label="$t('Read only')"
       :disabled="formSaving"
       hide-details
-      style="position: absolute; bottom: 15px; margin: 0; left: 25px"
+      style="position: absolute; bottom: 15px; margin: 0; inset-inline-start: 25px"
       data-testid="secretStorage-readonly"
     />
 
@@ -328,7 +328,7 @@
       />
 
       <v-btn
-        style="margin-right: -10px"
+        style="margin-inline-end: -10px"
         variant="text"
         color="primary"
         @click="syncSettingsDialog = true"
@@ -339,7 +339,7 @@
         <v-icon start>mdi-cog-sync</v-icon>
         {{ $t('sync_paths') }}
         <v-chip
-          class="ml-2 SecretStorageSyncPathsCount"
+          class="ms-2 SecretStorageSyncPathsCount"
           variant="outlined"
           style="transform: translateY(-1px)"
           color="primary"

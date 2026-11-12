@@ -246,7 +246,7 @@
                   </code>
 
                   <CopyClipboardButton
-                    style="position: absolute; right: -4px; top: -12px"
+                    style="position: absolute; inset-inline-end: -4px; top: -12px"
                     :text="item.totp.recovery_code"
                     large
                     color="white"
@@ -279,7 +279,7 @@
                 :key="identity.id"
                 :color="identityProvider(identity).color"
                 :title="identity.external_uid"
-                class="mr-2 mb-2 UserForm__identity"
+                class="me-2 mb-2 UserForm__identity"
                 :model-value="true"
                 @update:model-value="() => {}"
                 closable
@@ -374,7 +374,7 @@
                 v-for="provider in unlinkedOidcProviders"
                 :key="provider.id"
                 :color="provider.color || 'secondary'"
-                class="mr-3 mb-3"
+                class="me-3 mb-3"
                 rounded
                 style="width: 100%"
                 width="100%"

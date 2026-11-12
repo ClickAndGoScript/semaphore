@@ -235,7 +235,7 @@
               <template v-slot:activator="{ props }">
                 <v-icon
                   size="small"
-                  class="TaskDetails__hint ml-2"
+                  class="TaskDetails__hint ms-2"
                   v-bind="props"
                   data-testid="taskDetails-outputsHint"
                 >
@@ -281,7 +281,7 @@
                 size="x-small"
                 label
                 variant="outlined"
-                class="mr-1 mb-1"
+                class="me-1 mb-1"
                 :title="row.reason"
                 data-testid="taskDetails-outputSkipped"
               >

@@ -29,7 +29,7 @@
       class="d-flex justify-space-between align-center mb-2 IntegrationForm__target"
       data-testid="integrationForm-target"
     >
-      <b style="font-size: 13px; margin-left: 5px">{{ $t('integrationRunTarget') }}</b>
+      <b style="font-size: 13px; margin-inline-start: 5px">{{ $t('integrationRunTarget') }}</b>
       <v-btn-toggle
         :model-value="target"
         @update:model-value="setTarget($event)"
@@ -135,7 +135,7 @@
           width: 28px;
           height: 28px;
           transform: rotate(45deg);
-          left: calc(50% - 14px);
+          inset-inline-start: calc(50% - 14px);
           top: -14px;
           border-radius: 0;
         "

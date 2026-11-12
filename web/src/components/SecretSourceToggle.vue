@@ -1,6 +1,9 @@
 <template>
   <div class="d-flex justify-space-between align-center mb-2" data-testid="secretSource-toggle">
-    <b style="font-size: 13px; margin-left: 5px" data-testid="secretSource-label">{{ label }}</b>
+    <b
+      style="font-size: 13px; margin-inline-start: 5px"
+      data-testid="secretSource-label"
+    >{{ label }}</b>
     <v-btn-toggle
         data-testid="secretSource-options"
         :model-value="modelValue"

@@ -64,7 +64,7 @@
       </v-tabs>
 
       <div
-        :class="!supportStorages && sourceStorageType === 'vault' ? '' : 'ml-4 mr-4 mt-6'"
+        :class="!supportStorages && sourceStorageType === 'vault' ? '' : 'ms-4 me-4 mt-6'"
         v-if="sourceStorageType"
         data-testid="key-sourceBody"
       >
@@ -77,7 +77,7 @@
         >
           <span v-html="$t('project_runners_only_pro')"></span>
           <v-btn
-            class="ml-2"
+            class="ms-2"
             color="hsl(348deg, 86%, 61%)"
             @click="upgradeToPro()"
             data-testid="key-storageUpgrade"
@@ -260,7 +260,7 @@
         >
 
         <v-btn
-          style="position: absolute; right: 40px; top: 0; transform: scale(0.9);"
+          style="position: absolute; inset-inline-end: 40px; top: 0; transform: scale(0.9);"
           variant="text"
           @click="showPublicKey = !showPublicKey"
           data-testid="key-publicKeyToggle"
@@ -269,7 +269,7 @@
         </v-btn>
 
         <CopyClipboardButton
-          style="position: absolute; right: 0; top: 0; transform: scale(0.9);"
+          style="position: absolute; inset-inline-end: 0; top: 0; transform: scale(0.9);"
           :text="publicKey"
           test-id="key-publicKeyCopy"
         />

@@ -161,7 +161,7 @@
           <div class="mt-4">{{ $t('months') }}</div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="m in MONTHS"
               :key="m.id"
               :value="m.id"
@@ -179,7 +179,7 @@
           <div class="mt-4">{{ $t('weekdays') }}</div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="d in WEEKDAYS" :key="d.id"
               :value="d.id"
               :label="$t(d.title)"
@@ -196,7 +196,7 @@
           <div class="mt-4">{{ $t('days') }}</div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="d in 31"
               :key="d"
               :value="d"
@@ -223,7 +223,7 @@
           </div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="h in 24"
               :key="h - 1"
               :value="h - 1"
@@ -241,7 +241,7 @@
           <div class="mt-4">{{ $t('minutes') }}</div>
           <div class="d-flex flex-wrap">
             <v-checkbox
-              class="mr-2 mt-0 ScheduleCheckbox"
+              class="me-2 mt-0 ScheduleCheckbox"
               v-for="m in MINUTES"
               :key="m.id"
               :value="m.id"
@@ -296,7 +296,7 @@
     <!-- bottom left of the card, level with the dialog buttons, as in Vuetify 2: 15 px above
          the card bottom = 45 px below the form (8 px margin of the table, 52 px button row) -->
     <v-checkbox
-      style="position: absolute; bottom: -45px; left: -2px;"
+      style="position: absolute; bottom: -45px; inset-inline-start: -2px;"
       v-model="item.active"
       hide-details
       data-testid="scheduleForm-active"

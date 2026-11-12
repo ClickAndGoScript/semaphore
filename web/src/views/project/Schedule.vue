@@ -54,7 +54,7 @@
       <v-menu location="bottom">
         <template v-slot:activator="{ props }">
           <v-btn
-            class="pr-2"
+            class="pe-2"
             v-bind="props"
             color="primary"
             variant="elevated"

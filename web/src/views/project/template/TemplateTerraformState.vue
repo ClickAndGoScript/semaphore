@@ -105,7 +105,7 @@
             {{ inv.inventory }}
             <v-icon
               v-if="inv.id === template.inventory_id"
-              class="ml-1"
+              class="ms-1"
               color="success"
               data-testid="templateState-workspaceDefault"
             >mdi-check
@@ -122,7 +122,7 @@
               color="primary"
               icon
               size="40"
-              class="TerraformState__fab ml-3"
+              class="TerraformState__fab ms-3"
               v-bind="props"
               data-testid="templateState-new"
             >
@@ -171,7 +171,7 @@
           <div>
 
             <v-btn
-              class="mr-4"
+              class="me-4"
               :disabled="inventoryId === template.inventory_id"
               color="success"
               @click="setDefaultInventory()"
@@ -181,7 +181,7 @@
             </v-btn>
 
             <v-btn
-              class="mr-4"
+              class="me-4"
               color="primary"
               :disabled="inventoryId === template.inventory_id"
               @click="detachInventory()"
@@ -193,7 +193,7 @@
             <v-btn
               icon
               variant="text"
-              class="mr-2"
+              class="me-2"
               color="error"
               :disabled="inventoryId === template.inventory_id"
               @click="deleteInventoryDialog = true;"
@@ -224,7 +224,7 @@
           v-if="!features.terraform_backend"
           data-testid="templateState-proAlert"
         >
-            <span class="mr-2">
+            <span class="me-2">
               {{ $t('terraform_backend_only_pro') }}
             </span>
           <v-btn
@@ -233,7 +233,7 @@
             data-testid="templateState-learnMore"
           >
             {{ $t('learn_more') }}
-            <v-icon>mdi-chevron-right</v-icon>
+            <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}</v-icon>
           </v-btn>
         </v-alert>
         <v-card-text>
@@ -249,7 +249,7 @@
             :key="alias.id"
             data-testid="templateState-alias"
           >
-            <code class="mr-2" data-testid="templateState-aliasUrl">{{ alias.url }}</code>
+            <code class="me-2" data-testid="templateState-aliasUrl">{{ alias.url }}</code>
             <CopyClipboardButton
               :text="alias.url"
               :success-message="$t('aliasUrlCopied')"
@@ -364,13 +364,13 @@
 .TerraformStateTable {
 
   .v-table__wrapper {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
   }
 
   .v-data-table-footer {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-inline-start: 0 !important;
+    margin-inline-end: 0 !important;
   }
 
   // The line over the footer as wide as the footer: here the whole card (the shared footer —
@@ -383,7 +383,7 @@
   // cell padded 2 px (App.vue) and 16 px, not a small icon button of 28 px in a 48 px cell.
   > .v-table__wrapper > table > thead > tr > th:first-child,
   .v-data-table__td--expanded-row {
-    padding-right: 16px;
+    padding-inline-end: 16px;
   }
 
   .v-data-table__td--expanded-row > .v-btn {

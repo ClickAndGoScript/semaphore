@@ -43,8 +43,8 @@
     />
 
     <v-toolbar flat>
-      <v-btn icon variant="text" class="mr-4" @click="returnToProjects()" data-testid="roles-back">
-        <v-icon>mdi-arrow-left</v-icon>
+      <v-btn icon variant="text" class="me-4" @click="returnToProjects()" data-testid="roles-back">
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}</v-icon>
       </v-btn>
       <v-toolbar-title
         class="flex-0-1"
@@ -74,7 +74,7 @@
       data-testid="roles-licenseAlert"
     >
       <span
-        class="mr-1"
+        class="me-1"
         v-html="$t('roles_only_enterprise')"
         data-testid="roles-licenseAlertText"
       ></span>
@@ -132,7 +132,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="askDeleteItem(item.slug)"
             data-testid="roles-rowDelete"
           >
@@ -142,7 +142,7 @@
           <v-btn
             icon
             variant="text"
-            class="mr-1"
+            class="me-1"
             @click="editItem(item.slug)"
             data-testid="roles-rowEdit"
           >
@@ -169,7 +169,7 @@
     column-gap: 0;
 
     > .v-data-table__td-title {
-      padding-right: 16px;
+      padding-inline-end: 16px;
     }
   }
 }

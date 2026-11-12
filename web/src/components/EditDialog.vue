@@ -24,7 +24,7 @@ Can use used in tandem with ItemFormBase.js. See KeyForm.vue for example.
     >
       <v-card-title data-testid="editDialog-title">
         <slot name="title">
-          <v-icon v-if="icon" :color="iconColor" class="mr-3">{{ icon }}</v-icon>
+          <v-icon v-if="icon" :color="iconColor" class="me-3">{{ icon }}</v-icon>
           {{ title }}
         </slot>
 
@@ -35,7 +35,7 @@ Can use used in tandem with ItemFormBase.js. See KeyForm.vue for example.
             icon
             variant="text"
             @click="toggleHelp()"
-            class="mr-3"
+            class="me-3"
             :style="{opacity: needHelp ? 1 : 0.3}"
             v-if="helpButton"
             data-testid="editDialog-help"
@@ -47,7 +47,7 @@ Can use used in tandem with ItemFormBase.js. See KeyForm.vue for example.
             icon
             variant="text"
             @click="toggleFullscreen()"
-            class="mr-3"
+            class="me-3"
             v-if="expandable"
             data-testid="editDialog-fullscreen"
           >
@@ -113,7 +113,7 @@ Can use used in tandem with ItemFormBase.js. See KeyForm.vue for example.
 
   .item-dialog__title-actions {
     position: absolute;
-    right: 12px;
+    inset-inline-end: 12px;
   }
 
   .item-dialog {
@@ -122,7 +122,7 @@ Can use used in tandem with ItemFormBase.js. See KeyForm.vue for example.
       align-items: center;
       white-space: nowrap;
       overflow: hidden;
-      margin-right: 12px;
+      margin-inline-end: 12px;
       padding-bottom: 20px !important;
     }
   }

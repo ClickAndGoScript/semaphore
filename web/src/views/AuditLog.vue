@@ -6,8 +6,8 @@
     :data-state="loading ? 'loading' : failed ? 'error' : events.length ? 'ready' : 'empty'"
   >
     <v-toolbar flat class="flex-grow-0">
-      <v-btn icon variant="text" class="mr-4" data-testid="audit-back" @click="returnToProjects">
-        <v-icon>mdi-arrow-left</v-icon>
+      <v-btn icon variant="text" class="me-4" data-testid="audit-back" @click="returnToProjects">
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}</v-icon>
       </v-btn>
       <v-toolbar-title data-testid="audit-title">{{ $t('audit_log') }}</v-toolbar-title>
       <v-spacer />
@@ -50,7 +50,7 @@
     >
       <span v-html="$t('audit_filters_only_pro')"></span>
       <v-btn
-        class="ml-2 text-white"
+        class="ms-2 text-white"
         color="hsl(348deg, 86%, 61%)"
         data-testid="audit-upgrade"
         @click="upgradeToPro('audit_log_filters')"
@@ -75,7 +75,9 @@
         data-testid="audit-newer-top"
         @click="load({ after: newer }, 'newer')"
       >
-        <v-icon start>mdi-chevron-left</v-icon>
+        <v-icon start>
+          {{ $vuetify.locale.isRtl ? 'mdi-chevron-right' : 'mdi-chevron-left' }}
+        </v-icon>
         {{ $t('audit_newer') }}
       </v-btn>
       <v-btn
@@ -85,7 +87,7 @@
         @click="load({ before: older }, 'older')"
       >
         {{ $t('audit_older') }}
-        <v-icon end>mdi-chevron-right</v-icon>
+        <v-icon end>{{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}</v-icon>
       </v-btn>
     </div>
 
@@ -95,7 +97,7 @@
         variant="text"
         size="small"
         color="primary"
-        class="ml-2"
+        class="ms-2"
         data-testid="audit-retry"
         @click="load(...lastLoad)"
       >
@@ -134,7 +136,7 @@
             variant="text"
             size="small"
             color="primary"
-            class="ml-2"
+            class="ms-2"
             data-testid="audit-retry"
             @click="load(...lastLoad)"
           >
@@ -168,7 +170,7 @@
 
       <template v-if="searching" v-slot:loading>
         <span class="d-inline-flex align-center" data-testid="audit-searching">
-          <v-progress-circular indeterminate size="16" width="2" class="mr-2" />
+          <v-progress-circular indeterminate size="16" width="2" class="me-2" />
           {{ $t(direction === 'newer' ? 'audit_searching_newer' : 'audit_searching', {
             date: localTime(searchedTo.timestamp),
           }) }}
@@ -176,7 +178,7 @@
             variant="text"
             size="small"
             color="primary"
-            class="ml-2"
+            class="ms-2"
             data-testid="audit-stop"
             @click="stop"
           >
@@ -193,7 +195,7 @@
 
       <template v-slot:item.actor="{ item }">
         <span style="white-space: nowrap" data-testid="audit-rowActor">
-          <v-icon size="small" class="mr-1 AuditLog__actorIcon">{{
+          <v-icon size="small" class="me-1 AuditLog__actorIcon">{{
             actorIcon(item.actor)
           }}</v-icon>
           {{ actorLabel(item.actor) }}
@@ -233,7 +235,7 @@
             color="success"
             data-testid="audit-rowOutcome-success"
           >mdi-check-circle</v-icon>
-          <span v-if="item.reason" class="ml-1" data-testid="audit-rowReason">{{
+          <span v-if="item.reason" class="ms-1" data-testid="audit-rowReason">{{
             reason(item.reason)
           }}</span>
         </span>
@@ -269,7 +271,9 @@
         data-testid="audit-newer"
         @click="load({ after: newer }, 'newer')"
       >
-        <v-icon start>mdi-chevron-left</v-icon>
+        <v-icon start>
+          {{ $vuetify.locale.isRtl ? 'mdi-chevron-right' : 'mdi-chevron-left' }}
+        </v-icon>
         {{ $t('audit_newer') }}
       </v-btn>
       <v-btn
@@ -279,13 +283,13 @@
         @click="load({ before: older }, 'older')"
       >
         {{ $t('audit_older') }}
-        <v-icon end>mdi-chevron-right</v-icon>
+        <v-icon end>{{ $vuetify.locale.isRtl ? 'mdi-chevron-left' : 'mdi-chevron-right' }}</v-icon>
       </v-btn>
     </div>
 
     <v-navigation-drawer
       :model-value="selected !== null"
-      location="right"
+      location="end"
       temporary
       width="480"
       class="AuditLog__drawer"
@@ -579,6 +583,11 @@ export default {
 .AuditLog__drawer.v-navigation-drawer--right {
   border-left-width: 0;
   background-image: linear-gradient(to right,
+    rgba(var(--v-border-color), var(--v-border-opacity)) 1px, transparent 1px);
+}
+.AuditLog__drawer.v-navigation-drawer--left {
+  border-right-width: 0;
+  background-image: linear-gradient(to left,
     rgba(var(--v-border-color), var(--v-border-opacity)) 1px, transparent 1px);
 }
 

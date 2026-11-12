@@ -15,7 +15,7 @@
               top: -14px;
               border-radius: 0;
             "
-        :style="{left: tickLeft}"
+        :style="{insetInlineStart: tickLeft}"
     ></div>
     <v-card-text class="pb-0">
       <slot></slot>

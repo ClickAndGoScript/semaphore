@@ -149,7 +149,7 @@
         test-id="inventoryForm-inventoryEditor"
         style="
               position: absolute;
-              right: 0;
+              inset-inline-end: 0;
               top: 0;
               margin: 10px;
             "

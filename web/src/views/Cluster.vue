@@ -91,11 +91,11 @@
       <v-btn
         icon
         variant="text"
-        class="mr-4"
+        class="me-4"
         @click="returnToProjects()"
         data-testid="cluster-back"
       >
-        <v-icon>mdi-arrow-left</v-icon>
+        <v-icon>{{ $vuetify.locale.isRtl ? 'mdi-arrow-right' : 'mdi-arrow-left' }}</v-icon>
       </v-btn>
       <v-toolbar-title data-testid="cluster-title">{{ $t('clusterDashboard') }}</v-toolbar-title>
       <v-spacer />
@@ -120,7 +120,7 @@
       class="PageAlert"
       data-testid="cluster-licenseAlert"
     >
-      <span class="mr-1" v-html="$t('ha_only_enterprise')"></span>
+      <span class="me-1" v-html="$t('ha_only_enterprise')"></span>
 
       <v-btn
         variant="flat"
@@ -169,7 +169,7 @@
               <v-chip
                 v-if="item.is_self"
                 size="x-small"
-                class="ml-2"
+                class="ms-2"
                 data-testid="cluster-rowThisNode"
               >{{ $t('thisNode') }}</v-chip>
             </template>
@@ -232,7 +232,7 @@
                   v-for="(count, group) in status.redis.key_groups || {}"
                   :key="group"
                   size="small"
-                  class="mr-2 mt-1"
+                  class="me-2 mt-1"
                   :data-testid="`cluster-redisKeyGroup-${group}`"
                 >
                   {{ group }}: {{ count }}

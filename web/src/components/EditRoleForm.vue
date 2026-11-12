@@ -41,7 +41,7 @@
 <!--    <v-divider class="my-4"></v-divider>-->
 
     <v-list-subheader
-      class="pl-0"
+      class="ps-0"
       data-testid="role-permissionsTitle"
     >{{ $t('permissions') }}</v-list-subheader>
 

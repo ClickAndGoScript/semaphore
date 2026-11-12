@@ -19,7 +19,7 @@
         density="compact"
         :items="dateRanges"
         item-title="text"
-        class="mr-6"
+        class="me-6"
         style="width: 200px; max-width: 200px"
         :menu-props="menuProps"
         v-model="dateRange"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-icon size="small" class="pr-1 SingleLineEditable__icon">mdi-message-outline</v-icon>
+    <v-icon size="small" class="pe-1 SingleLineEditable__icon">mdi-message-outline</v-icon>
 
     <span
       key="placeholder"
@@ -28,7 +28,7 @@
       variant="text" @click="edit()"
       size="small"
       v-if="canEdit && !editable"
-      class="ml-1 SingleLineEditable__button"
+      class="ms-1 SingleLineEditable__button"
       data-testid="singleLineEditable-edit"
     >
       <v-icon>mdi-pencil</v-icon>
@@ -39,7 +39,7 @@
       variant="text"
       @click="save()"
       v-if="editable"
-      class="ml-2 SingleLineEditable__button"
+      class="ms-2 SingleLineEditable__button"
       size="small"
       data-testid="singleLineEditable-save"
     >

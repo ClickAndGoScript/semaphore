@@ -46,7 +46,7 @@
       >
         <div>
           <b>{{ row.slug }}</b>
-          <span v-if="row.name" class="ml-1">{{ row.name }}</span>
+          <span v-if="row.name" class="ms-1">{{ row.name }}</span>
         </div>
         <div class="text-medium-emphasis">{{ objectNames(row) }}</div>
 
